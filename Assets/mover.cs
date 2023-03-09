@@ -8,9 +8,14 @@ public class mover : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+
     public float playerSpeed = 2.0f;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    
+    public AudioSource audioSourceHit;
+    public AudioClip clipHit;
+    public float hitVolume = 0.6f;
 
     private void Start()
     {
@@ -33,13 +38,14 @@ public class mover : MonoBehaviour
             gameObject.transform.forward = move;
         }
 
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("space") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Ball")
+        {
+            audioSourceHit.PlayOneShot(clipHit, hitVolume);
+        }
     }
 }

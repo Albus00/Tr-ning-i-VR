@@ -8,11 +8,8 @@ public class enemyThrower : MonoBehaviour
     public Rigidbody projectilePrefab;
 
     public AudioSource audioSourceThrow;
-    public AudioSource audioSourceHit;
     public AudioClip clip;
-    public AudioClip clipHit;
     public float throwVolume = 0.3f;
-    public float hitVolume = 0.6f;
 
     public float timeToTarget = 5.0f;
     //public float throwFrequency = 4.0f;
@@ -33,8 +30,6 @@ public class enemyThrower : MonoBehaviour
 
         if(currTime > timeToTarget){
             audioSourceThrow.PlayOneShot(clip, throwVolume);
-
-            audioSourceHit.PlayDelayed(timeToTarget);
 
             float distance = (target.transform.position - gameObject.transform.position).magnitude;
             float gravitys = Physics.gravity.magnitude;

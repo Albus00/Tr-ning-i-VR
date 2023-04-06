@@ -82,7 +82,8 @@ public class LightOnBeat2 : MonoBehaviour
 
         if (beatCount >= beatsPerSpawn)
         {
-            Instantiate(enemy);
+            var position = new Vector3(0 + Random.Range(-10f,10f), transform.position.y, transform.position.z);
+            Instantiate(enemy, position, Quaternion.identity);
             beatCount = 0;
         }
 

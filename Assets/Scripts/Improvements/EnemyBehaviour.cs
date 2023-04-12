@@ -53,7 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
         dashDistance = 1f;
         dashSpeed = 10f;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -145,7 +145,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void projectileCollisionDetected(Collision collision)
     {
-        
+
         Debug.Log(collision.gameObject.name);
 
 
@@ -154,14 +154,19 @@ public class EnemyBehaviour : MonoBehaviour
             if (ragdollRigidbodies[i].gameObject == collision.gameObject)
             {
                 //ragdollRigidbodies[i].gameObject.
-                
+
                 break;
             }
         }
 
         EnableRagdoll();
-        
-        
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        EnableRagdoll();
     }
 
     private void HandleBehaviour() // to keep the update function clean.

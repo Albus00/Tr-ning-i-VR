@@ -22,7 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     // --------- Limb Handling --------- //
     private Rigidbody[] ragdollRigidbodies;
-    
+    private Rigidbody hitRigidbody;
 
 
     // --------- Movement handling --------- //
@@ -148,19 +148,25 @@ public class EnemyBehaviour : MonoBehaviour
 
         Debug.Log(collision.gameObject.name);
 
+        
+        //for (int i = 0; i < ragdollRigidbodies.Length; i++)
+        //{
+        //    if (ragdollRigidbodies[i].gameObject == collision.gameObject)
+        //    {
+        //        //ragdollRigidbodies[i].gameObject.
 
-        for (int i = 0; i < ragdollRigidbodies.Length; i++)
-        {
-            if (ragdollRigidbodies[i].gameObject == collision.gameObject)
-            {
-                //ragdollRigidbodies[i].gameObject.
-
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
 
         EnableRagdoll();
-
+        //foreach (var rigidbody in ragdollRigidbodies)
+        //{
+        //    if(collision.rigidbody == rigidbody)
+        //    {
+        //        rigidbody.AddForce(transform.forward*5);
+        //    }
+        //}
 
     }
 

@@ -252,6 +252,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthMeter
       objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.g
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.r
+      value: 0.23851903
+      objectReference: {fileID: 0}
     - target: {fileID: 4563194176544917135, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_RootOrder
       value: 0

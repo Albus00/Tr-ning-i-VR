@@ -10,7 +10,7 @@ using UnityEngine;
 //Set up mixamo model: https://www.youtube.com/watch?v=KuMe6Iz8pFI
 public class EnemyBehaviour : MonoBehaviour
 {
-    // OBS: State machine används inte än.
+    // OBS: State machine anvï¿½nds inte ï¿½n.
     // --------- Enemy State --------- //
     private enum EnemyState
     {
@@ -19,6 +19,11 @@ public class EnemyBehaviour : MonoBehaviour
         Ragdoll
     }
     private EnemyState currentState = EnemyState.Running;
+
+    // --------- Physics --------- //
+    private float gravityForce = -9.82f;
+    public bool isGrounded = false;
+    public float groundedLength = 0.2f;
 
     // --------- Limb Handling --------- //
     private Rigidbody[] ragdollRigidbodies;
@@ -43,7 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        target = GameObject.FindWithTag("player").transform;
+        target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         DisableRagdoll(); // No ragdoll as long as enemy isnt dead.
     }
@@ -57,6 +62,16 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        isGrounded = (Physics.Raycast(transform.position, Vector3.down, groundedLength));
+        // Checks if enemy is grounded (done in child gameobject)
+        if (!isGrounded)
+        {
+            Vector3 downForce = new Vector3(0, gravityForce * Time.deltaTime, 0);
+            transform.Translate(downForce);
+            // Debug.Log("Grounded");
+        }
+
         switch (currentState)
         {
             case EnemyState.Running: 

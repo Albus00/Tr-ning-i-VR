@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ActionOnBeat : MonoBehaviour // För trött för den här skiten
+public class ActionOnBeat : MonoBehaviour // Fï¿½r trï¿½tt fï¿½r den hï¿½r skiten
 {
     //https://www.gamedeveloper.com/programming/music-syncing-in-rhythm-games
     //https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity
@@ -45,7 +45,7 @@ public class ActionOnBeat : MonoBehaviour // För trött för den här skiten
         dspSongTime = (float)AudioSettings.dspTime;
         secPerBeat = 60f / songBpm;
 
-        target = GameObject.FindWithTag("player").transform;
+        target = GameObject.FindWithTag("Player").transform;
         dashing = false;
         
         allowBeatCounterIncrement = true;

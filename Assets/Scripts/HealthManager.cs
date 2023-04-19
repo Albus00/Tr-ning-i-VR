@@ -13,7 +13,7 @@ public class HealthManager : MonoBehaviour
     public Image _bar;
     public bool _POWERUP_invulnerable = false;
 
-    public float _healthValue = 100.0f;
+    public float _healthValue = 10.0f;
     private float prevHealth = 0.0f;
     
     private float _fullHealth;
@@ -47,13 +47,12 @@ public class HealthManager : MonoBehaviour
     
     void Update()
     {
-        
         if(_POWERUP_invulnerable){
             _bar.color = invulnerableColor;
         }else {
             ////DEBUG: remove health each second
             if(_DEBUG_decreaseHealth){
-                _healthValue -= _DEBUG_decreasePerSecond*Time.deltaTime;
+                subtractHealth(_DEBUG_decreasePerSecond*Time.deltaTime);
             }
 
             if(_healthValue != prevHealth){ //Lazy Update for performance
@@ -66,19 +65,32 @@ public class HealthManager : MonoBehaviour
                 _bar.color = lerpColor;
                 float amount = (_healthValue/_fullHealth);
                 _bar.fillAmount = amount;
-                
-                if(_healthValue < _quarterHealth){
-                    flashColor = Color.Lerp(lerpColor, flashColorSecondary, Mathf.PingPong(Time.time*_flashSpeed, 1));
-                    _bar.color = flashColor;
-                }
-
-                if(_healthValue < 0){
-                    Debug.Log("You're fucking dead dawg");
-                    //Kalla på death();
-                }
             }
+        }
+
+        if(_healthValue < _quarterHealth){
+            flashColor = Color.Lerp(lerpColor, flashColorSecondary, Mathf.PingPong(Time.time*_flashSpeed, 1));
+            _bar.color = flashColor;
+        }
+        
+        if(_healthValue < 0){
+            Debug.Log("You're fucking dead dawg");
+            //Kalla på death();
         }
 
         prevHealth = _healthValue;
     }
+
+    void restoreFullHealth(){
+        _healthValue = _fullHealth;
+    }
+
+    void subtractHealth(float dmg){
+        _healthValue -= dmg;
+    }
+
+    void addHealth(float heal){
+        _healthValue += heal;
+    }
+
 }

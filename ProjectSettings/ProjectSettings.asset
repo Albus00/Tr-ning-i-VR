@@ -46,8 +46,8 @@ PlayerSettings:
   defaultScreenHeight: 1080
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 0
-  m_ActiveColorSpace: 0
+  m_StereoRenderingPath: 2
+  m_ActiveColorSpace: 1
   m_MTRendering: 1
   mipStripping: 0
   numberOfMipsStripped: 0
@@ -364,9 +364,14 @@ PlayerSettings:
       m_SubKind: 
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
-  m_BuildTargetGraphicsJobs: []
+  m_BuildTargetGraphicsJobs:
+  - m_BuildTarget: WindowsStandaloneSupport
+    m_GraphicsJobs: 0
   m_BuildTargetGraphicsJobMode: []
-  m_BuildTargetGraphicsAPIs: []
+  m_BuildTargetGraphicsAPIs:
+  - m_BuildTarget: WindowsStandaloneSupport
+    m_APIs: 15000000
+    m_Automatic: 0
   m_BuildTargetVRSettings: []
   m_DefaultShaderChunkSizeInMB: 16
   m_DefaultShaderChunkCount: 0
@@ -642,7 +647,7 @@ PlayerSettings:
     PS4: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
     PS5: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
     Stadia: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
-    Standalone: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Standalone: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK;STARTER_ASSETS_PACKAGES_CHECKED
     WebGL: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
     Windows Store Apps: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
     XboxOne: ULTIMATEXR_USE_OCULUS_SDK;ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK

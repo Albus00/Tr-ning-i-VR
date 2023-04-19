@@ -61,7 +61,7 @@ public class BehaviourTest : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        target = GameObject.FindWithTag("player").transform;
+        target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         colliders = GetComponentsInChildren<Collider>();
         DisableRagdoll(); // No ragdoll as long as enemy isnt dead.

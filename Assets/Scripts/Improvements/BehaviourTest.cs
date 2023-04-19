@@ -31,6 +31,10 @@ public class BehaviourTest : MonoBehaviour
     private Collider[] colliders;
     private Rigidbody hitRigidbody;
 
+    // --------- Physics --------- //
+    private float gravityForce = -9.82f;
+    public bool isGrounded = false;
+    public float groundedLength = 0.2f;
 
     // --------- Movement handling --------- //
     private Transform target;
@@ -46,6 +50,8 @@ public class BehaviourTest : MonoBehaviour
     // --------- Components --------- //
     private Animator animator;
     private CharacterController characterController;
+
+    private bool isDead = false;
     
 
     // --------- Action Timing --------- //
@@ -80,6 +86,14 @@ public class BehaviourTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = (Physics.Raycast(transform.position, Vector3.down, groundedLength));
+        // Checks if enemy is grounded (done in child gameobject)
+        if (!isGrounded && !isDead)
+        {
+            Vector3 downForce = new Vector3(0, gravityForce * Time.deltaTime, 0);
+            transform.Translate(downForce);
+        }
+
         switch (currentState)
         {
             case EnemyState.Idle:
@@ -143,6 +157,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EnableRagdoll() // when die, go ragdoll
     {
+        isDead = true;
         foreach (var collider in colliders)
         {
             collider.isTrigger = false;
@@ -178,7 +193,7 @@ public class BehaviourTest : MonoBehaviour
         }
 
         dashTarget = transform.position + newDirection * dashDistance;
-        dashTarget.y = 0f;
+        dashTarget.y = transform.position.y;
 
 
         //Instantiate(testBox, dashTarget, Quaternion.identity); // instantiates a box for debugging purposes

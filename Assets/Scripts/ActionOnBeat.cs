@@ -1,113 +1,118 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+// KOLLA FMOD PÅ UNITY STORE
+[RequireComponent(typeof(Light))]
+public class ActionOnBeat : MonoBehaviour
+{ // TRY TO MAKE A BAND-INDEX TO DISPLAY IF THE SOUND IS SKEWED TOWARDS ONE FREQUENCY REGION
+  // FLOAT VALUE THAT GOES FROM 0 -> 7 SHOWING WHAT BANDS ARE MOST ACTIVE
 
-public class ActionOnBeat : MonoBehaviour // Fï¿½r trï¿½tt fï¿½r den hï¿½r skiten
-{
-    //https://www.gamedeveloper.com/programming/music-syncing-in-rhythm-games
-    //https://www.gamedeveloper.com/audio/coding-to-the-beat---under-the-hood-of-a-rhythm-game-in-unity
-    //https://answers.unity.com/questions/157940/getoutputdata-and-getspectrumdata-they-represent-t.html
-    // ------------ Audio Processing ------------ //
+
+    // TRY TO MAKE THE FUNCTION: EnemyLungeOnBeat() to make the enemy do a quick dash towards player synced with the beat
+
+    public GameObject enemy;
+
+    // ---------- INSPECTOR VARIABLES ---------- //
     [Range(0, 7)]
     public int band;
-    public float lowerActivationLimit;
-    // --- from 2nd link --- //
-    private float songPosition;
-    private float secPerBeat;
-    private float dspSongTime;
-    public float songBpm;
-    public float songPositionInBeats;
+    //public int band;
+    public float minIntensity, maxIntensity;
+    public float lowerActivationLimitBand1;
+    public bool usesTwoBands = false;
+    [Range(0, 7)]
+    public int band2;
+    public float lowerActivationLimitBand2;
 
+    private float lightIntensity;
+    private float previousIntensity;
+    private float previousAmplitude;
+    private float momentum;
+    private Light light;
 
-
-    // ------------ Boolean flags ------------ //
-    private bool allowBeatCounterIncrement;
-    private bool doAction;
-   
-
-    // ------------ Timers ------------ //
-    private float timer;
-    private float beatTimestamp;
-    private float beatDetectionPaddingTime; // dont record another beat within 0.1s after the most recent one
-
-    // ------------ Counters ------------ //
-    private int beatCount;
-
-    // ------------ testing ------------ //
-    private Transform target;
-    private float dashTimer = 0.5f;
-    private bool dashing;
-
+    // Start is called before the first frame update
     void Start()
     {
-        dspSongTime = (float)AudioSettings.dspTime;
-        secPerBeat = 60f / songBpm;
 
-        target = GameObject.FindWithTag("Player").transform;
-        dashing = false;
-        
-        allowBeatCounterIncrement = true;
-        lowerActivationLimit = 0.5f;
-        beatCount= 0;
-        beatDetectionPaddingTime = 0.1f;
-        doAction= false;
+        light = GetComponent<Light>();
     }
 
-    
+    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        //determine how many seconds since the song started
-        songPosition = (float)(AudioSettings.dspTime - dspSongTime);
-        //determine how many beats since the song started
-        songPositionInBeats = songPosition / secPerBeat;
-        // replace "Input.GetKeyDown(KeyCode.Space)" for beat detection
-        if (Input.GetKeyDown(KeyCode.Space) && timer >= dashTimer)
+
+        //if(band > 7){ band = 7; } // array out of bounds fix
+        //if (band < 0){ band = 0; } // array out of bounds fix
+        lightIntensity = (AudioP.audioBandbuffer[band] * (maxIntensity - minIntensity)) + minIntensity;
+
+        Debug.Log(AudioP.audioBandbuffer[band]);
+
+
+        if (!usesTwoBands)
         {
-            StartCoroutine(Do_Wait_Reset());
+            SetIntensity();
         }
-        if (dashing)
+        else
         {
-            Dash();
+            SetIntensityTwoBands();
         }
-        Debug.Log(dashing);
+
+
+
+        //Debug.Log("band1: " + AudioP.audioBandbuffer[band] + "Band2: " + AudioP.audioBandbuffer[band2]);
     }
 
 
-
-    IEnumerator Do_Wait_Reset()
+    private void SetIntensity()
     {
-        dashing = true;
-        yield return new WaitForSeconds(0.2f);
-        dashing = false;
-    }
-    private void Dash()
-    {
-        timer = 0;
-        gameObject.transform.LookAt(target);
-        //Vector3 targetDirection = target.position - gameObject.transform.position;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), 10f * Time.deltaTime);
-        //Debug.Log("It worked! How?...");
-    }
 
-
-
-
-    private void IncrementBeatCounter() // counts beats with amplitude above the threshold set by lowerActivationLimit
-    {
-        beatTimestamp = Time.time;
-        beatCount++;
-        allowBeatCounterIncrement = false;
-    }
-
-    private void BeatCheck()
-    {
-        if(AudioP.audioBandbuffer[band] >= lowerActivationLimit && allowBeatCounterIncrement)
+        if (AudioP.audioBandbuffer[band] >= lowerActivationLimitBand1)
         {
-            IncrementBeatCounter();
-            beatTimestamp = 0;
+
+            light.intensity = lightIntensity;
+            //enemy.GetComponent<BehaviourTest>().beatReciever();
         }
+        //else
+        //{
+        //    if (lightIntensity > minIntensity)
+        //    {
+        //        light.intensity = previousIntensity / 3;
+        //    }
+        //    else
+        //    {
+        //        light.intensity = minIntensity;
+        //    }
+        //    //light.intensity = minIntensity;
+        //    //light.intensity = previousIntensity / 3;
+        //}
+        //previousIntensity= lightIntensity;
+    }
+
+    private void SetIntensityTwoBands()
+    {
+        if (AudioP.audioBandbuffer[band] >= lowerActivationLimitBand1 && AudioP.audioBandbuffer[band2] >= lowerActivationLimitBand2)
+        {
+            light.intensity = lightIntensity;
+        }
+        //else
+        //{
+        //    if(lightIntensity > minIntensity)
+        //    {
+        //        light.intensity = previousIntensity / 3; 
+        //    }
+        //    else
+        //    {
+        //        light.intensity = minIntensity;
+        //    }
+        //    //light.intensity = minIntensity;
+        //    //light.intensity = previousIntensity / 3;
+        //}
+        //previousIntensity = lightIntensity;
+    }
+
+    private void findLoudestFreq()
+    {
+
     }
 }

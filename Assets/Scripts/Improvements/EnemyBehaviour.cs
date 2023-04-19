@@ -134,8 +134,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         gameObject.transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-        Debug.Log("Running");
-
+        
+        //Debug.Log("Running");
+        // debug for running direction
+        //Debug.DrawLine(transform.position, transform.forward.normalized, new Color(1.0f, 0.0f, 0.0f));
     }
 
     private void RagdollBehaviour()

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class HealthManager : MonoBehaviour
 {
     public Image _bar;
@@ -35,6 +36,7 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
+        
         _fullHealth = _healthValue;
         _halfHealth = _healthValue/2.0f;
         _thirdHealth = _healthValue/3.0f;

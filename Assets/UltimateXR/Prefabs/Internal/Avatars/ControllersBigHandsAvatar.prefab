@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 79447657225692143, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 474319650110039816, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
       propertyPath: _prefabGuid
       value: 55a8090836bca384fa6c13a15986a579
@@ -227,7 +231,15 @@ PrefabInstance:
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3459861580540399569, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3829874743753140955, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998004125793546304, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}
@@ -255,6 +267,10 @@ PrefabInstance:
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6497160127195978445, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6871476239259696991, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
       propertyPath: _avatarPrefab
       value: 
@@ -271,7 +287,15 @@ PrefabInstance:
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8193894799621764073, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8207607569867641689, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
+      propertyPath: _avatarPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320471297924221671, guid: dc011efb41f2d4a419389aefb4b4270d, type: 3}
       propertyPath: _avatarPrefab
       value: 
       objectReference: {fileID: 0}

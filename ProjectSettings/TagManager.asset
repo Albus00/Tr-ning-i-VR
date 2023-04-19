@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - enemy
+  - audioLight
+  - weapon
+  - localLimb
+  - player
+  - audioHandler
   layers:
   - Default
   - TransparentFX

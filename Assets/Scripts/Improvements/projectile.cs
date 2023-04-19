@@ -5,24 +5,16 @@ using UnityEngine;
 public class projectile : MonoBehaviour
 {
     public string projectileType = "box";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(collision.gameObject.name);
+    //    collision.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(collision);
+    //}
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        Debug.Log(other.gameObject.name);
+        other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.name.Contains("mixamorig"))
-        {
-            //Debug.Log(collision.gameObject.name);
-            collision.gameObject.transform.root.GetComponent<EnemyBehaviour>().projectileCollisionDetected(collision);
-        }
     }
 }

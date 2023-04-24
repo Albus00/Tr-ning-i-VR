@@ -10,6 +10,11 @@ using UnityEngine;
 //Set up mixamo model: https://www.youtube.com/watch?v=KuMe6Iz8pFI
 public class EnemyBehaviour : MonoBehaviour
 {
+    // Counter for kills and variables for playing death sound
+    KillCounter killCounterScript;
+    public AudioSource source;
+    public AudioClip clip;
+
     // OBS: State machine anv�nds inte �n.
     // --------- Enemy State --------- //
     private enum EnemyState
@@ -54,6 +59,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Start()
     {
+        killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         //firstCall = true;
         dashDistance = 1f;
         dashSpeed = 10f;
@@ -99,6 +105,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void EnableRagdoll() // when die, go ragdoll
     {
+        // Add kill to killcounter
+        killCounterScript.AddKill();
+
+        // Play death sound
+        source.PlayOneShot(clip);
+
         foreach (var rigidbody in ragdollRigidbodies)
         {
             rigidbody.isKinematic = false; // enables physics  affecting the rigidbodies in the child objects like arms, legs etc

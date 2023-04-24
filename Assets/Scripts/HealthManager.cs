@@ -39,7 +39,6 @@ public class HealthManager : MonoBehaviour
 
     void Start()
     {
-        
         _fullHealth = _healthValue;
         _halfHealth = _healthValue/2.0f;
         _thirdHealth = _healthValue/3.0f;

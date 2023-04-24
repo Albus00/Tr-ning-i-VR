@@ -34,6 +34,10 @@ public class BehaviourTest : MonoBehaviour
     private Collider[] colliders;
     private Rigidbody hitRigidbody;
 
+    // --------- Physics --------- //
+    private float gravityForce = -9.82f;
+    public bool isGrounded = false;
+    public float groundedLength = 0.2f;
 
     // --------- Movement handling --------- //
     private Transform target;
@@ -162,6 +166,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EnableRagdoll() // when die, go ragdoll
     {
+        isDead = true;
         foreach (var collider in colliders)
         {
             collider.isTrigger = false;
@@ -202,7 +207,7 @@ public class BehaviourTest : MonoBehaviour
         }
 
         dashTarget = transform.position + newDirection * dashDistance;
-        dashTarget.y = 0f;
+        dashTarget.y = transform.position.y;
 
         //animator.SetTrigger("dash");
         //Instantiate(testBox, dashTarget, Quaternion.identity); // instantiates a box for debugging purposes

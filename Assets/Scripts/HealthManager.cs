@@ -24,11 +24,12 @@ public class HealthManager : MonoBehaviour
 
     public float _flashSpeed = 3.0f;
     
-    public Color startColor = Color.green;
-    public Color middleColor = Color.yellow;
-    public Color endColor = Color.red;
-    public Color flashColorSecondary = Color.black;
-    public Color invulnerableColor = Color.cyan;
+    [SerializeField]
+    private Color startColor = Color.green;
+    private Color middleColor = Color.yellow;
+    private Color endColor = Color.red;
+    private Color flashColorSecondary = Color.black;
+    private Color invulnerableColor = Color.cyan;
     private Color lerpColor;
     private Color flashColor;
     
@@ -52,10 +53,11 @@ public class HealthManager : MonoBehaviour
         if(_POWERUP_invulnerable){
             _bar.color = invulnerableColor;
         }else {
-            ////DEBUG: remove health each second
+            ////DEBUG: remove health each second------------------------
             if(_DEBUG_decreaseHealth){
                 subtractHealth(_DEBUG_decreasePerSecond*Time.deltaTime);
             }
+            //---------------------------------------------------------
 
             if(_healthValue != prevHealth){ //Lazy Update for performance
                 if(_healthValue > _halfHealth){

@@ -21,11 +21,14 @@ public class BehaviourTest : MonoBehaviour
         Idle,
         Running,
         Dash,
-        Ragdoll
-        
+        Ragdoll,
+        Attack
     }
+
     private EnemyState currentState = EnemyState.Idle;
 
+    private bool isDead;
+    private bool actionInProgress;
     // --------- Limb Handling --------- //
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] colliders;
@@ -42,10 +45,17 @@ public class BehaviourTest : MonoBehaviour
     Vector3 dashTarget;
     public float dashVariationFactor;
     public GameObject testBox;
+    // ---- Attacking ---- //
+    public float attackDistance = 1.0f;
+    private bool hasDoneJumpAttack;
+    
+
+
+
 
     // --------- Components --------- //
     private Animator animator;
-    private CharacterController characterController;
+    
     
 
     // --------- Action Timing --------- //
@@ -60,7 +70,6 @@ public class BehaviourTest : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
         target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         colliders = GetComponentsInChildren<Collider>();
@@ -68,6 +77,9 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
+        hasDoneJumpAttack = false;
+        isDead = false;
+        actionInProgress = false;
         startAllowingActions = false;
         bpm = 110f;
         secPerBeat = 60f / bpm;
@@ -77,13 +89,14 @@ public class BehaviourTest : MonoBehaviour
         dashSpeed = 15f;
     }
 
-    // Update is called once per frame
+    // Use boolean flags and coroutines instead of the state handler. so a bool for dash. one for attack and so on.
     void Update()
     {
+       
         switch (currentState)
         {
             case EnemyState.Idle:
-                IdleBehaviour(); 
+                IdleBehaviour();
                 break;
             case EnemyState.Running:
                 RunningBehaviour();
@@ -94,14 +107,20 @@ public class BehaviourTest : MonoBehaviour
             case EnemyState.Dash:
                 DashBehaviour();
                 break;
-            
+            case EnemyState.Attack:
+                AttackBehaviour();
+                break;
         }
         HandleBehaviour();
+        GroundCheck();
     }
     // ------------------------------------ IDLE ------------------------------------ //
+
     private void IdleBehaviour()
     {
+        
         gameObject.transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        
     }
 
 
@@ -162,6 +181,11 @@ public class BehaviourTest : MonoBehaviour
 
     private void StartDash()
     {
+
+        actionInProgress = true;
+        animator.SetTrigger("dash");
+        Debug.Log("Started dash");
+        
         Vector3 direction = (target.position - transform.position).normalized;
 
         // Add random variation in the X and Z directions
@@ -180,7 +204,7 @@ public class BehaviourTest : MonoBehaviour
         dashTarget = transform.position + newDirection * dashDistance;
         dashTarget.y = 0f;
 
-
+        //animator.SetTrigger("dash");
         //Instantiate(testBox, dashTarget, Quaternion.identity); // instantiates a box for debugging purposes
     }
 
@@ -201,12 +225,46 @@ public class BehaviourTest : MonoBehaviour
     private void EndDash()
     {
         //Debug.Log("Dash ended");
+        actionInProgress = false;
         currentState = EnemyState.Idle;
     }
 
-    
+    // ------------------------------------ ATTACKING ------------------------------------ //
+
+    // MOCAP: https://www.youtube.com/watch?v=6lBkgr-asLs&t=119s
+    private void AttackBehaviour()
+    {
+        // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("StandingAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.94f)
+        {
+            EndAttack();
+        }
+        //transform.LookAt(target);
+
+    }
+
+    private void StartAttack()
+    {
+        actionInProgress = true;
+
+        animator.SetTrigger("swingAttack");
+        Debug.Log("Started attack");
+
+    }
+
+    private void EndAttack()
+    {
+        Debug.Log("Ended attack");
+
+        hasDoneJumpAttack = true;
+        actionInProgress = false;
+        currentState = EnemyState.Idle;
+    }
+
+    // ------------------------------------ TAKING DAMAGE ------------------------------------ //
     public void projectileCollisionDetected(Collider limbCollider, Vector3 projectilePosition)
     {
+        isDead = true;
         EnableRagdoll();
         currentState = EnemyState.Ragdoll;
 
@@ -222,7 +280,7 @@ public class BehaviourTest : MonoBehaviour
 
             // Apply a force to the rigidbody in the direction of the projectile
             Vector3 forceDirection = limbCollider.transform.position - projectilePosition;
-            float forceMagnitude = 10000f; // Adjust this value to control the strength of the force
+            float forceMagnitude = 7000f; // Adjust this value to control the strength of the force
             hitRigidbody.AddForce(forceDirection.normalized * forceMagnitude);
         }
 
@@ -230,19 +288,67 @@ public class BehaviourTest : MonoBehaviour
 
 
     // Do a check for distance from enemy to player and change the probablility of an action accordingly. for example so the enemy doesnt dash past the player.
-    private void HandleBehaviour() 
+    //private void HandleBehaviour() 
+    //{
+    //    timer += Time.deltaTime; // keeps time
+    //    if (timer >= secPerBeat * beatsPerAction)
+    //    {
+    //        if (doAction) {
+    //            timer = 0f;
+    //            doAction = false;
+    //            StartDash();
+    //            currentState = EnemyState.Dash;
+    //        }
+    //    }
+    //}
+    private void HandleBehaviour()
     {
         timer += Time.deltaTime; // keeps time
-        if (timer >= secPerBeat * beatsPerAction)
+        if (timer >= secPerBeat * beatsPerAction) // Action on beat through BPM
         {
-            if (doAction) {
+
+            if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
+            {
                 timer = 0f;
                 doAction = false;
-                StartDash();
-                currentState = EnemyState.Dash;
+                distanceToTarget = (target.position - gameObject.transform.position).magnitude;
+                //  if (distanceToTarget <= attackDistance && !hasDoneJumpAttack) 
+                if (distanceToTarget <= attackDistance) 
+                {
+                    // Attack when within attackDistance
+                    StartAttack();
+                    currentState = EnemyState.Attack;
+                }
+                else
+                {
+                    // Dash otherwise
+                    StartDash();
+                    currentState = EnemyState.Dash;
+                }
             }
         }
     }
+
+    private void GroundCheck()
+    {
+    RaycastHit hit;
+    float groundCheckDistance = 0.1f;
+    float minHeightAboveGround = 0.01f;
+    Vector3 raycastStartPoint = new Vector3(transform.position.x, transform.position.y + groundCheckDistance, transform.position.z);
+
+        if (Physics.Raycast(raycastStartPoint, Vector3.down, out hit, groundCheckDistance))
+        {
+            if (hit.collider.CompareTag("Ground"))
+            {
+                float newYPosition = hit.point.y + minHeightAboveGround;
+                transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+            }
+        }
+    
+    }
+
+
+
 
     public void BeatReceiver() // turns doAction to true when the soundDetection script detects an amplitude spike at selected frequency band.
     {

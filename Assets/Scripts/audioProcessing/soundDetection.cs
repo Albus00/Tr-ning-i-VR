@@ -77,7 +77,7 @@ public class soundDetection : MonoBehaviour
 
     void ControlLightIntensity()
     {
-        Debug.Log(frequencyBands[frequencyBand]);
+        //Debug.Log(frequencyBands[frequencyBand]);
         if (!startedBeatSyncing)
         {
             if (frequencyBands[frequencyBand] > startSyncThreshold)
@@ -98,7 +98,7 @@ public class soundDetection : MonoBehaviour
                     {
                         float randomX = Random.Range(-5f, 5f);
                         Vector3 spawnPosition = new Vector3(randomX, enemySpawnPoint.position.y, enemySpawnPoint.position.z);
-                        Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation);
+                        //Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation); //just to stop spawning while testing
                     }
                     beatCount = 0; // dumb, done just in case it it affects spawn rate
                 }

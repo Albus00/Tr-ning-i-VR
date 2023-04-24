@@ -23698,7 +23698,7 @@ GameObject:
   - component: {fileID: 3656525029575093751}
   m_Layer: 0
   m_Name: goodPlayer 1
-  m_TagString: player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23733,7 +23733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53722f72346fa6848ae1386be516505b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabGuid: 041714f122eb20443982c3b8eb95f2d3
+  _prefabGuid: 2eaaf3c79306def4aa5a683b7160f03e
   _parentPrefab: {fileID: 0}
   _avatarMode: 0
   _renderMode: 4
@@ -24164,11 +24164,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 887ae63c4bb7b8b458a333fd4269473c, type: 2}
   - {fileID: 11400000, guid: cf57479f3947aad44bd9a179bbc1fe8b, type: 2}
   - {fileID: 11400000, guid: 0a96e4e66118b644b87db5938f30359d, type: 2}
-  - {fileID: 11400000, guid: d700fee481bbca7428281163468bfdc9, type: 2}
-  - {fileID: 11400000, guid: 8fdccb6f9180a0b4582f75633d3f5963, type: 2}
-  - {fileID: 11400000, guid: 5e04822cd82bc6241bfa30b2a0ff9d09, type: 2}
-  - {fileID: 11400000, guid: 82cba87cd7b2cbe46859812b9cd956f7, type: 2}
-  - {fileID: 11400000, guid: 3798a24105f490b469578b7fe59a45e4, type: 2}
   _defaultHandPose: {fileID: 11400000, guid: 4cc4620ce24d1564d867b71123678347, type: 2}
 --- !u!114 &3656525029575093751
 MonoBehaviour:
@@ -34039,12 +34034,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bar: {fileID: 3656525029879424118}
+  _POWERUP_invulnerable: 0
   _healthValue: 100
   _flashSpeed: 5
   startColor: {r: 0.0016849041, g: 1, b: 0, a: 1}
   middleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   endColor: {r: 1, g: 0, b: 0, a: 1}
   flashColorSecondary: {r: 0.5566038, g: 0.06563723, b: 0.06563723, a: 1}
+  invulnerableColor: {r: 0, g: 1, b: 1, a: 1}
   _DEBUG_decreaseHealth: 0
   _DEBUG_decreasePerSecond: 1
 --- !u!1 &3656525029956126636
@@ -52395,12 +52392,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bar: {fileID: 3656525028987321688}
+  _POWERUP_invulnerable: 0
   _healthValue: 100
   _flashSpeed: 5
   startColor: {r: 0.0016849041, g: 1, b: 0, a: 1}
   middleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   endColor: {r: 1, g: 0, b: 0, a: 1}
   flashColorSecondary: {r: 0.5566038, g: 0.06563723, b: 0.06563723, a: 1}
+  invulnerableColor: {r: 0, g: 1, b: 1, a: 1}
   _DEBUG_decreaseHealth: 0
   _DEBUG_decreasePerSecond: 1
 --- !u!1 &3656525030420591065

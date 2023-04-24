@@ -309,6 +309,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eedc30db604e5d4284aa81669abd9f5, type: 3}
+--- !u!1 &1034099376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7262697560863359264, guid: 5ef592f9a0dbf14419162555db95f7cc, type: 3}
+  m_PrefabInstance: {fileID: 1936973630503710528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1034099379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034099376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d37005c833d6e4686df718e362fc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponActive: 0
+  maxPosInList: 15
+  threshold: 0.5
+  secondsActive: 0.5
 --- !u!1 &1114939636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1825,10 @@ PrefabInstance:
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._universalToActualAxesRotation.z
       value: -0.707108
       objectReference: {fileID: 0}
+    - target: {fileID: 7262697560863359264, guid: 5ef592f9a0dbf14419162555db95f7cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ef592f9a0dbf14419162555db95f7cc, type: 3}
 --- !u!1001 &9179595349127366087

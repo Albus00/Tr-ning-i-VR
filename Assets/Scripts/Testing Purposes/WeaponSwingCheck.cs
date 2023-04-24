@@ -33,6 +33,7 @@ public class WeaponSwingCheck : MonoBehaviour
             if (travel > threshold)
             {
                 weaponActive = true;
+                Debug.Log("Weapon is active");
                 StartCoroutine(ActiveTimer());
             }
         }

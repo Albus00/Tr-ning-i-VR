@@ -189,7 +189,7 @@ public class BehaviourTest : MonoBehaviour
 
         actionInProgress = true;
         animator.SetTrigger("dash");
-        Debug.Log("Started dash");
+        // Debug.Log("Started dash");
         
         Vector3 direction = (target.position - transform.position).normalized;
 
@@ -253,13 +253,13 @@ public class BehaviourTest : MonoBehaviour
         actionInProgress = true;
 
         animator.SetTrigger("swingAttack");
-        Debug.Log("Started attack");
+        // Debug.Log("Started attack");
 
     }
 
     private void EndAttack()
     {
-        Debug.Log("Ended attack");
+        // Debug.Log("Ended attack");
 
         hasDoneJumpAttack = true;
         actionInProgress = false;
@@ -275,7 +275,7 @@ public class BehaviourTest : MonoBehaviour
 
         // Find the rigidbody that corresponds to the limb collider
         hitRigidbody = limbCollider.attachedRigidbody;
-        Debug.Log("Hit rigidbody: " + hitRigidbody);
+        // Debug.Log("Hit rigidbody: " + hitRigidbody);
 
         if (hitRigidbody != null)
         {

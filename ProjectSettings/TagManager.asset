@@ -12,6 +12,7 @@ TagManager:
   - player
   - audioHandler
   - Ground
+  - EnemyHandler
   layers:
   - Default
   - TransparentFX

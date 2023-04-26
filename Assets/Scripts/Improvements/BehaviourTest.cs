@@ -279,7 +279,8 @@ public class BehaviourTest : MonoBehaviour
     private void StartCloseAttack()
     {
         actionInProgress = true;
-        animator.SetLayerWeight(1, 1);
+        animator.SetBool("closeAttack", true);
+        //animator.SetLayerWeight(1, 1);
         // Debug.Log("Started attack");
 
     }
@@ -295,7 +296,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EndCloseAttack()
     {
-        animator.SetLayerWeight(1, 0);
+        //animator.SetLayerWeight(1, 0);
         EndAction();
     }
 
@@ -384,6 +385,10 @@ public class BehaviourTest : MonoBehaviour
     public void BeatReceiver() // turns doAction to true when the soundDetection script detects an amplitude spike at selected frequency band.
     {
         doAction = true;
+    }
+    public void ActionReceiver()
+    {
+
     }
 
     public bool CanDoAction() // used in EnemyHandler to see if the enemy is doing something currently.

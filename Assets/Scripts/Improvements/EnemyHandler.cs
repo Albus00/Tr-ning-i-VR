@@ -6,21 +6,22 @@ public class EnemyHandler : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
-    private GameObject[] enemies; // store alive enemies
-    // Start is called before the first frame update
+    public static List<GameObject> enemies = new List<GameObject>();
+    private int currentEnemies;
     private int maxEnemies;
     private int currentlyThrowing = 1;
     private int currentlyDashing = 3;
     private int currentlyAttacking = 1;
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SpawnEnemy()
@@ -30,24 +31,26 @@ public class EnemyHandler : MonoBehaviour
         {
             float randomX = Random.Range(-5f, 5f);
             Vector3 spawnPosition = new Vector3(randomX, enemySpawnPoint.position.y, enemySpawnPoint.position.z);
-            Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation); //just to stop spawning while testing
+            GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation);
+            enemies.Add(spawnedEnemy); // Add the spawned enemy to the enemies list
+            currentEnemies++; // Increment the currentEnemies variable
         }
-        
-        
-        // instantiate
-        // lägg till i enemies[]
     }
 
-    public void RemoveEnemy()
+    public void RemoveEnemy(GameObject enemyToRemove) // Gets called from the enemy when it dies
     {
-        // hitta fiende i enemies[]
-        // ta bort
+        // Remove the enemy from the enemies list
+        if (enemies.Contains(enemyToRemove))
+        {
+            enemies.Remove(enemyToRemove);
+            currentEnemies--; // Decrement the currentEnemies variable
+        }
     }
 
     private void DoActions()
     {
-        // loopa enemies[]
-        // ge action beroende på avstånd till "Player" samt vad de andra gör
-
+        // Loop through the enemies list
+        // Assign actions based on the distance to the "Player" and what the other enemies are doing
     }
+
 }

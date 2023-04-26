@@ -15,23 +15,21 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class soundDetection : MonoBehaviour
 {
-    public GameObject enemyHandler;
-    public GameObject enemyPrefab;
-    public Transform enemySpawnPoint;
+    public GameObject enemyHandler; // referece to enemyHandler
     public GameObject lightObject;
-    public int frequencyBand = 2;
-    public float startSyncThreshold = 0.4f;
-    public float threshold = 0.3f;
-    public float intensityMultiplier = 10f;
-    public int beatsPerSpawn;
+    public int frequencyBand = 2; // frequency band currently being looked at
+    public float startSyncThreshold = 0.4f; // amplitude that needs to be exceded to start counting beats (avoid intros, etc)
+    public float threshold = 0.3f; // amplitude required for +1 beatcount
+    public float intensityMultiplier = 10f; // intensity for the light
+    public int beatsPerSpawn; // size "beatCount" needs to reach before an enemy is spawned.
 
     private AudioSource audioSource;
     private Light lightComponent;
 
     private bool startedBeatSyncing;
-    private int beatCount;
-    private float[] samples;
-    private float[] frequencyBands;
+    private int beatCount; // counts beats.
+    private float[] samples; // not important, dont touch
+    private float[] frequencyBands; // array of the 8 frequency bands
 
     void Start()
     {

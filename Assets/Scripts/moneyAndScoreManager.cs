@@ -17,8 +17,6 @@ public class moneyAndScoreManager : MonoBehaviour
     public int prevMoney;
 
     public int currentScore;
-
-    private TMPro.TMP_Text storeMoneyDisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +48,7 @@ public class moneyAndScoreManager : MonoBehaviour
             currentMoney = 0;
         }
 
-        //lazy update shop dis
+        //lazy update shop display
         if(prevMoney != currentMoney){
             GameObject.Find("moneyDisplay").GetComponent<TextMeshProUGUI>().SetText("$"+currentMoney.ToString());
 

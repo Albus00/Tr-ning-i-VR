@@ -27,9 +27,7 @@ public class BehaviourTest : MonoBehaviour
     }
 
     private EnemyState currentState = EnemyState.Idle;
-    public AudioClip clip;
-    KillCounter killCounterScript;
-    public AudioSource source;
+    
 
     private bool isDead;
     private bool actionInProgress;
@@ -37,7 +35,7 @@ public class BehaviourTest : MonoBehaviour
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] colliders;
     private Rigidbody hitRigidbody;
-    private EnemyHandler enemyHandler;
+    
 
     // --------- Physics --------- //
     //private float gravityForce = -9.82f;
@@ -56,21 +54,21 @@ public class BehaviourTest : MonoBehaviour
 
     // ---- Attacking ---- //
     public float attackDistance = 1.0f;
-    private bool hasDoneJumpAttack;
+
     
 
     // --------- Components --------- //
     private Animator animator;
-    
-    
+    private EnemyHandler enemyHandler;
+    public AudioClip clip;
+    KillCounter killCounterScript;
+    public AudioSource source;
 
     // --------- Action Timing --------- //
     public float bpm;
     private float secPerBeat;
     public float beatsPerAction; // decides how many beats have to occur for an action to be allowed
-    private float actionTimer; // decides when an action can be done
     private float timer;
-    private bool startAllowingActions; // toggles when do action is allowed
     private bool doAction; // is set to true -> do something -> is set to false
 
     void Awake()
@@ -86,10 +84,8 @@ public class BehaviourTest : MonoBehaviour
     {
         
         killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
-        hasDoneJumpAttack = false;
         isDead = false;
         actionInProgress = false;
-        startAllowingActions = false;
         bpm = 110f;
         secPerBeat = 60f / bpm;
         beatsPerAction = 1f;
@@ -211,7 +207,7 @@ public class BehaviourTest : MonoBehaviour
 
         // Add random variation in the X and Z directions
         Vector3 randomVariation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-        dashVariationFactor = 0.7f; // Adjust this value to control the amount of variation
+        dashVariationFactor = 0.3f; // Adjust this value to control the amount of variation
 
         Vector3 newDirection = Vector3.Lerp(direction, randomVariation, dashVariationFactor);
         float dotProduct = Vector3.Dot(direction, newDirection);
@@ -307,11 +303,10 @@ public class BehaviourTest : MonoBehaviour
         if(!isDead) {
             source.PlayOneShot(clip);
             killCounterScript.AddKill();
+            isDead = true;
+            EnableRagdoll();
+            currentState = EnemyState.Ragdoll;
         }
-        isDead = true;
-        EnableRagdoll();
-        currentState = EnemyState.Ragdoll;
-
         // Find the rigidbody that corresponds to the limb collider
         hitRigidbody = limbCollider.attachedRigidbody;
         // Debug.Log("Hit rigidbody: " + hitRigidbody);
@@ -386,13 +381,5 @@ public class BehaviourTest : MonoBehaviour
     {
         doAction = true;
     }
-    public void ActionReceiver()
-    {
 
-    }
-
-    public bool CanDoAction() // used in EnemyHandler to see if the enemy is doing something currently.
-    {
-        return doAction;
-    }
 }

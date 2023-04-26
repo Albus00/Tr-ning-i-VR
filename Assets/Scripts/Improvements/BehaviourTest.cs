@@ -295,27 +295,13 @@ public class BehaviourTest : MonoBehaviour
 
             // Apply a force to the rigidbody in the direction of the projectile
             Vector3 forceDirection = limbCollider.transform.position - projectilePosition;
-            float forceMagnitude = 7000f; // Adjust this value to control the strength of the force
+            float forceMagnitude = 3000f; // Adjust this value to control the strength of the force
             hitRigidbody.AddForce(forceDirection.normalized * forceMagnitude);
         }
 
     }
 
 
-    // Do a check for distance from enemy to player and change the probablility of an action accordingly. for example so the enemy doesnt dash past the player.
-    //private void HandleBehaviour() 
-    //{
-    //    timer += Time.deltaTime; // keeps time
-    //    if (timer >= secPerBeat * beatsPerAction)
-    //    {
-    //        if (doAction) {
-    //            timer = 0f;
-    //            doAction = false;
-    //            StartDash();
-    //            currentState = EnemyState.Dash;
-    //        }
-    //    }
-    //}
     private void HandleBehaviour()
     {
         timer += Time.deltaTime; // keeps time

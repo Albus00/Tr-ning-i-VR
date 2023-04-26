@@ -15,6 +15,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class soundDetection : MonoBehaviour
 {
+    public GameObject enemyHandler;
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
     public GameObject lightObject;
@@ -92,14 +93,8 @@ public class soundDetection : MonoBehaviour
                 beatCount++;
                 if (beatCount == beatsPerSpawn)
                 {
-                    beatCount = 0;
-                    int numOfEnemies = Random.Range(1, 4);
-                    for (int i = 0; i < numOfEnemies; i++)
-                    {
-                        float randomX = Random.Range(-5f, 5f);
-                        Vector3 spawnPosition = new Vector3(randomX, enemySpawnPoint.position.y, enemySpawnPoint.position.z);
-                        //Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation); //just to stop spawning while testing
-                    }
+                    
+                    enemyHandler.GetComponent<EnemyHandler>().SpawnEnemy();
                     beatCount = 0; // dumb, done just in case it it affects spawn rate
                 }
 

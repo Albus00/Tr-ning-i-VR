@@ -22,7 +22,8 @@ public class BehaviourTest : MonoBehaviour
         Running,
         Dash,
         Ragdoll,
-        Attack
+        Attack,
+        CloseAttack
     }
 
     private EnemyState currentState = EnemyState.Idle;
@@ -36,6 +37,7 @@ public class BehaviourTest : MonoBehaviour
     private Rigidbody[] ragdollRigidbodies;
     private Collider[] colliders;
     private Rigidbody hitRigidbody;
+    private EnemyHandler enemyHandler;
 
     // --------- Physics --------- //
     //private float gravityForce = -9.82f;
@@ -47,11 +49,11 @@ public class BehaviourTest : MonoBehaviour
     private float distanceToTarget;
     public float movementSpeed;
     // ---- Dashing ---- //
-    private float dashDistance;
+    public float dashDistance;
     public float dashSpeed;
     Vector3 dashTarget;
     public float dashVariationFactor;
-    public GameObject testBox;
+
     // ---- Attacking ---- //
     public float attackDistance = 1.0f;
     private bool hasDoneJumpAttack;
@@ -73,6 +75,7 @@ public class BehaviourTest : MonoBehaviour
 
     void Awake()
     {
+        enemyHandler = GameObject.FindWithTag("EnemyHandler").GetComponent<EnemyHandler>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -81,6 +84,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
+        
         killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         hasDoneJumpAttack = false;
         isDead = false;
@@ -90,7 +94,8 @@ public class BehaviourTest : MonoBehaviour
         secPerBeat = 60f / bpm;
         beatsPerAction = 1f;
         //firstCall = true;
-        dashDistance = 2.0f;
+        movementSpeed = 2f;
+        dashDistance = 1.5f;
         dashSpeed = 15f;
     }
 
@@ -115,6 +120,9 @@ public class BehaviourTest : MonoBehaviour
             case EnemyState.Attack:
                 AttackBehaviour();
                 break;
+            case EnemyState.CloseAttack:
+                CloseAttackBehaviour();
+                break;
         }
         HandleBehaviour();
         if(!isDead) {
@@ -126,13 +134,15 @@ public class BehaviourTest : MonoBehaviour
 
     private void IdleBehaviour()
     {
-        
         gameObject.transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-        
     }
 
 
     // ------------------------------------ RUNNING ------------------------------------ //
+    private void StartRunning()
+    {
+        animator.SetBool("dash", true);
+    }
     private void RunningBehaviour()
     {
         distanceToTarget = (target.position - gameObject.transform.position).magnitude;
@@ -181,7 +191,8 @@ public class BehaviourTest : MonoBehaviour
             rigidbody.isKinematic = false; // enables physics  affecting the rigidbodies in the child objects like arms, legs etc
         }
         animator.enabled = false;
-        this.enabled = false;
+        enemyHandler.RemoveEnemy(this.gameObject);
+        this.enabled= false;
         Object.Destroy(gameObject,3f);
     }
 
@@ -191,9 +202,9 @@ public class BehaviourTest : MonoBehaviour
 
     private void StartDash()
     {
-
+        
         actionInProgress = true;
-        animator.SetTrigger("dash");
+        animator.SetBool("dash",true);
         // Debug.Log("Started dash");
         
         Vector3 direction = (target.position - transform.position).normalized;
@@ -213,6 +224,7 @@ public class BehaviourTest : MonoBehaviour
 
         dashTarget = transform.position + newDirection * dashDistance;
         dashTarget.y = transform.position.y;
+        //gameObject.transform.LookAt(dashTarget);
 
         //animator.SetTrigger("dash");
         //Instantiate(testBox, dashTarget, Quaternion.identity); // instantiates a box for debugging purposes
@@ -220,6 +232,7 @@ public class BehaviourTest : MonoBehaviour
 
     private void DashBehaviour()
     {
+        
         transform.position = Vector3.MoveTowards(transform.position, dashTarget, dashSpeed * Time.deltaTime);
         //Debug.Log("In DashBehaviour: " + dashTarget);
         //Debug.Log("Dashing");
@@ -235,8 +248,8 @@ public class BehaviourTest : MonoBehaviour
     private void EndDash()
     {
         //Debug.Log("Dash ended");
-        actionInProgress = false;
-        currentState = EnemyState.Idle;
+        animator.SetBool("dash", false);
+        EndAction();
     }
 
     // ------------------------------------ ATTACKING ------------------------------------ //
@@ -245,30 +258,45 @@ public class BehaviourTest : MonoBehaviour
     private void AttackBehaviour()
     {
         // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("StandingAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.94f)
+        if (animator.GetCurrentAnimatorStateInfo(1).IsName("CloseAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.94f)
         {
             EndAttack();
         }
         //transform.LookAt(target);
 
     }
-
     private void StartAttack()
     {
-        actionInProgress = true;
-
-        animator.SetTrigger("swingAttack");
-        // Debug.Log("Started attack");
 
     }
 
     private void EndAttack()
     {
-        // Debug.Log("Ended attack");
+        EndAction();
+    }
 
-        hasDoneJumpAttack = true;
-        actionInProgress = false;
-        currentState = EnemyState.Idle;
+
+    private void StartCloseAttack()
+    {
+        actionInProgress = true;
+        animator.SetLayerWeight(1, 1);
+        // Debug.Log("Started attack");
+
+    }
+    private void CloseAttackBehaviour()
+    {
+        // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
+        if (animator.GetCurrentAnimatorStateInfo(1).IsName("CloseAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            EndCloseAttack();
+        }
+        //transform.LookAt(target);
+
+    }
+    private void EndCloseAttack()
+    {
+        animator.SetLayerWeight(1, 0);
+        EndAction();
     }
 
     // ------------------------------------ TAKING DAMAGE ------------------------------------ //
@@ -317,7 +345,7 @@ public class BehaviourTest : MonoBehaviour
                 if (distanceToTarget <= attackDistance) 
                 {
                     // Attack when within attackDistance
-                    StartAttack();
+                    StartCloseAttack();
                     currentState = EnemyState.Attack;
                 }
                 else
@@ -328,6 +356,12 @@ public class BehaviourTest : MonoBehaviour
                 }
             }
         }
+    }
+    private void EndAction()
+    {
+        actionInProgress = false;
+        currentState = EnemyState.Idle;
+        
     }
 
     private void GroundCheck()
@@ -345,14 +379,15 @@ public class BehaviourTest : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
             }
         }
-    
     }
-
-
-
 
     public void BeatReceiver() // turns doAction to true when the soundDetection script detects an amplitude spike at selected frequency band.
     {
         doAction = true;
+    }
+
+    public bool CanDoAction() // used in EnemyHandler to see if the enemy is doing something currently.
+    {
+        return doAction;
     }
 }

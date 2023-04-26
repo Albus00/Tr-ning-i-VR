@@ -858,7 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: box
 --- !u!135 &544907455
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1121,9 +1120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHandler: {fileID: 1434822950}
   lightObject: {fileID: 1906066652}
-  frequencyBand: 2
-  startSyncThreshold: 0.4
-  threshold: 0.3
+  frequencyBand: 6
+  startSyncThreshold: 0.1
+  threshold: 0.4
   intensityMultiplier: 10
   beatsPerSpawn: 0
 --- !u!82 &1114939638
@@ -1640,7 +1639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: box
 --- !u!1 &1602988490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,7 +2281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: box
 --- !u!1001 &2067944984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2390,7 +2387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: box
 --- !u!1001 &1936973630503710528
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    public string projectileType = "box";
+    
 
     //private void OnCollisionEnter(Collision collision)
     //{

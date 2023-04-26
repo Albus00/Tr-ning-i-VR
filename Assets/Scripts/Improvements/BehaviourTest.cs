@@ -26,6 +26,9 @@ public class BehaviourTest : MonoBehaviour
     }
 
     private EnemyState currentState = EnemyState.Idle;
+    public AudioClip clip;
+    KillCounter killCounterScript;
+    public AudioSource source;
 
     private bool isDead;
     private bool actionInProgress;
@@ -35,9 +38,9 @@ public class BehaviourTest : MonoBehaviour
     private Rigidbody hitRigidbody;
 
     // --------- Physics --------- //
-    private float gravityForce = -9.82f;
-    public bool isGrounded = false;
-    public float groundedLength = 0.2f;
+    //private float gravityForce = -9.82f;
+    //public bool isGrounded = false;
+    //public float groundedLength = 0.2f;
 
     // --------- Movement handling --------- //
     private Transform target;
@@ -53,9 +56,6 @@ public class BehaviourTest : MonoBehaviour
     public float attackDistance = 1.0f;
     private bool hasDoneJumpAttack;
     
-
-
-
 
     // --------- Components --------- //
     private Animator animator;
@@ -81,6 +81,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
+        killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         hasDoneJumpAttack = false;
         isDead = false;
         actionInProgress = false;
@@ -116,7 +117,10 @@ public class BehaviourTest : MonoBehaviour
                 break;
         }
         HandleBehaviour();
-        GroundCheck();
+        if(!isDead) {
+            GroundCheck(); 
+        }
+        
     }
     // ------------------------------------ IDLE ------------------------------------ //
 
@@ -166,6 +170,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EnableRagdoll() // when die, go ragdoll
     {
+        
         isDead = true;
         foreach (var collider in colliders)
         {
@@ -269,6 +274,11 @@ public class BehaviourTest : MonoBehaviour
     // ------------------------------------ TAKING DAMAGE ------------------------------------ //
     public void projectileCollisionDetected(Collider limbCollider, Vector3 projectilePosition)
     {
+        
+        if(!isDead) {
+            source.PlayOneShot(clip);
+            killCounterScript.AddKill();
+        }
         isDead = true;
         EnableRagdoll();
         currentState = EnemyState.Ragdoll;

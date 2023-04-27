@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class HealthManager : MonoBehaviour
@@ -68,6 +69,8 @@ public class HealthManager : MonoBehaviour
                 _bar.color = lerpColor;
                 float amount = (_healthValue/_fullHealth);
                 _bar.fillAmount = amount;
+
+                Debug.Log("Health at: "+_healthValue);
             }
         }
 
@@ -78,21 +81,21 @@ public class HealthManager : MonoBehaviour
         
         if(_healthValue < 0){
             Debug.Log("You're fucking dead dawg");
-            //Kalla på death();
+            SceneManager.LoadScene(sceneName:"GameOver");
         }
 
         prevHealth = _healthValue;
     }
 
-    void restoreFullHealth(){
+    public void restoreFullHealth(){
         _healthValue = _fullHealth;
     }
 
-    void subtractHealth(float dmg){
+    public void subtractHealth(float dmg){
         _healthValue -= dmg;
     }
 
-    void addHealth(float heal){
+    public void addHealth(float heal){
         _healthValue += heal;
     }
 

@@ -28,6 +28,7 @@ public class BehaviourTest : MonoBehaviour
 
     private EnemyState currentState = EnemyState.Idle;
     
+    public HealthManager playerHealth;
 
     private bool isDead;
     private bool actionInProgress;
@@ -74,6 +75,7 @@ public class BehaviourTest : MonoBehaviour
     void Awake()
     {
         enemyHandler = GameObject.FindWithTag("EnemyHandler").GetComponent<EnemyHandler>();
+        playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -278,6 +280,9 @@ public class BehaviourTest : MonoBehaviour
         animator.SetBool("closeAttack", true);
         //animator.SetLayerWeight(1, 1);
         // Debug.Log("Started attack");
+
+        //-------DEBUG REMOVE HEALTH -- SHOULD BE DONE WITH A HITBOX CHECK!-------
+        playerHealth.subtractHealth(20.0f);
 
     }
     private void CloseAttackBehaviour()

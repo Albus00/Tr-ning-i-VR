@@ -13,6 +13,7 @@ TagManager:
   - audioHandler
   - Ground
   - EnemyHandler
+  - HealthHandler
   layers:
   - Default
   - TransparentFX

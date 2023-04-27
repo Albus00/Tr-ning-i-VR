@@ -1162,6 +1162,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d304163d08e9a4793c14fec99f7072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicTitle:
+  - "\u0418\u041D\u041E\u0413\u0414\u0410"
+  - KNOCK KNOCK
+  - JOHN WICK MODE
+  - IT DOESN'T MATTER
+  - HERE FOR YOU
+  - OLD SCHOOL VIBE
+  musicArtist:
+  - "\u0414\u0415\u0422\u0418 RAVE"
+  - HOTLINE MIAMI
+  - LE CASTLE VANIA
+  - SMACK, DJS FROM MARS
+  - MIKE WILLIAMS
+  - SLAMTYPE
+  musicFrequencyBands: 0400000006000000
+  musicThresholds:
+  - 0.3
+  - 0.4
+  musicStartSyncThresholds:
+  - 0.4
+  - 0.1
+  musicBPMs: 7e0000006e000000
   enemyHandler: {fileID: 1434822950}
   lightObject: {fileID: 1906066652}
   frequencyBand: 6

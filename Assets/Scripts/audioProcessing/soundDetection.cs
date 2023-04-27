@@ -2,19 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// ДЕТИ RAVE - ИНОГДА:            Band4,   startSyncThreshold 0.4,   threshold 0.3,   BPM 126
-// HOTLINE MIAMI - KNOCK KNOCK:   Band6,   startSyncThreshold 0.1,   threshold 0.4,   BPM 110
-// Band 0: 0 Hz to 86 Hz
-// Band 1: 87 Hz to 258 Hz
-// Band 2: 259 Hz to 602 Hz
-// Band 3: 603 Hz to 1290 Hz
-// Band 4: 1291 Hz to 2666 Hz
-// Band 5: 2667 Hz to 5418 Hz
-// Band 6: 5419 Hz to 10922 Hz
+// [1] ДЕТИ RAVE - ИНОГДА:                       Band4,   startSyncThreshold 0.4,   threshold 0.3,   BPM 126
+// [2] HOTLINE MIAMI - KNOCK KNOCK:              Band6,   startSyncThreshold 0.1,   threshold 0.4,   BPM 110
+// [3] LE CASTLE VANIA - JOHN WICK MODE:         
+// [4] SMACK, DJS FROM MARS - IT DOESN'T MATTER: 
+// [5] MIKE WILLIAMS - HERE FOR YOU:                      
+// [6] SLAMTYPE - OLD SCHOOL VIBE:               
+
+// Band 0: 0 Hz     to 86 Hz
+// Band 1: 87 Hz    to 258 Hz
+// Band 2: 259 Hz   to 602 Hz
+// Band 3: 603 Hz   to 1290 Hz
+// Band 4: 1291 Hz  to 2666 Hz
+// Band 5: 2667 Hz  to 5418 Hz
+// Band 6: 5419 Hz  to 10922 Hz
 // Band 7: 10923 Hz to 22050 Hz
 [RequireComponent(typeof(AudioSource))]
 public class soundDetection : MonoBehaviour
 {
+    //Save information for each song manually in the inspector. Make sure the indices match
+    public string[] musicTitle;
+    public string[] musicArtist;
+    public int[] musicFrequencyBands;
+    public float[] musicThresholds;
+    public float[] musicStartSyncThresholds;
+    public int[] musicBPMs;
+
     public GameObject enemyHandler; // referece to enemyHandler
     public GameObject lightObject;
     public int frequencyBand = 6; // frequency band currently being looked at

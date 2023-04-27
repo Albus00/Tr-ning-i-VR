@@ -17,7 +17,7 @@ public class soundDetection : MonoBehaviour
 {
     public GameObject enemyHandler; // referece to enemyHandler
     public GameObject lightObject;
-    public int frequencyBand = 2; // frequency band currently being looked at
+    public int frequencyBand = 6; // frequency band currently being looked at
     public float startSyncThreshold = 0.4f; // amplitude that needs to be exceded to start counting beats (avoid intros, etc)
     public float threshold = 0.3f; // amplitude required for +1 beatcount
     public float intensityMultiplier = 10f; // intensity for the light
@@ -41,6 +41,10 @@ public class soundDetection : MonoBehaviour
 
         samples = new float[512];
         frequencyBands = new float[8];
+
+        //Compensate for volume settings
+        threshold = threshold*audioSource.volume;
+        startSyncThreshold = startSyncThreshold*audioSource.volume;
     }
 
     void Update()

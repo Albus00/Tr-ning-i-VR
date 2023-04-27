@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1041769031449021264}
   - component: {fileID: 3433309979398725524}
+  - component: {fileID: 271554349248074145}
+  - component: {fileID: -4767258647758392424}
   m_Layer: 0
   m_Name: fridge
   m_TagString: Untagged
@@ -47,6 +49,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   airSpeed: 15
   heightAboveTarget: 2
+  timeToTarget: 2
+  maxRandRotMagn: -2
+  minRandRotMagn: -2
+  hasThrown: 0
+--- !u!54 &271554349248074145
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570340404629796514}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &-4767258647758392424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570340404629796514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.93, y: 1, z: 1}
+  m_Center: {x: 0.05, y: 0.04, z: 0.51}
 --- !u!1001 &6435345876157898426
 PrefabInstance:
   m_ObjectHideFlags: 0

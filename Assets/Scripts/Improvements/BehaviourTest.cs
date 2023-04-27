@@ -38,6 +38,10 @@ public class BehaviourTest : MonoBehaviour
     private Collider[] colliders;
     private Rigidbody hitRigidbody;
     
+    // --------- Sound Handling --------- //
+    public AudioClip[] throwSounds;
+    private AudioClip lastAudioClip;
+    private AudioSource thisSound;
 
     // --------- Physics --------- //
     //private float gravityForce = -9.82f;
@@ -85,6 +89,7 @@ public class BehaviourTest : MonoBehaviour
     {
         enemyHandler = GameObject.FindWithTag("EnemyHandler").GetComponent<EnemyHandler>();
         playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
+        thisSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
@@ -295,7 +300,7 @@ public class BehaviourTest : MonoBehaviour
         // Debug.Log("Started attack");
 
         //-------DEBUG REMOVE HEALTH -- SHOULD BE DONE WITH A HITBOX CHECK!-------
-        playerHealth.subtractHealth(20.0f);
+        playerHealth.subtractHealth(5.0f);
 
     }
     private void CloseAttackBehaviour()
@@ -329,7 +334,21 @@ public class BehaviourTest : MonoBehaviour
     {
         fridge = Instantiate(fridgePrefab, fridgeSpawnPoint.position, fridgeSpawnPoint.rotation);
         fridge.transform.parent = fridgeSpawnPoint;
+        
+        //RANDOMIZE THROW SOUND -- WE SHOULD DO THIS IN A SEPARATE AUDIOHANDLER!!!!!!
+        while (thisSound.clip == lastAudioClip) { //dont play the same sound twice :)
+            thisSound.clip = throwSounds[Random.Range(0, throwSounds.Length)];
+        }
+        lastAudioClip = thisSound.clip;
+        
+        StartCoroutine(playSoundDelayed(thisSound.clip, 0.8f));
     }
+
+    IEnumerator playSoundDelayed(AudioClip theAudio, float delay){
+        yield return new WaitForSeconds(delay);
+        thisSound.PlayOneShot(theAudio);
+    }
+
     public void ReleaseFridge()
     {
         fridge.transform.parent = null;
@@ -377,7 +396,8 @@ public class BehaviourTest : MonoBehaviour
 
             if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
             {
-                AssignFridgeThrower(); // Remove Later
+                AssignFridgeThrower();
+
                 timer = 0f;
                 doAction = false;
                 distanceToTarget = (target.position - gameObject.transform.position).magnitude;

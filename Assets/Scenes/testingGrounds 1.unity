@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563194176544917132, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_Name
-      value: HealthMeter
+      value: PlayerHealth
       objectReference: {fileID: 0}
     - target: {fileID: 4563194176544917132, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_TagString
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 139575125123830105, guid: 474579dc37907944095102affef733f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.025
+      value: -4.853
       objectReference: {fileID: 0}
     - target: {fileID: 139575125123830105, guid: 474579dc37907944095102affef733f1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1181,7 +1181,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300001, guid: 1dd706bb85d8aef4e83a6229dbd62c36, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7ae25c436e9e6ba4c8f7d38bf562f210, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1195,7 +1195,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1281,6 +1281,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1125774914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+  m_PrefabInstance: {fileID: 265588642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf80de1ed03fcdb4a90cc2258d2eaff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165886836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,7 +1610,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DisplayGeo70
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3451118302482216456, guid: 840267e91beed224ea364d4e11ee00db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 840267e91beed224ea364d4e11ee00db, type: 3}
 --- !u!1 &1434822950
 GameObject:
@@ -1861,16 +1873,24 @@ PrefabInstance:
       value: EnemyV5
       objectReference: {fileID: 0}
     - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: fridgePrefab
       value: 
       objectReference: {fileID: 4570340404629796514, guid: 07750c411a66d2c48a3b52e401ddfabd, type: 3}
+    - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1125774914}
     - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: fridgeSpawnPoint
       value: 
       objectReference: {fileID: 742303606}
     - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: fridgeThrowDistance
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: fridgeAnimComtroller
@@ -1923,6 +1943,14 @@ PrefabInstance:
     - target: {fileID: 5246695547329007927, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5350948021888584471, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
+      propertyPath: m_Name
+      value: enemyAudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735620025182233101, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.678
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
@@ -2554,6 +2582,62 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4b32aeb71ecc9414a8491420d6a05e13, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+--- !u!1 &2081852466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081852468}
+  - component: {fileID: 2081852467}
+  m_Layer: 0
+  m_Name: Audio Reverb Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!167 &2081852467
+AudioReverbZone:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081852466}
+  m_Enabled: 1
+  m_MinDistance: 10
+  m_MaxDistance: 17.38
+  m_ReverbPreset: 10
+  m_Room: -1000
+  m_RoomHF: -698
+  m_DecayTime: 7.24
+  m_DecayHFRatio: 0.33
+  m_Reflections: -1166
+  m_ReflectionsDelay: 0.02
+  m_Reverb: 16
+  m_ReverbDelay: 0.03
+  m_HFReference: 5000
+  m_Diffusion: 100
+  m_Density: 100
+  m_LFReference: 250
+  m_RoomLF: 0
+--- !u!4 &2081852468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081852466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 22.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2140992249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0582f8d29e754fc408958897cbf08a42, type: 3}

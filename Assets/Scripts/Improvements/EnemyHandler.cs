@@ -41,6 +41,8 @@ public class EnemyHandler : MonoBehaviour
 
     private IEnumerator coroutine = null; //Dont initalize cooldown more than once
 
+
+
     void Start()
     {
         //First wave only

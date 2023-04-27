@@ -23,7 +23,8 @@ public class BehaviourTest : MonoBehaviour
         Dash,
         Ragdoll,
         Attack,
-        CloseAttack
+        CloseAttack,
+        FridgeAttack
     }
 
     private EnemyState currentState = EnemyState.Idle;
@@ -55,8 +56,11 @@ public class BehaviourTest : MonoBehaviour
 
     // ---- Attacking ---- //
     public float attackDistance = 1.0f;
+    private bool isFridgeThrower;
+    private bool hasThrownFridge;
+    public float fridgeThrowDistance;
+    public Transform fridgeSpawnPoint;
 
-    
 
     // --------- Components --------- //
     private Animator animator;
@@ -64,6 +68,8 @@ public class BehaviourTest : MonoBehaviour
     public AudioClip clip;
     KillCounter killCounterScript;
     public AudioSource source;
+    public GameObject fridgePrefab;
+    private GameObject fridge;
 
     // --------- Action Timing --------- //
     public float bpm;
@@ -71,6 +77,9 @@ public class BehaviourTest : MonoBehaviour
     public float beatsPerAction; // decides how many beats have to occur for an action to be allowed
     private float timer;
     private bool doAction; // is set to true -> do something -> is set to false
+
+ 
+    
 
     void Awake()
     {
@@ -84,7 +93,9 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
-        
+        fridgeThrowDistance = 15f;
+        hasThrownFridge = false;
+        isFridgeThrower = false;
         killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
@@ -120,6 +131,9 @@ public class BehaviourTest : MonoBehaviour
                 break;
             case EnemyState.CloseAttack:
                 CloseAttackBehaviour();
+                break;
+            case EnemyState.FridgeAttack:
+                FridgeAttackBehaviour();
                 break;
         }
         HandleBehaviour();
@@ -267,7 +281,6 @@ public class BehaviourTest : MonoBehaviour
     {
 
     }
-
     private void EndAttack()
     {
         EndAction();
@@ -288,12 +301,11 @@ public class BehaviourTest : MonoBehaviour
     private void CloseAttackBehaviour()
     {
         // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
-        if (animator.GetCurrentAnimatorStateInfo(1).IsName("CloseAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("CloseAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             EndCloseAttack();
         }
         //transform.LookAt(target);
-
     }
     private void EndCloseAttack()
     {
@@ -301,22 +313,47 @@ public class BehaviourTest : MonoBehaviour
         EndAction();
     }
 
+    private void StartFridgeAttack()
+    {
+        actionInProgress = true;
+        animator.SetBool("throwFridge", true);
+    }
+    private void FridgeAttackBehaviour() {
+       
+    }
+    private void EndFridgeAttack()
+    {
+        EndAction();
+    }
+    public void SpawnFridge()
+    {
+        fridge = Instantiate(fridgePrefab, fridgeSpawnPoint.position, fridgeSpawnPoint.rotation);
+        fridge.transform.parent = fridgeSpawnPoint;
+    }
+    public void ReleaseFridge()
+    {
+        fridge.transform.parent = null;
+        fridge.GetComponent<EnemyProjectile>().CommandToMoveReceiver();
+    }
+
     // ------------------------------------ TAKING DAMAGE ------------------------------------ //
     public void projectileCollisionDetected(Collider limbCollider, Vector3 projectilePosition)
     {
-        
-        if(!isDead) {
+        hitRigidbody = limbCollider.attachedRigidbody;
+
+        if (!isDead) {
             source.PlayOneShot(clip);
             killCounterScript.AddKill();
             isDead = true;
+
             EnableRagdoll();
             currentState = EnemyState.Ragdoll;
         }
         // Find the rigidbody that corresponds to the limb collider
-        hitRigidbody = limbCollider.attachedRigidbody;
-        // Debug.Log("Hit rigidbody: " + hitRigidbody);
+        
+        
 
-        if (hitRigidbody != null)
+        if (hitRigidbody != null) // put this inside the if(!isDead)
         {
             // Enable the rigidbody and collider components
             hitRigidbody.isKinematic = false;
@@ -333,12 +370,14 @@ public class BehaviourTest : MonoBehaviour
 
     private void HandleBehaviour()
     {
+       
         timer += Time.deltaTime; // keeps time
         if (timer >= secPerBeat * beatsPerAction) // Action on beat through BPM
         {
 
             if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
             {
+                AssignFridgeThrower(); // Remove Later
                 timer = 0f;
                 doAction = false;
                 distanceToTarget = (target.position - gameObject.transform.position).magnitude;
@@ -348,6 +387,11 @@ public class BehaviourTest : MonoBehaviour
                     // Attack when within attackDistance
                     StartCloseAttack();
                     currentState = EnemyState.Attack;
+                }
+                else if (distanceToTarget > attackDistance && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
+                {
+                    StartFridgeAttack();
+                    currentState = EnemyState.FridgeAttack;
                 }
                 else
                 {
@@ -367,24 +411,38 @@ public class BehaviourTest : MonoBehaviour
 
     private void GroundCheck()
     {
-    RaycastHit hit;
-    float groundCheckDistance = 0.1f;
-    float minHeightAboveGround = 0.01f;
-    Vector3 raycastStartPoint = new Vector3(transform.position.x, transform.position.y + groundCheckDistance, transform.position.z);
-
-        if (Physics.Raycast(raycastStartPoint, Vector3.down, out hit, groundCheckDistance))
+    if(currentState != EnemyState.FridgeAttack)
         {
-            if (hit.collider.CompareTag("Ground"))
+            RaycastHit hit;
+            float groundCheckDistance = 0.1f;
+            float minHeightAboveGround = 0.01f;
+            Vector3 raycastStartPoint = new Vector3(transform.position.x, transform.position.y + groundCheckDistance, transform.position.z);
+
+            if (Physics.Raycast(raycastStartPoint, Vector3.down, out hit, groundCheckDistance))
             {
-                float newYPosition = hit.point.y + minHeightAboveGround;
-                transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+                if (hit.collider.CompareTag("Ground"))
+                {
+                    float newYPosition = hit.point.y + minHeightAboveGround;
+                    transform.position = new Vector3(transform.position.x, newYPosition, transform.position.z);
+                }
             }
         }
     }
+    
 
+    //BeatReceiver() needs to stay, cant be moved to EnemyHandler.
     public void BeatReceiver() // turns doAction to true when the soundDetection script detects an amplitude spike at selected frequency band.
     {
         doAction = true;
     }
+    public bool GetActionInProgress() { return actionInProgress; }
+
+    public bool GetIsFridgeThrower() { return isFridgeThrower; }
+    public void AssignFridgeThrower() {
+        isFridgeThrower = true;
+        
+        //Instantiate(fridge, )
+
+    } // maybe a dumb way of doing it
 
 }

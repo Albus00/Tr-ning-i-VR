@@ -837,7 +837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2173e48f0a26e4a8bee5b8edc3db8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  announcerChitChat: {fileID: 8300000, guid: fcd826336d68eeb4b80493a5804325e0, type: 3}
+  announcerChitChat: {fileID: 8300000, guid: 56cefac3516bbf9499c0888dc468fc83, type: 3}
   speaker: {fileID: 1265420761}
   volume: 0.9
 --- !u!1 &747991465

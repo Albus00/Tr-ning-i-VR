@@ -3,7 +3,52 @@ guid: 6f36355acbbe9f74db086a5291260271
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Blade.004
+    second: {fileID: 2100000, guid: 302abe0e7dd5acf42a544eb59831209e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana End Piece.004
+    second: {fileID: 2100000, guid: 735f65e6d4587594f9447a37f5b26780, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Handguard.004
+    second: {fileID: 2100000, guid: 7c6054b4857c87f45aae8e1ac4487647, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Handle Cloth.004
+    second: {fileID: 2100000, guid: c0144b8c636ea924180e542b46190d30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Handle Hilt.004
+    second: {fileID: 2100000, guid: c7afb6af8f6e32149b5c7b6a7904f7b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Hilt 2.004
+    second: {fileID: 2100000, guid: a96493ccda3163744be68ca3654b6123, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Sheath 1.004
+    second: {fileID: 2100000, guid: 8982160903f58c5428b6db1d221aeb18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Katana Sheath 1.005
+    second: {fileID: 2100000, guid: 90291784f48040d4599a8f38016d1f3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: katana handle
+    second: {fileID: 2100000, guid: 1b294439ef70cca4d873e86dc34f043e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

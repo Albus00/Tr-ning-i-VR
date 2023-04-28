@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2059702994612120889}
   - component: {fileID: 2059702994612120894}
   m_Layer: 0
-  m_Name: mug 1
+  m_Name: mug prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -64,6 +64,7 @@ public class soundDetection : MonoBehaviour
         frequencyBand = musicFrequencyBands[startSongIndex];
         threshold = musicThresholds[startSongIndex];
         startSyncThreshold = musicStartSyncThresholds[startSongIndex];
+        
         audioSource.Play();
 
         //Compensate for volume settings
@@ -114,6 +115,8 @@ public class soundDetection : MonoBehaviour
             frequencyBands[i] = average;
         }
     }
+
+    public int setBMP() { return musicBPMs[startSongIndex]; } // fix tomorrow
 
     void ControlLightIntensity()
     {

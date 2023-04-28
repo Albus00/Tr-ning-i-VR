@@ -13,8 +13,11 @@ public class projectile : MonoBehaviour
     //}
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.transform.parent.name.Contains("Enemy")){
+            other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
+        }
         //Debug.Log(other.gameObject.name);
-        other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
+        
 
     }
 }

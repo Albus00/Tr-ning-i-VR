@@ -327,6 +327,7 @@ public class BehaviourTest : MonoBehaviour
     }
     public void ReleaseFridge()
     {
+        hasThrownFridge = true;
         fridge.transform.parent = null;
         fridge.GetComponent<EnemyProjectile>().CommandToMoveReceiver();
     }

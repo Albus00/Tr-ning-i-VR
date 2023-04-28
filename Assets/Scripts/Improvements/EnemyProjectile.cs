@@ -14,8 +14,8 @@ public class EnemyProjectile : MonoBehaviour
     {
         desiredRotationSet = false;
         desiredRotation = new Vector3(4.76f, -4.677f, -2.496f);
-        //airSpeed = 5f;
-        //heightAboveTarget = 2f;
+        airSpeed = 5f;
+        heightAboveTarget = 2f;
         target = GameObject.FindWithTag("Player").transform.position;
         startMovingTowardPlayer = false;
     }
@@ -23,13 +23,14 @@ public class EnemyProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (startMovingTowardPlayer)
         {
-            if (!desiredRotationSet)
-            {
-                transform.eulerAngles = desiredRotation;
-                desiredRotationSet = true;
-            }
+             if (!desiredRotationSet)
+        {
+            transform.eulerAngles= desiredRotation;
+            desiredRotationSet = true;
+        }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.x, target.y+heightAboveTarget, target.z), airSpeed * Time.deltaTime);
         }
     }

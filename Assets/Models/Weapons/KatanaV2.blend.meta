@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Katana Handle Cloth.004
-    second: {fileID: 2100000, guid: c0144b8c636ea924180e542b46190d30, type: 2}
+    second: {fileID: 2100000, guid: 7b40ea1c5e2bd4b47981aaafbfe10c3a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

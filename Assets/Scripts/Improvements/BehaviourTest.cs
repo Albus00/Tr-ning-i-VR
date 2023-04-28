@@ -449,6 +449,11 @@ public class BehaviourTest : MonoBehaviour
             }
         }
     }
+
+    public void setBPM(int bpm2)
+    {
+        bpm = bpm2;
+    }
     
 
     //BeatReceiver() needs to stay, cant be moved to EnemyHandler.

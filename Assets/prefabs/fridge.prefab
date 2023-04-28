@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3433309979398725524}
   - component: {fileID: 271554349248074145}
   - component: {fileID: -4767258647758392424}
+  - component: {fileID: 3723327052429090695}
   m_Layer: 0
   m_Name: fridge
   m_TagString: Untagged
@@ -47,12 +48,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608b5090b05885547a5b680127f3937b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airSpeed: 15
   heightAboveTarget: 2
-  timeToTarget: 2
+  timeToTarget: 1
   maxRandRotMagn: -2
   minRandRotMagn: -2
   hasThrown: 0
+  groundHitSound:
+  - {fileID: 8300000, guid: bb2440f155a54dc49819e088ab6f389a, type: 3}
+  - {fileID: 8300000, guid: 36e57cd63558d184687ae9f4a4213ecd, type: 3}
+  - {fileID: 8300000, guid: b6de20d8dadf33c43bc145c978b1ed2e, type: 3}
+  - {fileID: 8300000, guid: c12363dff7d7aa0429f6f7fce4095c97, type: 3}
+  fridgeRattle: {fileID: 8300000, guid: 371ba06eac4f50147bb2a4ce65318501, type: 3}
+  playerHealth: {fileID: 0}
 --- !u!54 &271554349248074145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82,6 +89,102 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.93, y: 1, z: 1}
   m_Center: {x: 0.05, y: 0.04, z: 0.51}
+--- !u!82 &3723327052429090695
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4570340404629796514}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.882
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &6435345876157898426
 PrefabInstance:
   m_ObjectHideFlags: 0

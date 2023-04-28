@@ -29,7 +29,7 @@ public class soundDetection : MonoBehaviour
     public int[] musicBPMs;
     public AudioClip[] songMP3;
     private AudioClip lastMusicPlayed;
-    private int startSongIndex = 3;
+    private int startSongIndex = 5;
 
     public GameObject enemyHandler; // reference to enemyHandler
     public GameObject lightObject;
@@ -66,7 +66,6 @@ public class soundDetection : MonoBehaviour
         threshold = musicThresholds[startSongIndex];
         startSyncThreshold = musicStartSyncThresholds[startSongIndex];
         BPM = musicBPMs[startSongIndex];
-        BPM = musicBPMs[startSongIndex];
         audioSource.Play();
 
         //Compensate for volume settings
@@ -80,19 +79,9 @@ public class soundDetection : MonoBehaviour
         CalculateFrequencyBands();
         ControlLightIntensity();
 
-        if(!(audioSource.isPlaying)){ //if music end reached
-            while(audioSource.clip == lastMusicPlayed){
-                int randomIndex = Random.Range(0 , songMP3.Length);
-
-                audioSource.clip = songMP3[randomIndex];
-                frequencyBand = musicFrequencyBands[randomIndex];
-                threshold = musicThresholds[randomIndex];
-                startSyncThreshold = musicStartSyncThresholds[randomIndex];
-                BPM = musicBPMs[randomIndex];
-            }
-
-            lastMusicPlayed = audioSource.clip;
-            audioSource.Play();
+        //------- Continual random songs (no repeats) -------//
+        if(!(audioSource.isPlaying)){ 
+            PlayRandomSong();
         }
     }
 
@@ -156,5 +145,20 @@ public class soundDetection : MonoBehaviour
                 lightComponent.enabled = false;
             }
         }
+    }
+
+    void PlayRandomSong(){
+        while(audioSource.clip == lastMusicPlayed){ //Don't repeat
+                int randomIndex = Random.Range(0 , songMP3.Length);
+
+                audioSource.clip = songMP3[randomIndex];
+                frequencyBand = musicFrequencyBands[randomIndex];
+                threshold = musicThresholds[randomIndex];
+                startSyncThreshold = musicStartSyncThresholds[randomIndex];
+                BPM = musicBPMs[randomIndex];
+            }
+
+            lastMusicPlayed = audioSource.clip;
+            audioSource.Play();
     }
 }

@@ -1,8 +1,7 @@
 //TRÄNING I VR
 //Author: Victor Persson
 //Date: 2023-04-21
-//Author:
-//Date: 
+//Last Updated: 2023-04-29 
 
 using System.Collections;
 using System.Collections.Generic;
@@ -27,9 +26,21 @@ public class ShopScript : MonoBehaviour
     public Image dynamicBorder;
     private int price;
 
+    public GameObject axe;
+    public GameObject katana;
+    public GameObject mace;
+    public GameObject mug;
+
+    private Vector3 spawnPoint;
+
+    void Start(){
+        spawnPoint = GameObject.FindWithTag("weaponSpawn").transform.position;
+    }
+
     public void updateShopSigns()
     {
-        //TODO: Redo using arrays. "Find()" isn't a very good way of going about this. But it works for now.
+        //TODO if we have time: Redo using arrays. "Find()" isn't performant at all and gets worse
+        //                                         the more gameobjects exist in the scene
         foreach(Transform child in GameObject.Find("Products").transform){
             int.TryParse(child.Find("price").GetComponent<TextMeshProUGUI>().text, out price);
             dynamicBorder = child.Find("dynBorder").GetComponent<Image>();
@@ -51,12 +62,6 @@ public class ShopScript : MonoBehaviour
     }
 
     public void purchaseObject(){
-        //TODO: 
-        // 1. Find name of object grabbed 
-        //      bla bla (GameObject.Find("Products").transform) bla bla
-        // 2. Find price of object grabbed 
-        //      int.TryParse(child.Find("price".GetComponent<TextMeshProUGUI>().text, out price))
-        // 3. Give the player / spawn the object purchased if the funds are avaliable
         if(playerMoneyScript.currentMoney >= 450){
             Debug.Log("Purchase successful!");
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
@@ -67,4 +72,44 @@ public class ShopScript : MonoBehaviour
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }
     }
+    //TODO (if time exists) - Refactor to common function. See above TODO.
+    public void purchaseMug(){
+        if(playerMoneyScript.currentMoney >= 100){
+            audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
+            playerMoneyScript.removeMoney(100);
+            Instantiate(mug, spawnPoint, Quaternion.identity);
+        }else{
+            audioSource.PlayOneShot(notEnoughMoney, audioVolume);
+        }
+    }
+    public void purchaseAxe(){
+        if(playerMoneyScript.currentMoney >= 2500){
+            audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
+            playerMoneyScript.removeMoney(2500);
+            Instantiate(axe, spawnPoint, Quaternion.identity);
+        }else{
+            audioSource.PlayOneShot(notEnoughMoney, audioVolume);
+        }
+    }
+    public void purchaseMace(){
+        if(playerMoneyScript.currentMoney >= 2750){
+            audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
+            playerMoneyScript.removeMoney(2750);
+            Instantiate(mace, spawnPoint, Quaternion.identity);
+        }else{
+            audioSource.PlayOneShot(notEnoughMoney, audioVolume);
+        }
+    }
+    public void purchaseKatana(){
+        if(playerMoneyScript.currentMoney >= 3990){
+            audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
+            playerMoneyScript.removeMoney(3990);
+            Instantiate(katana, spawnPoint, Quaternion.identity);
+        }else{
+            audioSource.PlayOneShot(notEnoughMoney, audioVolume);
+        }
+    }
+
+
+
 }

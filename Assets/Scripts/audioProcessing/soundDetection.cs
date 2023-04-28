@@ -38,6 +38,7 @@ public class soundDetection : MonoBehaviour
     public float threshold = 0.3f; // amplitude required for +1 beatcount
     public float intensityMultiplier = 10f; // intensity for the light
     public int beatsPerSpawn; // size "beatCount" needs to reach before an enemy is spawned.
+    public int BPM;
 
     private AudioSource audioSource;
     private Light lightComponent;
@@ -64,6 +65,8 @@ public class soundDetection : MonoBehaviour
         frequencyBand = musicFrequencyBands[startSongIndex];
         threshold = musicThresholds[startSongIndex];
         startSyncThreshold = musicStartSyncThresholds[startSongIndex];
+        BPM = musicBPMs[startSongIndex];
+        BPM = musicBPMs[startSongIndex];
         audioSource.Play();
 
         //Compensate for volume settings
@@ -85,7 +88,9 @@ public class soundDetection : MonoBehaviour
                 frequencyBand = musicFrequencyBands[randomIndex];
                 threshold = musicThresholds[randomIndex];
                 startSyncThreshold = musicStartSyncThresholds[randomIndex];
+                BPM = musicBPMs[randomIndex];
             }
+
             lastMusicPlayed = audioSource.clip;
             audioSource.Play();
         }

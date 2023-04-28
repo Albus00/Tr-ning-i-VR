@@ -104,7 +104,7 @@ public class BehaviourTest : MonoBehaviour
         killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
-        bpm = 110f;
+        bpm = GameObject.FindWithTag("music").GetComponent<soundDetection>().BPM;
         secPerBeat = 60f / bpm;
         beatsPerAction = 1f;
         //firstCall = true;

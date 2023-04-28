@@ -22,4 +22,8 @@ public class MainMenuScript : MonoBehaviour
             SceneManager.LoadScene(sceneName:"testingGrounds 1");
         }
     }
+
+    public void playGame(){
+        SceneManager.LoadScene(sceneName:"testingGrounds 1");
+    }
 }

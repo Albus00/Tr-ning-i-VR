@@ -1143,9 +1143,11 @@ GameObject:
   - component: {fileID: 1114939639}
   - component: {fileID: 1114939638}
   - component: {fileID: 1114939637}
+  - component: {fileID: 1114939640}
+  - component: {fileID: 1114939641}
   m_Layer: 0
   m_Name: audio
-  m_TagString: Untagged
+  m_TagString: music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1176,14 +1178,29 @@ MonoBehaviour:
   - SMACK, DJS FROM MARS
   - MIKE WILLIAMS
   - SLAMTYPE
-  musicFrequencyBands: 0400000006000000
+  musicFrequencyBands: 040000000600000000000000030000000600000002000000
   musicThresholds:
   - 0.3
   - 0.4
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
   musicStartSyncThresholds:
   - 0.4
   - 0.1
-  musicBPMs: 7e0000006e000000
+  - 0.3
+  - 0.2
+  - 0.3
+  - 0.3
+  musicBPMs: 7e0000006e0000007c000000
+  songMP3:
+  - {fileID: 8300000, guid: 569f5f59c14fdbc48bc49b60892b6dfd, type: 3}
+  - {fileID: 8300000, guid: 7ae25c436e9e6ba4c8f7d38bf562f210, type: 3}
+  - {fileID: 8300000, guid: 24146b663bed9914b88dc6bd87966a67, type: 3}
+  - {fileID: 8300000, guid: d99565ed4e2bdc7449ebd894b27fa3da, type: 3}
+  - {fileID: 8300000, guid: 9c4f621202e13d74b9658ad97f0c8df5, type: 3}
+  - {fileID: 8300000, guid: b1f00e11850b0fb43aad612a23e2a883, type: 3}
   enemyHandler: {fileID: 1434822950}
   lightObject: {fileID: 1906066652}
   frequencyBand: 6
@@ -1303,6 +1320,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!169 &1114939640
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114939636}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!165 &1114939641
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114939636}
+  m_Enabled: 1
+  m_CutoffFrequency: 10
+  m_HighpassResonanceQ: 1
 --- !u!114 &1125774914 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
@@ -1665,6 +1717,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 1297490935}
+  musicLP: {fileID: 0}
+  musicHP: {fileID: 0}
+  musicSource: {fileID: 0}
   enemyPrefab: {fileID: 5246695547329007920, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
   enemySpawnPoint: {fileID: 1434822952}
   moneyPerWave: 400
@@ -2631,7 +2686,7 @@ AudioReverbZone:
   m_Enabled: 1
   m_MinDistance: 10
   m_MaxDistance: 17.38
-  m_ReverbPreset: 10
+  m_ReverbPreset: 27
   m_Room: -1000
   m_RoomHF: -698
   m_DecayTime: 7.24
@@ -2644,7 +2699,7 @@ AudioReverbZone:
   m_Diffusion: 100
   m_Density: 100
   m_LFReference: 250
-  m_RoomLF: 0
+  m_RoomLF: -419
 --- !u!4 &2081852468
 Transform:
   m_ObjectHideFlags: 0

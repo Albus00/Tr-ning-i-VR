@@ -299,7 +299,7 @@ public class BehaviourTest : MonoBehaviour
         //animator.SetLayerWeight(1, 1);
         // Debug.Log("Started attack");
 
-        //-------DEBUG REMOVE HEALTH -- SHOULD BE DONE WITH A HITBOX CHECK!-------
+        //-------DEBUG!! REMOVES HEALTH -- SHOULD BE DONE WITH A HITBOX CHECK!-------//
         playerHealth.subtractHealth(5.0f);
 
     }
@@ -335,8 +335,9 @@ public class BehaviourTest : MonoBehaviour
         fridge = Instantiate(fridgePrefab, fridgeSpawnPoint.position, fridgeSpawnPoint.rotation);
         fridge.transform.parent = fridgeSpawnPoint;
         
-        //RANDOMIZE THROW SOUND -- WE SHOULD DO THIS IN A SEPARATE AUDIOHANDLER!!!!!!
-        while (thisSound.clip == lastAudioClip) { //dont play the same sound twice :)
+        //-- RANDOMIZE THROW SOUND -- We should probably do this in a separate audiohandler so that each instance
+        //                            of the enemy doesn't need to load in the entire array into memory. (right now it's array*amountOfEnemies)
+        while (thisSound.clip == lastAudioClip) { //dont play the same sound twice
             thisSound.clip = throwSounds[Random.Range(0, throwSounds.Length)];
         }
         lastAudioClip = thisSound.clip;

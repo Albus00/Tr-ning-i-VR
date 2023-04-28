@@ -10,6 +10,9 @@ using UnityEngine;
 public class EnemyHandler : MonoBehaviour
 {
     public moneyAndScoreManager scoreManager;
+    public AudioLowPassFilter musicLP;
+    public AudioHighPassFilter musicHP;
+    public AudioSource musicSource;
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
     public static List<GameObject> enemies = new List<GameObject>();
@@ -47,11 +50,20 @@ public class EnemyHandler : MonoBehaviour
     {
         //First wave only
         enemiesLeftToSpawn = amtEnemiesWave;
+        musicLP = GameObject.FindWithTag("music").GetComponent<AudioLowPassFilter>();
+        musicHP = GameObject.FindWithTag("music").GetComponent<AudioHighPassFilter>();
+        musicSource = GameObject.FindWithTag("music").GetComponent<AudioSource>();
+
+        musicSource.spatialBlend = 0.0f;
+        musicSource.reverbZoneMix = 0.0f;
+        musicLP.cutoffFrequency = 22000.0f;
+        musicHP.cutoffFrequency = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //-----COOLDOWN-----//
         if(cooldownActive && this.coroutine == null){
             if(currentWave > 0){
                 scoreManager.giveMoney(moneyPerWave, false);
@@ -59,19 +71,26 @@ public class EnemyHandler : MonoBehaviour
             }
             this.coroutine = cooldown();
             StartCoroutine(this.coroutine);
+
+            StartCoroutine(muffleMusic(2.0f)); //Muffle music linearly over five seconds
         }
 
-        //Start wave
+        //-----WAVE START-----//
         if(waveStart == true && waveActive == false){
             //Calculate amount of enemies for next wave
             amtEnemiesWave += addEnemyPerWave;
             maxAliveEnemies += addMaxAlive;
             enemiesLeftToSpawn = amtEnemiesWave;
+
+            StartCoroutine(unMuffleMusic(2.0f)); //Unmuffle music linearly over 2 seconds
+
             waveStart = false;
             waveActive = true;
+
+
         }
 
-        //Wait for player to defeat enemies
+        //-----WAVE ACTIVE-----//
         if(waveActive == true && amtEnemiesAlive <= 0 && enemiesLeftToSpawn == 0){
             Debug.Log("-----ALL ENEMIES DEFEATED-----");
             waveActive = false;
@@ -92,6 +111,32 @@ public class EnemyHandler : MonoBehaviour
         this.coroutine = null;
         Debug.Log("Waited for 15 sec, resuming...");
         Debug.Log("-----WAVE "+ currentWave +"-----");
+    }
+
+    IEnumerator muffleMusic(float seconds){
+        musicSource.bypassReverbZones = false;
+
+        while(musicLP.cutoffFrequency >= 3000.0f){
+            musicLP.cutoffFrequency -= (19000.0f)/seconds * Time.deltaTime;
+            musicHP.cutoffFrequency += (750.0f)/seconds * Time.deltaTime;
+            musicSource.reverbZoneMix += 0.5f/seconds * Time.deltaTime;
+            musicSource.spatialBlend += 0.7f/seconds * Time.deltaTime;
+
+            yield return null; //wait for next frame
+        }
+    }
+
+    IEnumerator unMuffleMusic(float seconds){
+        while(musicLP.cutoffFrequency <= 22000.0f && musicHP.cutoffFrequency > 0.0f){
+            musicLP.cutoffFrequency += (19000.0f)/seconds * Time.deltaTime;
+            musicHP.cutoffFrequency -= (750.0f)/seconds * Time.deltaTime;
+            musicSource.reverbZoneMix -= 0.5f/seconds * Time.deltaTime;
+            musicSource.spatialBlend -= 0.7f/seconds * Time.deltaTime;
+
+            yield return null; //wait for next frame
+        }
+        
+        musicSource.bypassReverbZones = true;
     }
 
     public void SpawnEnemy()

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// [1] ДЕТИ RAVE - ИНОГДА:                       Band4,   startSyncThreshold 0.4,   threshold 0.3,   BPM 126
-// [2] HOTLINE MIAMI - KNOCK KNOCK:              Band6,   startSyncThreshold 0.1,   threshold 0.4,   BPM 110
-// [3] LE CASTLE VANIA - JOHN WICK MODE:         
-// [4] SMACK, DJS FROM MARS - IT DOESN'T MATTER: 
-// [5] MIKE WILLIAMS - HERE FOR YOU:                      
-// [6] SLAMTYPE - OLD SCHOOL VIBE:               
+// [0] ДЕТИ RAVE - ИНОГДА:                       Band4,   startSyncThreshold 0.4,   threshold 0.3,   BPM 126
+// [1] HOTLINE MIAMI - KNOCK KNOCK:              Band6,   startSyncThreshold 0.1,   threshold 0.4,   BPM 110
+// [2] LE CASTLE VANIA - JOHN WICK MODE:         Band0,   startSyncThreshold 0.3,   threshold 0.2,   BPM 124
+// [3] SMACK, DJS FROM MARS - IT DOESN'T MATTER: ??
+// [4] MIKE WILLIAMS - HERE FOR YOU:             ??       
+// [5] SLAMTYPE - OLD SCHOOL VIBE:               ??
 
 // Band 0: 0 Hz     to 86 Hz
 // Band 1: 87 Hz    to 258 Hz
@@ -27,8 +27,11 @@ public class soundDetection : MonoBehaviour
     public float[] musicThresholds;
     public float[] musicStartSyncThresholds;
     public int[] musicBPMs;
+    public AudioClip[] songMP3;
+    private AudioClip lastMusicPlayed;
+    private int startSongIndex = 3;
 
-    public GameObject enemyHandler; // referece to enemyHandler
+    public GameObject enemyHandler; // reference to enemyHandler
     public GameObject lightObject;
     public int frequencyBand = 6; // frequency band currently being looked at
     public float startSyncThreshold = 0.4f; // amplitude that needs to be exceded to start counting beats (avoid intros, etc)
@@ -54,6 +57,14 @@ public class soundDetection : MonoBehaviour
 
         samples = new float[512];
         frequencyBands = new float[8];
+        
+        //Select startup song
+        audioSource.clip = songMP3[startSongIndex];
+        lastMusicPlayed = audioSource.clip;
+        frequencyBand = musicFrequencyBands[startSongIndex];
+        threshold = musicThresholds[startSongIndex];
+        startSyncThreshold = musicStartSyncThresholds[startSongIndex];
+        audioSource.Play();
 
         //Compensate for volume settings
         threshold = threshold*audioSource.volume;
@@ -65,6 +76,19 @@ public class soundDetection : MonoBehaviour
         GetSpectrumData();
         CalculateFrequencyBands();
         ControlLightIntensity();
+
+        if(!(audioSource.isPlaying)){ //if music end reached
+            while(audioSource.clip == lastMusicPlayed){
+                int randomIndex = Random.Range(0 , songMP3.Length);
+
+                audioSource.clip = songMP3[randomIndex];
+                frequencyBand = musicFrequencyBands[randomIndex];
+                threshold = musicThresholds[randomIndex];
+                startSyncThreshold = musicStartSyncThresholds[randomIndex];
+            }
+            lastMusicPlayed = audioSource.clip;
+            audioSource.Play();
+        }
     }
 
     void GetSpectrumData()

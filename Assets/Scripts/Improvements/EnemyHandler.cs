@@ -6,6 +6,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemyHandler : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class EnemyHandler : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
     public static List<GameObject> enemies = new List<GameObject>();
+
+    public TMPro.TextMeshProUGUI waveText;
 
     public int moneyPerWave = 400;
     public int scorePerWave = 400;
@@ -40,7 +44,7 @@ public class EnemyHandler : MonoBehaviour
     private bool waveActive = false;
     private bool waveStart = false;
 
-    private bool cooldownActive = true;
+    public bool cooldownActive = true;
 
     private IEnumerator coroutine = null; //Dont initalize cooldown more than once
 
@@ -53,6 +57,9 @@ public class EnemyHandler : MonoBehaviour
         musicLP = GameObject.FindWithTag("music").GetComponent<AudioLowPassFilter>();
         musicHP = GameObject.FindWithTag("music").GetComponent<AudioHighPassFilter>();
         musicSource = GameObject.FindWithTag("music").GetComponent<AudioSource>();
+        waveText = GameObject.FindWithTag("shopWaveNumber").GetComponent<TextMeshProUGUI>();
+
+        waveText.text = currentWave.ToString();
 
         musicSource.spatialBlend = 0.0f;
         musicSource.reverbZoneMix = 0.0f;
@@ -83,11 +90,10 @@ public class EnemyHandler : MonoBehaviour
             enemiesLeftToSpawn = amtEnemiesWave;
 
             StartCoroutine(unMuffleMusic(2.0f)); //Unmuffle music linearly over 2 seconds
+            waveText.text = currentWave.ToString();
 
             waveStart = false;
             waveActive = true;
-
-
         }
 
         //-----WAVE ACTIVE-----//

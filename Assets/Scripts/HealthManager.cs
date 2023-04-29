@@ -23,6 +23,8 @@ public class HealthManager : MonoBehaviour
     private float _thirdHealth;
     private float _quarterHealth;
 
+    private bool playerIsntDead = true;
+
     public float _flashSpeed = 3.0f;
     
     [SerializeField]
@@ -79,9 +81,18 @@ public class HealthManager : MonoBehaviour
             _bar.color = flashColor;
         }
         
-        if(_healthValue < 0){
+        if(_healthValue < 0 && playerIsntDead){
+            playerIsntDead = false;
             Debug.Log("You're fucking dead dawg");
-            SceneManager.LoadScene(sceneName:"GameOver");
+            SceneManager.LoadScene(sceneName:"GameOver",LoadSceneMode.Additive);
+            Destroy(GameObject.Find("beta_arena_v3 prefab"));
+            Destroy(GameObject.Find("audio"));
+            Destroy(GameObject.Find("CyborgAvatarExample"));
+            //JÄTTEJÄTTEJÄTTEFULT
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach(GameObject enemy in enemies){
+                GameObject.Destroy(enemy);
+            }
         }
 
         prevHealth = _healthValue;

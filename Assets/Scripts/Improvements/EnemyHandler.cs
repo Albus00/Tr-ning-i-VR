@@ -125,8 +125,8 @@ public class EnemyHandler : MonoBehaviour
         while(musicLP.cutoffFrequency >= 3000.0f){
             musicLP.cutoffFrequency -= (19000.0f)/seconds * Time.deltaTime;
             musicHP.cutoffFrequency += (750.0f)/seconds * Time.deltaTime;
-            musicSource.reverbZoneMix += 0.5f/seconds * Time.deltaTime;
-            musicSource.spatialBlend += 0.7f/seconds * Time.deltaTime;
+            musicSource.reverbZoneMix += 0.7f/seconds * Time.deltaTime;
+            musicSource.spatialBlend += 0.8f/seconds * Time.deltaTime;
 
             yield return null; //wait for next frame
         }
@@ -136,8 +136,8 @@ public class EnemyHandler : MonoBehaviour
         while(musicLP.cutoffFrequency <= 22000.0f && musicHP.cutoffFrequency > 0.0f){
             musicLP.cutoffFrequency += (19000.0f)/seconds * Time.deltaTime;
             musicHP.cutoffFrequency -= (750.0f)/seconds * Time.deltaTime;
-            musicSource.reverbZoneMix -= 0.5f/seconds * Time.deltaTime;
-            musicSource.spatialBlend -= 0.7f/seconds * Time.deltaTime;
+            musicSource.reverbZoneMix -= 0.7f/seconds * Time.deltaTime;
+            musicSource.spatialBlend -= 0.8f/seconds * Time.deltaTime;
 
             yield return null; //wait for next frame
         }

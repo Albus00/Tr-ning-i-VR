@@ -62,10 +62,10 @@ public class playerStatTracker : MonoBehaviour
 
     IEnumerator captureData(){
         //Captures data every "pollRate" seconds.
-        Debug.Log("Capture data called. isntDead is currently: "+isntDead);
+        //Debug.Log("Capture data called. isntDead is currently: "+isntDead);
 
         while(isntDead){
-            Debug.Log("Logging data... Current index = [" + i +"]");
+            //Debug.Log("Logging data... Current index = [" + i +"]");
 
             currentHealth[i] = playerHealth._healthValue;
             currentScore[i] = playerScoreMoney.currentScore;

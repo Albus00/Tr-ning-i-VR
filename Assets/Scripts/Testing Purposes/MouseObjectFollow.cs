@@ -24,15 +24,15 @@ public class MouseObjectFollow : MonoBehaviour
         var mousePos = Input.mousePosition;
         transform.position = new Vector3(mousePos.x*screenToCamRatio + startDiff.x, mousePos.y * screenToCamRatio + startDiff.y, transform.position.z);
 
-        // Change material with the use of the weapon check script
-        if (check.weaponActive)
-        {
-            rend.material.color = new Color(0, 1, 0);
-        }
-        else
-        {
-            rend.material.color = new Color(1, 0, 0);
-        }
+        //// Change material with the use of the weapon check script
+        //if (check.weaponActive)
+        //{
+        //    rend.material.color = new Color(0, 1, 0);
+        //}
+        //else
+        //{
+        //    rend.material.color = new Color(1, 0, 0);
+        //}
 
     }
 }

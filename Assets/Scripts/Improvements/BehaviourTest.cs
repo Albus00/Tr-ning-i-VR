@@ -101,7 +101,7 @@ public class BehaviourTest : MonoBehaviour
         fridgeThrowDistance = 15f;
         hasThrownFridge = false;
         isFridgeThrower = false;
-        killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
+        killCounterScript = GameObject.Find("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
         bpm = GameObject.FindWithTag("music").GetComponent<soundDetection>().BPM;

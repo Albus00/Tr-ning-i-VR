@@ -17,6 +17,8 @@ TagManager:
   - music
   - CinemachineTarget
   - weaponSpawn
+  - shopWaveNumber
+  - playerStats
   layers:
   - Default
   - TransparentFX

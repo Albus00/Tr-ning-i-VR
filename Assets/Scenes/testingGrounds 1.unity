@@ -265,59 +265,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalLocalTip.x
-      value: -0.12374865
+      value: -0.12088219
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._distalLocalTip.x
-      value: -0.117409475
+      value: -0.115574494
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._distalLocalTip.x
-      value: -0.20135114
+      value: -0.19951288
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._distalLocalTip.x
-      value: -0.12461296
+      value: -0.12172857
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._distalLocalTip.x
-      value: -0.08525598
+      value: -0.081968166
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._distalLocalTip.x
-      value: -0.12608731
+      value: -0.12362093
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalInfo._length
-      value: 0.12374865
+      value: 0.12088219
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalInfo._radius
-      value: 0.079170845
+      value: 0.079956315
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._distalLocalTip.x
-      value: -0.13511328
+      value: -0.1329802
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._distalLocalTip.x
-      value: -0.10874711
+      value: -0.10784485
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._distalInfo._length
-      value: 0.117409475
+      value: 0.115574494
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._distalInfo._radius
-      value: 0.044751905
+      value: 0.04543008
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._distalInfo._length
-      value: 0.20135114
+      value: 0.19951288
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._distalInfo._radius
-      value: 0.055277113
+      value: 0.056638584
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._distalLocalTip.x
@@ -325,31 +325,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._distalLocalTip.x
-      value: -0.14531824
+      value: -0.14244956
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._distalInfo._length
-      value: 0.12461296
+      value: 0.12172857
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._distalInfo._radius
-      value: 0.08389469
+      value: 0.08466707
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._distalInfo._length
-      value: 0.08525598
+      value: 0.081968166
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._distalInfo._radius
-      value: 0.101736814
+      value: 0.10220462
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._distalInfo._length
-      value: 0.12608731
+      value: 0.12362093
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._distalInfo._radius
-      value: 0.06305535
+      value: 0.06391662
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._proximalInfo._length
@@ -357,23 +357,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._proximalInfo._radius
-      value: 0.16960044
+      value: 0.17086412
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._distalInfo._length
-      value: 0.13511328
+      value: 0.1329802
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._distalInfo._radius
-      value: 0.050422616
+      value: 0.05120146
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._distalInfo._length
-      value: 0.10874711
+      value: 0.10784485
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._distalInfo._radius
-      value: 0.027742945
+      value: 0.02841121
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._proximalInfo._length
@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._proximalInfo._radius
-      value: 0.053080685
+      value: 0.053969435
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._proximalInfo._length
@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._proximalInfo._radius
-      value: 0.018778449
+      value: 0.01902429
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._distalInfo._length
@@ -397,15 +397,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._distalInfo._radius
-      value: 0.015432671
+      value: 0.015505328
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._distalInfo._length
-      value: 0.14531824
+      value: 0.14244956
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._distalInfo._radius
-      value: 0.07305683
+      value: 0.07407109
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._proximalInfo._length
@@ -413,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._proximalInfo._radius
-      value: 0.1775497
+      value: 0.17887506
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._proximalInfo._length
@@ -421,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._proximalInfo._radius
-      value: 0.1853814
+      value: 0.18629466
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._proximalInfo._length
@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._proximalInfo._radius
-      value: 0.12500256
+      value: 0.12662889
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._metacarpalInfo._length
@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._proximalInfo._radius
-      value: 0.05645568
+      value: 0.05726099
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._proximalInfo._length
@@ -449,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._proximalInfo._radius
-      value: 0.018824197
+      value: 0.019083064
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._handUniversalLocalAxes._localUp.x
@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._metacarpalInfo._radius
-      value: 0.074329145
+      value: 0.07545885
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._proximalInfo._length
@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._proximalInfo._radius
-      value: 0.19723725
+      value: 0.19821213
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._proximalInfo._length
@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._proximalInfo._radius
-      value: 0.1289871
+      value: 0.13069472
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._metacarpalInfo._length
@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._metacarpalInfo._radius
-      value: 0.15443419
+      value: 0.15518
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._metacarpalInfo._length
@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._intermediateInfo._radius
-      value: 0.083874285
+      value: 0.08446254
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._handUniversalLocalAxes._localUp.x
@@ -521,7 +521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._metacarpalInfo._radius
-      value: 0.076217
+      value: 0.0773794
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._armUniversalLocalAxes._localRight.x
@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._intermediateInfo._radius
-      value: 0.057298146
+      value: 0.058239214
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._intermediateInfo._length
@@ -545,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._intermediateInfo._radius
-      value: 0.060483593
+      value: 0.062098823
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._metacarpalInfo._length
@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._metacarpalInfo._radius
-      value: 0.16227964
+      value: 0.16306508
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._metacarpalInfo._length
@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._intermediateInfo._radius
-      value: 0.09162505
+      value: 0.092273705
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._handUniversalLocalAxes._localRight.x
@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._intermediateInfo._radius
-      value: 0.10323255
+      value: 0.1037287
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._intermediateInfo._length
@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._intermediateInfo._radius
-      value: 0.08035596
+      value: 0.081368186
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._armUniversalLocalAxes._localRight.x
@@ -609,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._intermediateInfo._radius
-      value: 0.058500785
+      value: 0.059356377
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._intermediateInfo._length
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._intermediateInfo._radius
-      value: 0.06331669
+      value: 0.06542986
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._armUniversalLocalAxes._localForward.y
@@ -645,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._intermediateInfo._radius
-      value: 0.10338996
+      value: 0.1038967
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._intermediateInfo._length
@@ -653,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._intermediateInfo._radius
-      value: 0.077187665
+      value: 0.078164265
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._handUniversalLocalAxes._localForward.x
@@ -709,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._armUniversalLocalAxes._initialPosition.y
-      value: 1.9079005
+      value: 1.5379004
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._armUniversalLocalAxes._initialPosition.z
@@ -733,11 +733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalLocalFingerPrintCenter.x
-      value: -0.081674114
+      value: -0.07978225
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalLocalFingerPrintCenter.y
-      value: 0.05225276
+      value: 0.05277117
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._localRight.x
@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._handUniversalLocalAxes._initialPosition.y
-      value: 1.5039437
+      value: 1.1339437
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._handUniversalLocalAxes._initialPosition.z
@@ -785,19 +785,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._distalLocalFingerPrintCenter.x
-      value: -0.077490255
+      value: -0.07627917
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._indexInfo._distalLocalFingerPrintCenter.y
-      value: 0.029536258
+      value: 0.029983854
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._distalLocalFingerPrintCenter.x
-      value: -0.13289176
+      value: -0.1316785
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._thumbInfo._distalLocalFingerPrintCenter.y
-      value: 0.036482897
+      value: 0.037381466
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._armUniversalLocalAxes._initialPosition.x
@@ -805,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._armUniversalLocalAxes._initialPosition.y
-      value: 1.9079006
+      value: 1.5379006
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._armUniversalLocalAxes._initialPosition.z
@@ -829,27 +829,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._distalLocalFingerPrintCenter.x
-      value: -0.08224455
+      value: -0.08034086
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._ringInfo._distalLocalFingerPrintCenter.y
-      value: -0.0553705
+      value: -0.05588027
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._distalLocalFingerPrintCenter.x
-      value: -0.05626895
+      value: -0.05409899
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._littleInfo._distalLocalFingerPrintCenter.y
-      value: 0.0671463
+      value: 0.06745505
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._distalLocalFingerPrintCenter.x
-      value: -0.08321763
+      value: -0.08158982
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._middleInfo._distalLocalFingerPrintCenter.y
-      value: 0.041616533
+      value: 0.042184975
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._localForward.y
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._handUniversalLocalAxes._initialPosition.y
-      value: 1.503829
+      value: 1.133829
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._handUniversalLocalAxes._initialPosition.z
@@ -889,19 +889,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._distalLocalFingerPrintCenter.x
-      value: -0.08917477
+      value: -0.08776693
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._indexInfo._distalLocalFingerPrintCenter.y
-      value: -0.033278927
+      value: -0.033792965
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._distalLocalFingerPrintCenter.x
-      value: -0.0717731
+      value: -0.0711776
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._thumbInfo._distalLocalFingerPrintCenter.y
-      value: -0.018310344
+      value: -0.0187514
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._fingerUniversalLocalAxes._initialPosition.x
@@ -909,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._fingerUniversalLocalAxes._initialPosition.y
-      value: 1.4847922
+      value: 1.1147922
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._fingerUniversalLocalAxes._initialPosition.z
@@ -937,15 +937,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._littleInfo._distalLocalFingerPrintCenter.y
-      value: -0.010185563
+      value: -0.010233517
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._distalLocalFingerPrintCenter.x
-      value: -0.09591004
+      value: -0.09401671
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._middleInfo._distalLocalFingerPrintCenter.y
-      value: -0.048217513
+      value: -0.048886918
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmUniversalLocalAxes._initialPosition.x
@@ -953,7 +953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmUniversalLocalAxes._initialPosition.y
-      value: 1.7031002
+      value: 1.3331002
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._forearmUniversalLocalAxes._initialPosition.z
@@ -981,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._fingerUniversalLocalAxes._initialPosition.y
-      value: 1.4848132
+      value: 1.1148132
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._fingerUniversalLocalAxes._initialPosition.z
@@ -1009,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._clavicleUniversalLocalAxes._initialPosition.y
-      value: 1.8868165
+      value: 1.5168165
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._leftArmInfo._clavicleUniversalLocalAxes._initialPosition.z
@@ -1037,7 +1037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._initialPosition.y
-      value: 1.7030729
+      value: 1.3330729
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._forearmUniversalLocalAxes._initialPosition.z
@@ -1065,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._clavicleUniversalLocalAxes._initialPosition.y
-      value: 1.8868164
+      value: 1.5168164
       objectReference: {fileID: 0}
     - target: {fileID: 9163510237887065938, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
       propertyPath: _rigInfo._rightArmInfo._clavicleUniversalLocalAxes._initialPosition.z
@@ -1190,6 +1190,42 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5987593042449795196, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
   m_PrefabInstance: {fileID: 213473703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &213473705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556998567545532292, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
+  m_PrefabInstance: {fileID: 213473703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &213473706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8734858559856981449, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
+  m_PrefabInstance: {fileID: 213473703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &213473707
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213473705}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.14
+  m_Center: {x: -0.06, y: 0, z: -0.01}
+--- !u!135 &213473708
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213473706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.14
+  m_Center: {x: -0.15, y: 0, z: 0}
 --- !u!1 &239087903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1305,10 @@ PrefabInstance:
     - target: {fileID: 4563194176544917132, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_TagString
       value: HealthHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: _POWERUP_invulnerable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4563194176544917135, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_RootOrder
@@ -1812,7 +1852,7 @@ PrefabInstance:
     - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
       propertyPath: axe
       value: 
-      objectReference: {fileID: 1015066599061730219, guid: d7af7f00cafe1514ea94fea6b2eb6227, type: 3}
+      objectReference: {fileID: 3019776680940182764, guid: 5d5896d0ad0f6cb41b725ddde57e71cc, type: 3}
     - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
       propertyPath: mug
       value: 
@@ -1825,6 +1865,14 @@ PrefabInstance:
       propertyPath: katana
       value: 
       objectReference: {fileID: 6268289067255666788, guid: 1fedd5df433d0e64d947870be789904b, type: 3}
+    - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1356256345}
+    - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1143338222}
     - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
       propertyPath: playerMoneyScript
       value: 
@@ -1931,10 +1979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d37005c833d6e4686df718e362fc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponActive: 0
+  weapon: {fileID: 0}
   maxPosInList: 15
+  travel: 0
   threshold: 0.5
-  secondsActive: 0.5
 --- !u!1 &1114939636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2207,11 @@ AudioHighPassFilter:
   m_Enabled: 1
   m_CutoffFrequency: 10
   m_HighpassResonanceQ: 1
+--- !u!82 &1143338222 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2651464917498345566, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+  m_PrefabInstance: {fileID: 5892307006905847162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1165886836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,6 +2784,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 840267e91beed224ea364d4e11ee00db, type: 3}
       propertyPath: m_Name
       value: DisplayGeo70
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 840267e91beed224ea364d4e11ee00db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3451118302482216456, guid: 840267e91beed224ea364d4e11ee00db, type: 3}
@@ -4687,6 +4744,54 @@ PrefabInstance:
     - target: {fileID: 2651464916531021451, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_Name
       value: shopScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307007399736120, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307007399736120, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchaseMace
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307007628527586, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307007628527586, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchaseMug
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307008007450323, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307008007450323, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchaseKatana
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307008430649972, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307008430649972, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchaseAxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307008466602642, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307008466602642, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchase20Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 5892307008483456392, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1480722864}
+    - target: {fileID: 5892307008483456392, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: purchaseFullHealth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}

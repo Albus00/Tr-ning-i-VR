@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 2677688176784417214}
   - component: {fileID: 2677688176784417208}
   - component: {fileID: 2677688176784417211}
+  - component: {fileID: 11154617445031440}
   m_Layer: 3
   m_Name: Axe-modified
   m_TagString: Untagged
@@ -359,7 +360,7 @@ MonoBehaviour:
     _snapReference: 1
     _avatarGripPoseEntries:
     - _avatarPrefabGuid: 5ef592f9a0dbf14419162555db95f7cc
-      _handPose: {fileID: 0}
+      _handPose: {fileID: 11400000, guid: 44ea1f76294e38d47885b28c3a3438bd, type: 2}
       _poseBlendValue: 0
       _gripAlignTransformHandLeft: {fileID: 6918530007547042387, guid: d7af7f00cafe1514ea94fea6b2eb6227, type: 3}
       _gripAlignTransformHandRight: {fileID: 626076632929090494, guid: d7af7f00cafe1514ea94fea6b2eb6227, type: 3}
@@ -401,6 +402,18 @@ MonoBehaviour:
   weaponActive: 0
   threshold: 0
   secondsActive: 0.5
+--- !u!114 &11154617445031440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3019776680940182764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3770509374565291529
 GameObject:
   m_ObjectHideFlags: 0

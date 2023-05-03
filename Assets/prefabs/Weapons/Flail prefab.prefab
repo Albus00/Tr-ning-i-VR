@@ -1756,6 +1756,7 @@ GameObject:
   - component: {fileID: 7579218609047686617}
   - component: {fileID: 7579218609047686628}
   - component: {fileID: 6364048130819472063}
+  - component: {fileID: 3148363876864710054}
   m_Layer: 3
   m_Name: Flail prefab
   m_TagString: Untagged
@@ -1908,7 +1909,7 @@ MonoBehaviour:
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
     _grabberProximityIndex: 0
-    _enableOnHandNear: {fileID: 5714299053014488046}
+    _enableOnHandNear: {fileID: 0}
   _additionalGrabPoints: []
   _useParenting: 0
   _autoCreateStartAnchor: 0
@@ -1937,6 +1938,18 @@ MonoBehaviour:
   weaponActive: 0
   threshold: 0
   secondsActive: 0.5
+--- !u!114 &3148363876864710054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345268715234816178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7579218608622600532
 GameObject:
   m_ObjectHideFlags: 0

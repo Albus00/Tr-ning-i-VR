@@ -29,6 +29,7 @@ public class moneyAndScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(currentMoney.ToString());
         // ------DEBUG-----
         if(Input.GetKeyDown("k")){
             //DEBUG: Simulate an enemy being defeated for $100

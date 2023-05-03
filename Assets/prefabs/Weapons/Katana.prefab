@@ -631,6 +631,7 @@ GameObject:
   - component: {fileID: 7887524191609415386}
   - component: {fileID: 8132997993620961676}
   - component: {fileID: 3174371979911696501}
+  - component: {fileID: 1258126539028950846}
   m_Layer: 3
   m_Name: Katana
   m_TagString: Untagged
@@ -737,7 +738,7 @@ MonoBehaviour:
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
     _grabberProximityIndex: 0
-    _enableOnHandNear: {fileID: 47945905965239853}
+    _enableOnHandNear: {fileID: 0}
   _additionalGrabPoints: []
   _useParenting: 0
   _autoCreateStartAnchor: 0
@@ -795,6 +796,18 @@ MonoBehaviour:
   weaponActive: 0
   threshold: 0
   secondsActive: 0.5
+--- !u!114 &1258126539028950846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6268289067255666788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6482531332945016088
 GameObject:
   m_ObjectHideFlags: 0

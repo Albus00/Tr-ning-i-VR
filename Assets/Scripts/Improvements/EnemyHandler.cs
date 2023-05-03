@@ -35,11 +35,13 @@ public class EnemyHandler : MonoBehaviour
     private int currentlyDashing = 3;
     private int currentlyAttacking = 1;
 
-    private int cooldownTimer = 15; //Cooldown in seconds
+    private int cooldownTimer = 3; //Cooldown in seconds
 
     public int amtEnemiesDefeated = 0;
     public int currentWave = 0;
     public int amtEnemiesAlive = 0;
+
+    private int fridgeThrowerCounter = 0;
 
     private bool waveActive = false;
     private bool waveStart = false;
@@ -157,6 +159,12 @@ public class EnemyHandler : MonoBehaviour
                 enemies.Add(spawnedEnemy); // Add the spawned enemy to the enemies list
                 amtEnemiesAlive++; // Increment the currentEnemies variable
                 enemiesLeftToSpawn--;
+
+                if (enemiesLeftToSpawn % 2 == 0)
+                {
+                    Debug.Log("Assigned a fridge thrower!");
+                    spawnedEnemy.GetComponent<BehaviourTest>().AssignFridgeThrower();
+                }
             }
         }else{
             Debug.Log("INFO: Attempting to spawn, but maxAliveEnemies is already reached, no more enemies can be spawned this wave, or a wave cooldown is active.");

@@ -43,17 +43,17 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (startMovingTowardPlayer && !(hasThrown))
         {
-            float distance = (target - gameObject.transform.position).magnitude;
+            Vector3 adjustedTarget = target + new Vector3(0, 10f, 0);
+            float distance = (adjustedTarget - gameObject.transform.position).magnitude;
             float V_0x = distance/timeToTarget;
             float V_0y = (gravitys*(timeToTarget)*(timeToTarget)/2.0f)/timeToTarget;
 
-            Vector3 targetDirection = target - transform.position;
-            targetDirection.y = 0f;
+            Vector3 targetDirection = adjustedTarget - transform.position;
             float angle = Vector3.Angle(targetDirection, transform.forward);
             transform.rotation = Quaternion.LookRotation(targetDirection);
 
             Vector3 initialVelocity = transform.forward * V_0x;
-            initialVelocity.y = V_0y;
+            initialVelocity.y = V_0y + 2f;
 
             fridgeRB = GetComponent<Rigidbody>();
             

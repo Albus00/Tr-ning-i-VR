@@ -87,6 +87,7 @@ public class BehaviourTest : MonoBehaviour
 
     void Awake()
     {
+        isFridgeThrower = false;
         enemyHandler = GameObject.FindWithTag("EnemyHandler").GetComponent<EnemyHandler>();
         playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
         thisSound = GetComponent<AudioSource>();
@@ -100,7 +101,7 @@ public class BehaviourTest : MonoBehaviour
     {
         fridgeThrowDistance = 15f;
         hasThrownFridge = false;
-        isFridgeThrower = false;
+        
         killCounterScript = GameObject.Find("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
@@ -408,7 +409,8 @@ public class BehaviourTest : MonoBehaviour
 
             if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
             {
-                AssignFridgeThrower();
+                Debug.Log(isFridgeThrower);
+                //AssignFridgeThrower();
 
                 timer = 0f;
                 doAction = false;
@@ -422,6 +424,7 @@ public class BehaviourTest : MonoBehaviour
                 }
                 else if (distanceToTarget > attackDistance && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
                 {
+                    Debug.Log("started fridge");
                     StartFridgeAttack();
                     currentState = EnemyState.FridgeAttack;
                 }
@@ -476,10 +479,10 @@ public class BehaviourTest : MonoBehaviour
 
     public bool GetIsFridgeThrower() { return isFridgeThrower; }
     public void AssignFridgeThrower() {
+        Debug.Log("received command");
         isFridgeThrower = true;
-        
-        //Instantiate(fridge, )
 
-    } // maybe a dumb way of doing it
+
+    }
 
 }

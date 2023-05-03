@@ -40,7 +40,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5246695547329007920, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: m_Name
-      value: EnemyV5
+      value: EnemyV5.1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5246695547329007921, guid: 1dde01f829e24e1438439c992aa7e12b, type: 3}
       propertyPath: source

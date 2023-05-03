@@ -32,11 +32,12 @@ public class ShopScript : MonoBehaviour
     public GameObject mace;
     public GameObject mug;
 
-    private Vector3 spawnPoint;
+    public Transform spawnPoint;
 
     void Start(){
-        spawnPoint = GameObject.FindWithTag("weaponSpawn").transform.position;
+        //spawnPoint = GameObject.FindWithTag("weaponSpawn").transform.position;
         playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
+        playerMoneyScript = GameObject.Find("ScoreManager").GetComponent<moneyAndScoreManager>();
     }
 
     public void updateShopSigns()
@@ -80,7 +81,7 @@ public class ShopScript : MonoBehaviour
         if(playerMoneyScript.currentMoney >= 100){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
             playerMoneyScript.removeMoney(100);
-            Instantiate(mug, spawnPoint, Quaternion.identity);
+            Instantiate(mug, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }
@@ -89,7 +90,7 @@ public class ShopScript : MonoBehaviour
         if(playerMoneyScript.currentMoney >= 2500){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
             playerMoneyScript.removeMoney(2500);
-            Instantiate(axe, spawnPoint, Quaternion.identity);
+            Instantiate(axe, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }
@@ -98,7 +99,7 @@ public class ShopScript : MonoBehaviour
         if(playerMoneyScript.currentMoney >= 2750){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
             playerMoneyScript.removeMoney(2750);
-            Instantiate(mace, spawnPoint, Quaternion.identity);
+            Instantiate(mace, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }
@@ -107,7 +108,7 @@ public class ShopScript : MonoBehaviour
         if(playerMoneyScript.currentMoney >= 3990){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
             playerMoneyScript.removeMoney(3990);
-            Instantiate(katana, spawnPoint, Quaternion.identity);
+            Instantiate(katana, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }

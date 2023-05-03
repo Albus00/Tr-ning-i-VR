@@ -179,7 +179,7 @@ MonoBehaviour:
     _snapReference: 1
     _avatarGripPoseEntries:
     - _avatarPrefabGuid: 5ef592f9a0dbf14419162555db95f7cc
-      _handPose: {fileID: 0}
+      _handPose: {fileID: 11400000, guid: 44ea1f76294e38d47885b28c3a3438bd, type: 2}
       _poseBlendValue: 0
       _gripAlignTransformHandLeft: {fileID: 2059702992726150700}
       _gripAlignTransformHandRight: {fileID: 2059702993603500967}
@@ -192,7 +192,7 @@ MonoBehaviour:
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
     _grabberProximityIndex: 0
-    _enableOnHandNear: {fileID: 1176812947866177653}
+    _enableOnHandNear: {fileID: 0}
   _additionalGrabPoints: []
   _useParenting: 0
   _autoCreateStartAnchor: 0

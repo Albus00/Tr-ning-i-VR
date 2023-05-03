@@ -362,6 +362,16 @@ public class BehaviourTest : MonoBehaviour
     {
         hitRigidbody = limbCollider.attachedRigidbody;
 
+        //if (limbCollider.transform.tag == "Weapon")
+        //{
+        //    // Get WeaponActivator script
+        //    WeaponActivator activator = limbCollider.transform.GetComponent<WeaponActivator>();
+        //    if (activator.weaponActive)
+        //    {
+        //        Debug.Log("ded");
+        //    }
+        //}
+
         if (!isDead) {
             source.PlayOneShot(clip);
             killCounterScript.AddKill();

@@ -10,9 +10,11 @@ public class WeaponActivator : MonoBehaviour
 
     public GameObject weaponEdge;           // The part of the weapon that's supposed to glow when weapon is active. Set to this if left empty.
 
-    public bool weaponActive = false;                       // True when player swings enough for the weapon to activate
-    public float threshold;                                 // How far the object has to travel to activate weapon. Copied from SwingCheck for efficiency
-    public float secondsActive = 0.5f;                      // How long the weapon will be active (in seconds)
+    public bool disableEdge = false;       // Checked if weapon edge is only supposed to be visible when weapon is active.
+
+    public bool weaponActive = false;       // True when player swings enough for the weapon to activate
+    public float threshold;                 // How far the object has to travel to activate weapon. Copied from SwingCheck for efficiency
+    public float secondsActive = 0.5f;      // How long the weapon will be active (in seconds)
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,10 @@ public class WeaponActivator : MonoBehaviour
     public IEnumerator ActiveTimer()
     {
         // Make the weapon glow
+        if (disableEdge)
+        {
+            weaponEdge.SetActive(true);
+        }
         MeshRenderer mat = weaponEdge.GetComponent<MeshRenderer>();
         mat.material.EnableKeyword("_EMISSION");
         mat.material.SetColor("_EmissionColor", Color.white);
@@ -55,6 +61,10 @@ public class WeaponActivator : MonoBehaviour
             weaponActive = false;
             mat.material.SetColor("_EmissionColor", Color.black);
             Debug.Log("WEAPON INACTIVE");
+            if (disableEdge)
+            {
+                weaponEdge.SetActive(false);
+            }
         }
         else
         {

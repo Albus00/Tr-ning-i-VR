@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 2059702994612120888}
   - component: {fileID: 2059702994612120889}
   - component: {fileID: 2059702994612120894}
-  m_Layer: 0
-  m_Name: mug prefab
+  - component: {fileID: 3369607367182093335}
+  m_Layer: 3
+  m_Name: Mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c23d3d085879b5541946f098d8fce814, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,7 +215,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56721f2d5ac66ab4f891afe0cbd52775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: box
+--- !u!114 &3369607367182093335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176812947866177653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7960822485bd74f419650f2797d13f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
+  weaponEdge: {fileID: 1176812947866177653}
+  disableEdge: 0
+  weaponActive: 0
+  threshold: 0
+  secondsActive: 0.5
 --- !u!1 &2059702992633561595
 GameObject:
   m_ObjectHideFlags: 0

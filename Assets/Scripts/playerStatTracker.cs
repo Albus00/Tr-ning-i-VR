@@ -10,9 +10,11 @@ public class playerStatTracker : MonoBehaviour
     
     private int amt_vals = 300; //How many values to allocate for each array?
 
-    private int pollRate = 1;
-    //1 = Track stats every second
-    //3 = Track stats every 3 seconds.
+    private int pollRate = 3;
+    //1 = Track stats once every second
+    //3 = Track stats once every 3 seconds.
+
+    //300 slots* 3 seconds = 15 minutes of gameplay tracked
 
     private int i;
     public float[] currentHealth;

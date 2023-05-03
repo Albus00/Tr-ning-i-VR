@@ -8,15 +8,11 @@ public class playerStatTracker : MonoBehaviour
     public moneyAndScoreManager playerScoreMoney;
     public EnemyHandler enemyStats;
     
-    //How many values to allocate for each array?
-    private int amt_vals = 300;
-    //Time in seconds between polls.
+    private int amt_vals = 300; //How many values to allocate for each array?
+
     private int pollRate = 1;
-    //1 = 1 every second
-    //30 = 2 every minute
-    //120 = One every two minutes
-    //REMEMBER: total time polled = amt_vals*pollRate (seconds)
-    //200 values every 15 sec = 3000 seconds (50 minutes)
+    //1 = Track stats every second
+    //3 = Track stats every 3 seconds.
 
     private int i;
     public float[] currentHealth;
@@ -52,13 +48,6 @@ public class playerStatTracker : MonoBehaviour
         
         StartCoroutine(captureData());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 
     IEnumerator captureData(){
         //Captures data every "pollRate" seconds.

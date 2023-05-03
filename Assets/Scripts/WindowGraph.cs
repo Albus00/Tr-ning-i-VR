@@ -56,10 +56,9 @@ public class WindowGraph : MonoBehaviour
         float xPositionStart = XtimeScale/2.0f + startIndex*XtimeScale;
         float xPositionEnd = XtimeScale/2.0f + endIndex*XtimeScale;
 
-        //Debug: randomize a color
-        Color randomColor = new Color(1f,0f,0f,0.015f);
+        Color transparentRed = new Color(1f,0f,0f,0.015f);
 
-        gameObject.GetComponent<Image>().color = randomColor;
+        gameObject.GetComponent<Image>().color = transparentRed;
         rectTransform.anchoredPosition = new Vector2(xPositionStart, graphHeight/2.0f);
         rectTransform.sizeDelta = new Vector2(XtimeScale,graphHeight);
         rectTransform.anchorMin = new Vector2(0,0);

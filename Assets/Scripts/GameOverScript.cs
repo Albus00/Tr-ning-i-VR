@@ -5,16 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("r")){
+        if(Input.GetKeyDown("r")){ //Load the next scene and destroy last game data
+            if(GameObject.Find("playerStatTracker") != null){ Destroy(GameObject.Find("playerStatTracker")); }
             SceneManager.LoadScene(sceneName:"MainMenu");
         }
     }

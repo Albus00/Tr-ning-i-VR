@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-// Make an enemyHandler class that delegates actions to enemies. 
-// example: 
-// loop through list of alive enemies => give each enemy an action based on how many enemies can do the same action at the same time
-// if 10 enemies alive -> 6 move, 4 attack
-// if close to player then attack = melee, if far away then attack = throw.
-// this action can be called every X beats
-// How to make it so that all enemies dont perform actions at the same time?
-// enemy1 does action on beat X+1
-// enemy2 does action on beat X+3 etc...
+
 public class BehaviourTest : MonoBehaviour
 {
     // PS: remember to set BPM based on the song. 
@@ -82,8 +74,11 @@ public class BehaviourTest : MonoBehaviour
     private float timer;
     private bool doAction; // is set to true -> do something -> is set to false
 
- 
-    
+    // --------- Difficulty --------- //
+    public DifficultyManager difficultyManager; //controls damage taken by enemies in close range
+    private int difficulty = 0;
+    private int gameification = 0;
+    private float enemyDamage = 0;
 
     void Awake()
     {
@@ -112,6 +107,12 @@ public class BehaviourTest : MonoBehaviour
         movementSpeed = 2f;
         dashDistance = 1.5f;
         dashSpeed = 15f;
+
+        difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
+        difficulty = difficultyManager.difficulty;
+        gameification = difficultyManager.gameification;
+
+        enemyDamage = 2.5f + 2.5f*(float)difficulty;
     }
 
     // Use boolean flags and coroutines instead of the state handler. so a bool for dash. one for attack and so on.
@@ -300,8 +301,8 @@ public class BehaviourTest : MonoBehaviour
         //animator.SetLayerWeight(1, 1);
         // Debug.Log("Started attack");
 
-        //-------DEBUG!! REMOVES HEALTH -- SHOULD BE DONE WITH A HITBOX CHECK!-------//
-        playerHealth.subtractHealth(5.0f);
+        //-------Makes the player take damage-------//
+        playerHealth.subtractHealth(enemyDamage);
 
     }
     private void CloseAttackBehaviour()
@@ -336,8 +337,6 @@ public class BehaviourTest : MonoBehaviour
         fridge = Instantiate(fridgePrefab, fridgeSpawnPoint.position, fridgeSpawnPoint.rotation);
         fridge.transform.parent = fridgeSpawnPoint;
         
-        //-- RANDOMIZE THROW SOUND -- We should probably do this in a separate audiohandler so that each instance
-        //                            of the enemy doesn't need to load in the entire array into memory. (right now it's array*amountOfEnemies)
         while (thisSound.clip == lastAudioClip) { //dont play the same sound twice
             thisSound.clip = throwSounds[Random.Range(0, throwSounds.Length)];
         }
@@ -409,8 +408,6 @@ public class BehaviourTest : MonoBehaviour
 
             if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
             {
-                Debug.Log(isFridgeThrower);
-                //AssignFridgeThrower();
 
                 timer = 0f;
                 doAction = false;

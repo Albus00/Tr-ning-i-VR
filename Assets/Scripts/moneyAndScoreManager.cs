@@ -20,6 +20,8 @@ public class moneyAndScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
+
         currentMoney = 0; //Start Value for Money
         currentScore = 0; //Start Value for Score
         GameObject.Find("moneyDisplay").GetComponent<TextMeshProUGUI>().SetText("$"+currentMoney.ToString());

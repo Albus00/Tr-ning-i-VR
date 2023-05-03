@@ -60,6 +60,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c12363dff7d7aa0429f6f7fce4095c97, type: 3}
   fridgeRattle: {fileID: 8300000, guid: 371ba06eac4f50147bb2a4ce65318501, type: 3}
   playerHealth: {fileID: 0}
+  difficultyManager: {fileID: 0}
+  divideDamage: 9
 --- !u!54 &271554349248074145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.882
+      value: 0.953
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -175,7 +177,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.784
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -12,7 +12,7 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private Sprite circleSprite;
     private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
-
+    private moneyAndScoreManager FinalScore;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,10 @@ public class WindowGraph : MonoBehaviour
         graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
+
+        FinalScore = GameObject.Find("ScoreManager").GetComponent<moneyAndScoreManager>();
+
+        GameObject.Find("finalScore").GetComponent<TextMeshProUGUI>().text = FinalScore.currentScore.ToString();
 
         ShowLabels(playerStats.currentHealth);
         ShowGraph(playerStats.isCooldown);
@@ -77,7 +81,7 @@ public class WindowGraph : MonoBehaviour
             labelX.SetParent(graphContainer);
             labelX.gameObject.SetActive(true);
             labelX.anchoredPosition = new Vector2(xPosition,-20f);
-            labelX.GetComponent<TextMeshProUGUI>().text = (i*10).ToString();
+            labelX.GetComponent<TextMeshProUGUI>().text = (i).ToString();
         }
     }
 

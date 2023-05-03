@@ -14,28 +14,35 @@ public class EnemyHandler : MonoBehaviour
     public moneyAndScoreManager scoreManager;
     public AudioLowPassFilter musicLP;
     public AudioHighPassFilter musicHP;
+    
+    public DifficultyManager difficultyManager; //Damage controls spawn rates and intensity increase / wave
+    private int difficulty = 0;
+    private int gameification = 0;
+    
     public AudioSource musicSource;
     public GameObject enemyPrefab;
     public Transform enemySpawnPoint;
     public static List<GameObject> enemies = new List<GameObject>();
 
     public TMPro.TextMeshProUGUI waveText;
+    
 
     public int moneyPerWave = 400;
     public int scorePerWave = 400;
+    public int moneyPerEnemy = 150;
     
     private int enemiesLeftToSpawn;
-    private int maxAliveEnemies = 4;
-    private int amtEnemiesWave = 4;
+    private int maxAliveEnemies = 4; //Amount of enemies on the playing field at once -- Increases intensity
+    private int amtEnemiesWave = 4; //Amount of enemies per wave, default = first wave
     private int amtSpawnSimult = 2;
-    private int addEnemyPerWave = 2;
-    private int addMaxAlive = 1;
+    private int addEnemyPerWave = 2; //Amount of enemies to add per wave, default = first wave -- Creates longer waves
+    private int addMaxAlive = 1; //Amount of enemies on the playing field to add per wave -- Increases intensity wave after wave
     
     private int currentlyThrowing = 1;
     private int currentlyDashing = 3;
     private int currentlyAttacking = 1;
 
-    private int cooldownTimer = 3; //Cooldown in seconds
+    private int cooldownTimer = 3; //Cooldown timer in seconds
 
     public int amtEnemiesDefeated = 0;
     public int currentWave = 0;
@@ -48,7 +55,7 @@ public class EnemyHandler : MonoBehaviour
 
     public bool cooldownActive = true;
 
-    private IEnumerator coroutine = null; //Dont initalize cooldown more than once
+    private IEnumerator coroutine = null;
 
 
 
@@ -60,13 +67,32 @@ public class EnemyHandler : MonoBehaviour
         musicHP = GameObject.FindWithTag("music").GetComponent<AudioHighPassFilter>();
         musicSource = GameObject.FindWithTag("music").GetComponent<AudioSource>();
         waveText = GameObject.FindWithTag("shopWaveNumber").GetComponent<TextMeshProUGUI>();
+        
+        difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
+        difficulty = difficultyManager.difficulty;
+        gameification = difficultyManager.gameification;
+        
+        //------Difficulty Settings-----//
+        amtEnemiesWave = (difficulty + 1)*2;        //easy = 2, normal = 4, hard = 6, insanity = 8 (starting value)
+        addEnemyPerWave = (difficulty + 2)*2;       //easy = +4, normal = +6, hard = +8, insanity = +10 more total enemies to defeat per wave
+        maxAliveEnemies = (difficulty + 1)*2;       //easy = 2, normal = 4, hard = 6, insanity = 8 (starting value)
+        addMaxAlive = difficulty+1;                 //easy = +1, normal = +2, hard = +3, insanity = +4 max alive enemies per wave
+
+        moneyPerEnemy = 150 - 50*difficulty;
+
+        moneyPerWave = (int)Mathf.Round(400/(difficulty+1));        //easy = 400, normal = 200, hard = 133, insanity = 100 extra cash per wave completed
 
         waveText.text = currentWave.ToString();
 
-        musicSource.spatialBlend = 0.0f;
-        musicSource.reverbZoneMix = 0.0f;
-        musicLP.cutoffFrequency = 22000.0f;
-        musicHP.cutoffFrequency = 0.0f;
+        if(gameification > 1){ //The user gets music
+            musicSource.spatialBlend = 0.0f;
+            musicSource.reverbZoneMix = 0.0f;
+            musicLP.cutoffFrequency = 22000.0f;
+            musicHP.cutoffFrequency = 0.0f;
+        }else{ //No music for you!
+            musicLP.cutoffFrequency = 0.0f;    
+            musicHP.cutoffFrequency = 22000.0f;
+        }
     }
 
     // Update is called once per frame
@@ -81,7 +107,9 @@ public class EnemyHandler : MonoBehaviour
             this.coroutine = cooldown();
             StartCoroutine(this.coroutine);
 
-            StartCoroutine(muffleMusic(2.0f)); //Muffle music linearly over five seconds
+            if(gameification > 1){
+                StartCoroutine(muffleMusic(2.0f)); //Muffle music linearly over five seconds
+            }
         }
 
         //-----WAVE START-----//
@@ -91,7 +119,10 @@ public class EnemyHandler : MonoBehaviour
             maxAliveEnemies += addMaxAlive;
             enemiesLeftToSpawn = amtEnemiesWave;
 
-            StartCoroutine(unMuffleMusic(2.0f)); //Unmuffle music linearly over 2 seconds
+            if(gameification > 1){
+                StartCoroutine(unMuffleMusic(2.0f)); //Unmuffle music linearly over 2 seconds
+            }
+
             waveText.text = currentWave.ToString();
 
             waveStart = false;
@@ -157,12 +188,11 @@ public class EnemyHandler : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(randomX, enemySpawnPoint.position.y, enemySpawnPoint.position.z);
                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, enemySpawnPoint.rotation);
                 enemies.Add(spawnedEnemy); // Add the spawned enemy to the enemies list
-                amtEnemiesAlive++; // Increment the currentEnemies variable
+                amtEnemiesAlive++;
                 enemiesLeftToSpawn--;
 
-                if (enemiesLeftToSpawn % 2 == 0)
+                if (enemiesLeftToSpawn % 5 == 0) // 1/5 enemies are fridge throwers
                 {
-                    Debug.Log("Assigned a fridge thrower!");
                     spawnedEnemy.GetComponent<BehaviourTest>().AssignFridgeThrower();
                 }
             }
@@ -179,18 +209,10 @@ public class EnemyHandler : MonoBehaviour
             enemies.Remove(enemyToRemove);
             amtEnemiesAlive--; // Decrement the currentEnemies variable
 
-            scoreManager.giveMoney(100, false);
+            scoreManager.giveMoney(moneyPerEnemy, false);
             scoreManager.giveScore(100);
 
             amtEnemiesDefeated += 1;
         }
     }
-
-    private void DoActions()
-    {
-        foreach(GameObject enemy in enemies){
-            // Assign actions based on the distance to the "Player" and what the other enemies are doing
-        }        
-    }
-
 }

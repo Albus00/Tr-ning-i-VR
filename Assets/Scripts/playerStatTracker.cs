@@ -47,6 +47,8 @@ public class playerStatTracker : MonoBehaviour
         isntDead = true;
         
         StartCoroutine(captureData());
+
+        DontDestroyOnLoad(this);
     }
 
     IEnumerator captureData(){

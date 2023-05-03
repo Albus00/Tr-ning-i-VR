@@ -40,6 +40,12 @@ public class HealthManager : MonoBehaviour
     public bool _DEBUG_decreaseHealth = false;
     public float _DEBUG_decreasePerSecond = 5.0f;
 
+    // --------- Difficulty --------- //
+    public DifficultyManager difficultyManager; //if gameification isnt == 3 (maxed), there's no score screen
+    private int difficulty = 0;
+    private int gameification = 0;
+    private float enemyDamage = 0;
+
     void Start()
     {
         _fullHealth = _healthValue;
@@ -48,6 +54,10 @@ public class HealthManager : MonoBehaviour
         _quarterHealth = _healthValue/4.0f;
 
         _bar.color = startColor;
+
+        difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
+        difficulty = difficultyManager.difficulty;
+        gameification = difficultyManager.gameification;
     }
     
     void Update()
@@ -55,12 +65,6 @@ public class HealthManager : MonoBehaviour
         if(_POWERUP_invulnerable){
             _bar.color = invulnerableColor;
         }else {
-            ////DEBUG: remove health each second------------------------
-            if(_DEBUG_decreaseHealth){
-                subtractHealth(_DEBUG_decreasePerSecond*Time.deltaTime);
-            }
-            //---------------------------------------------------------
-
             if(_healthValue != prevHealth){ //Lazy Update for performance
                 if(_healthValue > _halfHealth){
                     lerpColor = Color.Lerp(startColor, middleColor, (_fullHealth - _healthValue)/_halfHealth);
@@ -83,15 +87,12 @@ public class HealthManager : MonoBehaviour
         
         if(_healthValue < 0 && playerIsntDead){
             playerIsntDead = false;
-            Debug.Log("You're fucking dead dawg");
-            SceneManager.LoadScene(sceneName:"GameOver",LoadSceneMode.Additive);
-            Destroy(GameObject.Find("beta_arena_v3 prefab"));
-            Destroy(GameObject.Find("audio"));
-            Destroy(GameObject.Find("CyborgAvatarExample"));
-            //JÄTTEJÄTTEJÄTTEFULT
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
-            foreach(GameObject enemy in enemies){
-                GameObject.Destroy(enemy);
+            Debug.Log("You're dead!");
+            if(gameification == 3){
+                SceneManager.LoadScene(sceneName:"GameOver");
+            }else{
+                Destroy(GameObject.Find("DifficultyManager"));
+                SceneManager.LoadScene(sceneName:"MainMenu");
             }
         }
 

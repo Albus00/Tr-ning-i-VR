@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &134376035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 804733413354461843, guid: e39110c638c55a24ab23af90c082f9e6, type: 3}
+  m_PrefabInstance: {fileID: 1420777702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &134376039
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134376035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.380115, y: 3.9968925, z: 9.343615}
+  m_Center: {x: -1.9905164e-10, y: -0.8979529, z: 1.8867205}
 --- !u!1 &206001456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2515,10 @@ PrefabInstance:
       value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 804733413354461843, guid: e39110c638c55a24ab23af90c082f9e6, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 804733413354461843, guid: e39110c638c55a24ab23af90c082f9e6, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 65
       objectReference: {fileID: 0}
@@ -2824,12 +2846,14 @@ MonoBehaviour:
   scoreManager: {fileID: 1297490935}
   musicLP: {fileID: 0}
   musicHP: {fileID: 0}
+  difficultyManager: {fileID: 0}
   musicSource: {fileID: 0}
   enemyPrefab: {fileID: 3097553458425331617, guid: 2015b50752f71a5448834743dd62851e, type: 3}
   enemySpawnPoint: {fileID: 1434822952}
   waveText: {fileID: 0}
   moneyPerWave: 400
   scorePerWave: 400
+  moneyPerEnemy: 150
   amtEnemiesDefeated: 0
   currentWave: 0
   amtEnemiesAlive: 0

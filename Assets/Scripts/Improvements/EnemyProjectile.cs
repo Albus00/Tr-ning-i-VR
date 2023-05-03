@@ -27,6 +27,12 @@ public class EnemyProjectile : MonoBehaviour
 
     public HealthManager playerHealth;
 
+    public DifficultyManager difficultyManager; //Difficulty controls big object damage
+    private int difficulty = 0;
+    private int gameification = 0;
+
+    public float divideDamage = 9.0f;
+
 
     void Start()
     {
@@ -36,6 +42,12 @@ public class EnemyProjectile : MonoBehaviour
         gravitys = Physics.gravity.magnitude;
         fridgeAudio = GetComponent<AudioSource>();
         playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
+
+        difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
+        difficulty = difficultyManager.difficulty;
+        gameification = difficultyManager.gameification;
+
+        divideDamage = 12.0f - ((float)difficulty)*3.0f;
     }
 
     // Update is called once per frame
@@ -53,7 +65,7 @@ public class EnemyProjectile : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(targetDirection);
 
             Vector3 initialVelocity = transform.forward * V_0x;
-            initialVelocity.y = V_0y + 2f;
+            initialVelocity.y = V_0y + 0.7f; //Compensate for player height
 
             fridgeRB = GetComponent<Rigidbody>();
             
@@ -67,7 +79,6 @@ public class EnemyProjectile : MonoBehaviour
         }
 
         if(hasThrown){
-
         }
     }
 
@@ -87,8 +98,8 @@ public class EnemyProjectile : MonoBehaviour
         {
             PlayHitEffect();
 
-            float damage = theImpulse/9.0f; //float: higher = less damage taken
-            if(damage > 10.0f){
+            float damage = theImpulse/divideDamage; 
+            if(damage > 5.0f){
                 Debug.Log("Object hit player for: " + Mathf.Round(theImpulse) + " Newton, which is: " + Mathf.Round(damage) + " damage.");
                 playerHealth.subtractHealth(damage);
             } 

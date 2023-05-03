@@ -13,6 +13,7 @@ public class ShopScript : MonoBehaviour
 {
     public moneyAndScoreManager playerMoneyScript;
     public HealthManager playerHealth;
+    public GameObject shopScreen;
 
     public AudioSource audioSource;
     public AudioClip purchaseSuccessful;
@@ -34,10 +35,25 @@ public class ShopScript : MonoBehaviour
 
     public Transform spawnPoint;
 
+    public DifficultyManager difficultyManager; //Enables and disables store based on gameification
+    private int difficulty = 0;
+    private int gameification = 0;
+
     void Start(){
         //spawnPoint = GameObject.FindWithTag("weaponSpawn").transform.position;
         playerHealth = GameObject.FindWithTag("HealthHandler").GetComponent<HealthManager>();
         playerMoneyScript = GameObject.Find("ScoreManager").GetComponent<moneyAndScoreManager>();
+        shopScreen = GameObject.Find("shopScreen");
+        
+        difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
+        difficulty = difficultyManager.difficulty;
+        gameification = difficultyManager.gameification;
+
+        if(gameification >= 1){ //Store active
+
+        }else{ //No shop for you!
+            shopScreen.SetActive(false);
+        }
     }
 
     public void updateShopSigns()

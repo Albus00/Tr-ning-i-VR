@@ -65,7 +65,7 @@ public class EnemyProjectile : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(targetDirection);
 
             Vector3 initialVelocity = transform.forward * V_0x;
-            initialVelocity.y = V_0y + 0.7f; //Compensate for player height
+            initialVelocity.y = V_0y + 1.2f; //Compensate for player height
 
             fridgeRB = GetComponent<Rigidbody>();
             

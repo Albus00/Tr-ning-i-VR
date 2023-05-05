@@ -51,7 +51,7 @@ public class BehaviourTest : MonoBehaviour
     public float dashVariationFactor;
 
     // ---- Attacking ---- //
-    public float attackDistance = 1.0f;
+    public float attackDistance = 1.5f;
     private bool isFridgeThrower;
     private bool hasThrownFridge;
     public float fridgeThrowDistance;
@@ -94,7 +94,7 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
-        fridgeThrowDistance = 15f;
+        fridgeThrowDistance = 10f;
         hasThrownFridge = false;
         
         killCounterScript = GameObject.Find("killCounter").GetComponent<KillCounter>();
@@ -105,8 +105,8 @@ public class BehaviourTest : MonoBehaviour
         beatsPerAction = 1f;
         //firstCall = true;
         movementSpeed = 2f;
-        dashDistance = 1.5f;
-        dashSpeed = 15f;
+        dashDistance = 2f;
+        dashSpeed = 13f;
 
         difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
         difficulty = difficultyManager.difficulty;
@@ -323,6 +323,7 @@ public class BehaviourTest : MonoBehaviour
     private void StartFridgeAttack()
     {
         actionInProgress = true;
+        hasThrownFridge = true;
         animator.SetBool("throwFridge", true);
     }
     private void FridgeAttackBehaviour() {

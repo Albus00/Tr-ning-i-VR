@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    
+    public bool destroyAfterThrow = true;
 
     //private void OnCollisionEnter(Collision collision)
     //{
@@ -15,6 +15,11 @@ public class projectile : MonoBehaviour
     {
         if (other.gameObject.transform.name.Contains("mixamorig")){
             other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
+            if(destroyAfterThrow)
+            {
+                Destroy(this.gameObject, 3f);
+            }
+            
         }
         //Debug.Log(other.gameObject.name);
         

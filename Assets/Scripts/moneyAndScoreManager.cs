@@ -13,6 +13,7 @@ using TMPro;
 public class moneyAndScoreManager : MonoBehaviour
 {
     public ShopScript shop;
+    public GameObject moneyD;
     public int currentMoney;
     public int prevMoney;
 
@@ -52,8 +53,9 @@ public class moneyAndScoreManager : MonoBehaviour
         }
 
         //lazy update shop display
-        if(prevMoney != currentMoney){
-            GameObject.Find("moneyDisplay").GetComponent<TextMeshProUGUI>().SetText("$"+currentMoney.ToString());
+        if (prevMoney != currentMoney && moneyD != null)
+        {
+            moneyD.GetComponent<TextMeshProUGUI>().SetText("$"+currentMoney.ToString());
 
             shop.updateShopSigns();
         }

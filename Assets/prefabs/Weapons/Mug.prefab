@@ -153,11 +153,11 @@ MonoBehaviour:
   _rigidBodySource: {fileID: 2059702994612120891}
   _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
-  _horizontalReleaseMultiplier: 1
+  _horizontalReleaseMultiplier: 5
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1
-  _selectedAvatarForGrips: {fileID: 945273276562475938, guid: 5ef592f9a0dbf14419162555db95f7cc, type: 3}
+  _selectedAvatarForGrips: {fileID: 6800616272644675311, guid: af480974a3e0c9a438abc245d0558ac5, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
     _editorFoldout: 1
@@ -183,6 +183,11 @@ MonoBehaviour:
       _poseBlendValue: 0
       _gripAlignTransformHandLeft: {fileID: 2059702992726150700}
       _gripAlignTransformHandRight: {fileID: 2059702993603500967}
+    - _avatarPrefabGuid: af480974a3e0c9a438abc245d0558ac5
+      _handPose: {fileID: 11400000, guid: dcabcdee226065943a69427e8801f5c9, type: 2}
+      _poseBlendValue: 0
+      _gripAlignTransformHandLeft: {fileID: 0}
+      _gripAlignTransformHandRight: {fileID: 0}
     _alignToController: 1
     _alignToControllerAxes: {fileID: 1954335225736891087}
     _grabProximityMode: 0
@@ -194,8 +199,8 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 0}
   _additionalGrabPoints: []
-  _useParenting: 0
-  _autoCreateStartAnchor: 0
+  _useParenting: 1
+  _autoCreateStartAnchor: 1
   _startAnchor: {fileID: 0}
   _tag: 
   _dropAlignTransformUseSelf: 1

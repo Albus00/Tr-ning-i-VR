@@ -32,6 +32,7 @@ public class ShopScript : MonoBehaviour
     public GameObject katana;
     public GameObject mace;
     public GameObject mug;
+    public Transform productsTransform;
 
     public Transform spawnPoint;
 
@@ -61,7 +62,7 @@ public class ShopScript : MonoBehaviour
         //TODO if we have time: Redo using arrays. "Find()" isn't performant at all and gets worse
         //                                         the more gameobjects exist in the scene.
         //                                         Works, but according to Unity documentation NOT suited for real-time updates.
-        foreach(Transform child in GameObject.Find("Products").transform){
+        foreach(Transform child in productsTransform){
             int.TryParse(child.Find("price").GetComponent<TextMeshProUGUI>().text, out price);
             dynamicBorder = child.Find("dynBorder").GetComponent<Image>();
 

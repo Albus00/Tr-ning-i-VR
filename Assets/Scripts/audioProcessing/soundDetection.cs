@@ -29,7 +29,7 @@ public class soundDetection : MonoBehaviour
     public int[] musicBPMs;
     public AudioClip[] songMP3;
     private AudioClip lastMusicPlayed;
-    private int startSongIndex = 5;
+    private int startSongIndex;
 
     public GameObject enemyHandler; // reference to enemyHandler
     public GameObject lightObject;
@@ -50,6 +50,7 @@ public class soundDetection : MonoBehaviour
 
     void Start()
     {
+        startSongIndex = Random.Range(0, 6);
         beatsPerSpawn = 30;
         startedBeatSyncing = false;
         beatCount = 0;
@@ -112,13 +113,13 @@ public class soundDetection : MonoBehaviour
     void ControlLightIntensity()
     {
         //Debug.Log(frequencyBands[frequencyBand]);
-        if (!startedBeatSyncing)
-        {
+        
+        
             if (frequencyBands[frequencyBand] > startSyncThreshold)
             {
                 startedBeatSyncing = true;
             }
-        }
+        
         if (startedBeatSyncing) // spawn enemies at higher amplitude than dash requirement
         {
             if (frequencyBands[frequencyBand] > threshold)

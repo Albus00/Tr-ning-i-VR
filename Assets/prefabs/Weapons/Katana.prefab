@@ -699,7 +699,7 @@ MonoBehaviour:
   _rigidBodySource: {fileID: 8132997993620961676}
   _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
-  _horizontalReleaseMultiplier: 1
+  _horizontalReleaseMultiplier: 5
   _previewGrabPosesMode: 3
   _previewPosesRegenerationType: 0
   _previewPosesRegenerationIndex: -1

@@ -105,9 +105,9 @@ public class ShopScript : MonoBehaviour
         }
     }
     public void purchaseAxe(){
-        if(playerMoneyScript.currentMoney >= 2500){
+        if(playerMoneyScript.currentMoney >= 1500){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
-            playerMoneyScript.removeMoney(2500);
+            playerMoneyScript.removeMoney(1500);
             Instantiate(axe, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
@@ -123,9 +123,9 @@ public class ShopScript : MonoBehaviour
         }
     }
     public void purchaseKatana(){
-        if(playerMoneyScript.currentMoney >= 3990){
+        if(playerMoneyScript.currentMoney >= 2600){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
-            playerMoneyScript.removeMoney(3990);
+            playerMoneyScript.removeMoney(2600);
             Instantiate(katana, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
@@ -148,6 +148,20 @@ public class ShopScript : MonoBehaviour
             playerMoneyScript.removeMoney(500);
             playerHealth.addHealth(20.0f);
         }else{
+            audioSource.PlayOneShot(notEnoughMoney, audioVolume);
+        }
+    }
+
+    public void purchaseShield()
+    {
+        if (playerMoneyScript.currentMoney >= 700)
+        {
+            audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
+            playerMoneyScript.removeMoney(700);
+            Instantiate(shield, spawnPoint.position, Quaternion.identity);
+        }
+        else
+        {
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);
         }
     }

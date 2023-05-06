@@ -2799,6 +2799,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8632503926977380459, guid: 30c1543622c1cec4981183de2310b882, type: 3}
     - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 4719537272450039293, guid: 90375eb7f752d4841a2773bea46a7227, type: 3}
+    - target: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1356256345}
@@ -6118,6 +6122,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2651464916222184620, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_text
+      value: 2600
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651464916460924278, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_text
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 2651464916531021450, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6206,9 +6218,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: shopScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 2651464916678693108, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_Name
+      value: shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651464916714437052, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_text
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651464917118974274, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
+      propertyPath: m_text
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 2651464917595151713, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_text
-      value: Free :)
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5892307007399736120, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6232,7 +6256,7 @@ PrefabInstance:
       objectReference: {fileID: 1480722864}
     - target: {fileID: 5892307008007450323, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: purchaseKatana
+      value: purchaseShield
       objectReference: {fileID: 0}
     - target: {fileID: 5892307008430649972, guid: 4280c583d93172f41967b58ae76bd7c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

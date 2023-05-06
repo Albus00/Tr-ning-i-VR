@@ -42,7 +42,7 @@ public class EnemyHandler : MonoBehaviour
     private int currentlyDashing = 3;
     private int currentlyAttacking = 1;
 
-    private int cooldownTimer = 3; //Cooldown timer in seconds
+    private int cooldownTimer = 10; //Cooldown timer in seconds
 
     public int amtEnemiesDefeated = 0;
     public int currentWave = 0;
@@ -78,7 +78,7 @@ public class EnemyHandler : MonoBehaviour
         maxAliveEnemies = (difficulty + 1)*2;       //easy = 2, normal = 4, hard = 6, insanity = 8 (starting value)
         addMaxAlive = difficulty+1;                 //easy = +1, normal = +2, hard = +3, insanity = +4 max alive enemies per wave
 
-        moneyPerEnemy = 150 - 50*difficulty;
+        moneyPerEnemy = 200 - 50*difficulty;
 
         moneyPerWave = (int)Mathf.Round(400/(difficulty+1));        //easy = 400, normal = 200, hard = 133, insanity = 100 extra cash per wave completed
 

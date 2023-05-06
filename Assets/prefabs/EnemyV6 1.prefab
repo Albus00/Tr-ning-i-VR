@@ -209,12 +209,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
-      propertyPath: punchSound
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: punchSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: enemyHitSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: punchSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 6967fcf12757d0f4a9dc0e27a047eae7, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: punchSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ea430bb096c80474e9a15488529e6c2c, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: punchSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c3efe7bf0da1243449f026832a48a9ee, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: enemyHitSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f792a09537036204ea2d3a7eee3f375d, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: enemyHitSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 36a8cf3f3b6812c408321d451361b63e, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: enemyHitSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a352700a0b14a34cb117dea64af43cc, type: 3}
     - target: {fileID: 3097553458425331617, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_Name
-      value: EnemyV6
+      value: EnemyV6 1
       objectReference: {fileID: 0}
     - target: {fileID: 3097553458425331622, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_RootOrder
@@ -259,6 +291,10 @@ PrefabInstance:
     - target: {fileID: 3097553458425331622, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293747326677978268, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.958
       objectReference: {fileID: 0}
     - target: {fileID: 7171302190731173685, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: _selectedAvatarForGrips

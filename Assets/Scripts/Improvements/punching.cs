@@ -26,7 +26,7 @@ public class punching : MonoBehaviour
             _previousPosition = transform.position;
 
             // Log the position change to the console
-            Debug.Log($"Position Change: {_positionChange.magnitude}");
+            //Debug.Log($"Position Change: {_positionChange.magnitude}");
         }
 
     }

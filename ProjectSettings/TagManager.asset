@@ -21,6 +21,7 @@ TagManager:
   - playerStats
   - wall
   - punchable
+  - killCounter
   layers:
   - Default
   - TransparentFX

@@ -31,10 +31,18 @@ public class BehaviourTest : MonoBehaviour
     private Rigidbody hitRigidbody;
     
     // --------- Sound Handling --------- //
+    //--Throwing--//
     public AudioClip[] throwSounds;
     private AudioClip lastAudioClip;
     private AudioSource thisSound;
-    public AudioClip punchSound;
+    
+    //--Punching--//
+    public AudioClip[] punchSounds;
+    private AudioClip lastPunchSound;
+
+    //--Getting Hit--/
+    public AudioClip[] enemyHitSounds;
+    public AudioClip lastHitSound;
 
     // --------- Physics --------- //
     //private float gravityForce = -9.82f;
@@ -64,7 +72,7 @@ public class BehaviourTest : MonoBehaviour
     private Animator animator;
     private EnemyHandler enemyHandler;
     public AudioClip clip;
-    KillCounter killCounterScript;
+    public KillCounter killCounterScript;
     public AudioSource source;
     public GameObject fridgePrefab;
     private GameObject fridge;
@@ -99,7 +107,7 @@ public class BehaviourTest : MonoBehaviour
         fridgeThrowDistance = 13f;
         hasThrownFridge = false;
         attackDistance = 1.2f;
-        killCounterScript = GameObject.Find("killCounter").GetComponent<KillCounter>();
+        killCounterScript = GameObject.FindWithTag("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
         bpm = GameObject.FindWithTag("music").GetComponent<soundDetection>().BPM;
@@ -201,7 +209,13 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EnableRagdoll() // when die, go ragdoll
     {
-        
+        while (thisSound.clip == lastHitSound) { //dont play the same sound twice
+            thisSound.clip = enemyHitSounds[Random.Range(0, enemyHitSounds.Length)];
+        }
+        lastHitSound = thisSound.clip;
+
+        thisSound.PlayOneShot(thisSound.clip, 1.0f);
+
         isDead = true;
         foreach (var collider in colliders)
         {
@@ -326,7 +340,12 @@ public class BehaviourTest : MonoBehaviour
         //-------Makes the player take damage-------//
         playerHealth.subtractHealth(enemyDamage);
 
-        thisSound.PlayOneShot(punchSound, 0.5f);
+        while (thisSound.clip == lastPunchSound) { //dont play the same sound twice
+            thisSound.clip = punchSounds[Random.Range(0, punchSounds.Length)];
+        }
+        lastPunchSound = thisSound.clip;
+
+        thisSound.PlayOneShot(thisSound.clip, 0.6f);
     }
 
     private void StartFridgeAttack()
@@ -352,7 +371,7 @@ public class BehaviourTest : MonoBehaviour
         }
         lastAudioClip = thisSound.clip;
         
-        StartCoroutine(playSoundDelayed(thisSound.clip, 0.8f));
+        StartCoroutine(playSoundDelayed(thisSound.clip, 0.6f));
     }
 
     IEnumerator playSoundDelayed(AudioClip theAudio, float delay){

@@ -34,6 +34,7 @@ public class BehaviourTest : MonoBehaviour
     public AudioClip[] throwSounds;
     private AudioClip lastAudioClip;
     private AudioSource thisSound;
+    public AudioClip punchSound;
 
     // --------- Physics --------- //
     //private float gravityForce = -9.82f;
@@ -41,7 +42,8 @@ public class BehaviourTest : MonoBehaviour
     //public float groundedLength = 0.2f;
 
     // --------- Movement handling --------- //
-    private Transform target;
+    public Transform target;
+
     private float distanceToTarget;
     public float movementSpeed;
     // ---- Dashing ---- //
@@ -51,7 +53,7 @@ public class BehaviourTest : MonoBehaviour
     public float dashVariationFactor;
 
     // ---- Attacking ---- //
-    public float attackDistance = 1.5f;
+    public float attackDistance;
     private bool isFridgeThrower;
     private bool hasThrownFridge;
     public float fridgeThrowDistance;
@@ -94,25 +96,25 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
-        fridgeThrowDistance = 10f;
+        fridgeThrowDistance = 13f;
         hasThrownFridge = false;
-        
+        attackDistance = 1.2f;
         killCounterScript = GameObject.Find("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
         bpm = GameObject.FindWithTag("music").GetComponent<soundDetection>().BPM;
         secPerBeat = 60f / bpm;
-        beatsPerAction = 2f;
+        beatsPerAction = 1f;
         //firstCall = true;
         movementSpeed = 2f;
-        dashDistance = 2f;
-        dashSpeed = 13f;
+        dashDistance = 1.8f;
+        dashSpeed = 12f;
 
         difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
         difficulty = difficultyManager.difficulty;
         gameification = difficultyManager.gameification;
 
-        enemyDamage = 2.5f + 2.5f*(float)difficulty;
+        enemyDamage = 2f + 1f*(float)difficulty;
     }
 
     // Use boolean flags and coroutines instead of the state handler. so a bool for dash. one for attack and so on.
@@ -225,13 +227,13 @@ public class BehaviourTest : MonoBehaviour
         actionInProgress = true;
         animator.SetBool("dash",true);
         // Debug.Log("Started dash");
-        
+        float distance = (target.position - transform.position).magnitude;
         Vector3 direction = (target.position - transform.position).normalized;
 
         // Add random variation in the X and Z directions
         Vector3 randomVariation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
         dashVariationFactor = 0.3f; // Adjust this value to control the amount of variation
-
+        if(distance > 2) { dashVariationFactor = 0.05f; } // go straight to player if less than 2 unitys away
         Vector3 newDirection = Vector3.Lerp(direction, randomVariation, dashVariationFactor);
         float dotProduct = Vector3.Dot(direction, newDirection);
 
@@ -297,12 +299,12 @@ public class BehaviourTest : MonoBehaviour
     private void StartCloseAttack()
     {
         actionInProgress = true;
+        transform.LookAt(target);
         animator.SetBool("closeAttack", true);
         //animator.SetLayerWeight(1, 1);
         // Debug.Log("Started attack");
 
-        //-------Makes the player take damage-------//
-        playerHealth.subtractHealth(enemyDamage);
+       
 
     }
     private void CloseAttackBehaviour()
@@ -312,12 +314,19 @@ public class BehaviourTest : MonoBehaviour
         {
             EndCloseAttack();
         }
-        //transform.LookAt(target);
+        
     }
     private void EndCloseAttack()
     {
         //animator.SetLayerWeight(1, 0);
         EndAction();
+    }
+    private void giveDamage()
+    {
+        //-------Makes the player take damage-------//
+        playerHealth.subtractHealth(enemyDamage);
+
+        thisSound.PlayOneShot(punchSound, 0.5f);
     }
 
     private void StartFridgeAttack()

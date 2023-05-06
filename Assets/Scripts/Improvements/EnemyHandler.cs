@@ -191,7 +191,7 @@ public class EnemyHandler : MonoBehaviour
                 amtEnemiesAlive++;
                 enemiesLeftToSpawn--;
 
-                if (enemiesLeftToSpawn % 5 == 0) // 1/5 enemies are fridge throwers
+                if (enemiesLeftToSpawn % 2 == 0) // 1/5 enemies are fridge throwers
                 {
                     spawnedEnemy.GetComponent<BehaviourTest>().AssignFridgeThrower();
                 }

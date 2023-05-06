@@ -102,7 +102,7 @@ public class BehaviourTest : MonoBehaviour
         actionInProgress = false;
         bpm = GameObject.FindWithTag("music").GetComponent<soundDetection>().BPM;
         secPerBeat = 60f / bpm;
-        beatsPerAction = 1f;
+        beatsPerAction = 2f;
         //firstCall = true;
         movementSpeed = 2f;
         dashDistance = 2f;
@@ -212,7 +212,7 @@ public class BehaviourTest : MonoBehaviour
         animator.enabled = false;
         enemyHandler.RemoveEnemy(this.gameObject);
         this.enabled= false;
-        Object.Destroy(gameObject,3f);
+        Object.Destroy(gameObject,5f);
     }
 
 

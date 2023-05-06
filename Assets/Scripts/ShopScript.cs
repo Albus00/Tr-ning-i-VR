@@ -32,6 +32,7 @@ public class ShopScript : MonoBehaviour
     public GameObject katana;
     public GameObject mace;
     public GameObject mug;
+    public GameObject shield;
     public Transform productsTransform;
 
     public Transform spawnPoint;
@@ -95,9 +96,9 @@ public class ShopScript : MonoBehaviour
     }
     //TODO (if time exists) - Refactor all the below to one common function. See above TODO first.
     public void purchaseMug(){
-        if(playerMoneyScript.currentMoney >= 100){
+        if(playerMoneyScript.currentMoney >= 0){
             audioSource.PlayOneShot(purchaseSuccessful, audioVolume);
-            playerMoneyScript.removeMoney(100);
+            playerMoneyScript.removeMoney(0);
             Instantiate(mug, spawnPoint.position, Quaternion.identity);
         }else{
             audioSource.PlayOneShot(notEnoughMoney, audioVolume);

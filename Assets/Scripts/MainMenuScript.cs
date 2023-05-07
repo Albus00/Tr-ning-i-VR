@@ -31,16 +31,16 @@ public class MainMenuScript : MonoBehaviour
         switch(difficultyManager.difficulty)
         {
             case 0:
-                difficultyText.text = "Easy";
+                difficultyText.text = "1: Easy";
                 break;
             case 1:
-                difficultyText.text = "Normal";
+                difficultyText.text = "2: Normal";
                 break;
             case 2:
-                difficultyText.text = "Hard";
+                difficultyText.text = "3: Hard";
                 break;
             case 3:
-                difficultyText.text = "Difficult";
+                difficultyText.text = "4: Difficult";
                 break;
         }
     }

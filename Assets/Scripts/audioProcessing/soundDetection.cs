@@ -154,8 +154,8 @@ public class soundDetection : MonoBehaviour
 
                 audioSource.clip = songMP3[randomIndex];
                 frequencyBand = musicFrequencyBands[randomIndex];
-                threshold = musicThresholds[randomIndex];
-                startSyncThreshold = musicStartSyncThresholds[randomIndex];
+                threshold = musicThresholds[randomIndex] * audioSource.volume;
+                startSyncThreshold = musicStartSyncThresholds[randomIndex] * audioSource.volume;
                 BPM = musicBPMs[randomIndex];
             }
 

@@ -106,7 +106,7 @@ public class BehaviourTest : MonoBehaviour
     {
         fridgeThrowDistance = 13f;
         hasThrownFridge = false;
-        attackDistance = 1.2f;
+        attackDistance = 1f;
         killCounterScript = GameObject.FindWithTag("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
@@ -448,7 +448,7 @@ public class BehaviourTest : MonoBehaviour
                     StartCloseAttack();
                     currentState = EnemyState.Attack;
                 }
-                else if (distanceToTarget > attackDistance && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
+                else if (distanceToTarget > 5 && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
                 {
                     Debug.Log("started fridge");
                     StartFridgeAttack();

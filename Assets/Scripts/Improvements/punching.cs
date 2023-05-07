@@ -32,7 +32,7 @@ public class punching : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.CompareTag("punchable") && _positionChange.magnitude > 0.2f)
+        if (other.gameObject.transform.CompareTag("punchable") && _positionChange.magnitude > 0.1f)
         {
             thisSound.PlayOneShot(punchSound, 0.5f);
             other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);

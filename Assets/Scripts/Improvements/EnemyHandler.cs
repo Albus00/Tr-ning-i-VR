@@ -11,6 +11,7 @@ using TMPro;
 
 public class EnemyHandler : MonoBehaviour
 {
+    public GameObject fireworks;
     public moneyAndScoreManager scoreManager;
     public AudioLowPassFilter musicLP;
     public AudioHighPassFilter musicHP;
@@ -62,6 +63,8 @@ public class EnemyHandler : MonoBehaviour
     void Start()
     {
         //First wave only
+        fireworks.SetActive(false); //Disable fireworks
+
         enemiesLeftToSpawn = amtEnemiesWave;
         musicLP = GameObject.FindWithTag("music").GetComponent<AudioLowPassFilter>();
         musicHP = GameObject.FindWithTag("music").GetComponent<AudioHighPassFilter>();
@@ -100,14 +103,15 @@ public class EnemyHandler : MonoBehaviour
     {
         //-----COOLDOWN-----//
         if(cooldownActive && this.coroutine == null){
-            if(currentWave > 0){
+            if (currentWave > 0){
                 scoreManager.giveMoney(moneyPerWave, false);
                 scoreManager.giveScore(scorePerWave);
+                fireworks.SetActive(true); //Disable fireworks
             }
             this.coroutine = cooldown();
             StartCoroutine(this.coroutine);
 
-            if(gameification > 1){
+            if (gameification > 1){
                 StartCoroutine(muffleMusic(2.0f)); //Muffle music linearly over five seconds
             }
         }
@@ -141,6 +145,7 @@ public class EnemyHandler : MonoBehaviour
     IEnumerator cooldown(){
         Debug.Log("Cooldown() called, waiting for 15 seconds before spawning more fellas...");
 
+
         yield return new WaitForSeconds(cooldownTimer);
         
         currentWave += 1;
@@ -150,6 +155,8 @@ public class EnemyHandler : MonoBehaviour
         this.coroutine = null;
         Debug.Log("Waited for 15 sec, resuming...");
         Debug.Log("-----WAVE "+ currentWave +"-----");
+
+        fireworks.SetActive(false);
     }
 
     IEnumerator muffleMusic(float seconds){

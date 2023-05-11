@@ -14198,6 +14198,7 @@ GameObject:
   - component: {fileID: 1198626433}
   - component: {fileID: 1198626435}
   - component: {fileID: 1198626434}
+  - component: {fileID: 1198626436}
   m_Layer: 0
   m_Name: roundText
   m_TagString: Untagged
@@ -14322,6 +14323,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198626432}
   m_CullTransparentMesh: 1
+--- !u!95 &1198626436
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198626432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50fd5bada6d2fd344840225e134ea447, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1248742613
 GameObject:
   m_ObjectHideFlags: 0
@@ -19994,6 +20015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434822952}
   - component: {fileID: 1434822951}
+  - component: {fileID: 1434822953}
   m_Layer: 0
   m_Name: enemyHandler
   m_TagString: EnemyHandler
@@ -20051,6 +20073,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1434822953
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434822950}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b31822257d1f3f64b8911a4e0b993b9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1480722864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4930423885401191176, guid: ee714b825da2257499429868bc36049f, type: 3}
@@ -26122,6 +26164,7 @@ GameObject:
   - component: {fileID: 2029073498}
   - component: {fileID: 2029073497}
   - component: {fileID: 2029073496}
+  - component: {fileID: 2029073499}
   m_Layer: 0
   m_Name: roundCounter (TMP)
   m_TagString: Untagged
@@ -26246,6 +26289,26 @@ RectTransform:
   m_AnchoredPosition: {x: -86.7, y: -898}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2029073499
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029073495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f482df8cc9a0a8448cdaf9889a10573, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2039942446
 GameObject:
   m_ObjectHideFlags: 0

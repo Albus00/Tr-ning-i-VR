@@ -11,7 +11,11 @@ using TMPro;
 
 public class EnemyHandler : MonoBehaviour
 {
+    RoundCounter roundCounterScript;
+
     public GameObject fireworks;
+    public GameObject infoText;
+
     public moneyAndScoreManager scoreManager;
     public AudioLowPassFilter musicLP;
     public AudioHighPassFilter musicHP;
@@ -63,7 +67,10 @@ public class EnemyHandler : MonoBehaviour
     void Start()
     {
         //First wave only
+        roundCounterScript = GameObject.Find("rCount").GetComponent<RoundCounter>();
+
         fireworks.SetActive(false); //Disable fireworks
+        infoText.SetActive(true);
 
         enemiesLeftToSpawn = amtEnemiesWave;
         musicLP = GameObject.FindWithTag("music").GetComponent<AudioLowPassFilter>();
@@ -102,11 +109,13 @@ public class EnemyHandler : MonoBehaviour
     void Update()
     {
         //-----COOLDOWN-----//
-        if(cooldownActive && this.coroutine == null){
+        if (cooldownActive && this.coroutine == null){
             if (currentWave > 0){
                 scoreManager.giveMoney(moneyPerWave, false);
                 scoreManager.giveScore(scorePerWave);
-                fireworks.SetActive(true); //Disable fireworks
+                roundCounterScript.AddRound();
+                fireworks.SetActive(true); //enable fireworks
+                infoText.SetActive(true);
             }
             this.coroutine = cooldown();
             StartCoroutine(this.coroutine);
@@ -157,6 +166,7 @@ public class EnemyHandler : MonoBehaviour
         Debug.Log("-----WAVE "+ currentWave +"-----");
 
         fireworks.SetActive(false);
+        infoText.SetActive(false);
     }
 
     IEnumerator muffleMusic(float seconds){

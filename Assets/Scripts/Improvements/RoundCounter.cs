@@ -26,4 +26,8 @@ public class RoundCounter : MonoBehaviour
     {
         rCount++;
     }
+    public int ReturnCount()
+    {
+        return rCount;
+    }
 }

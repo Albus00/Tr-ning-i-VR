@@ -1,6 +1,7 @@
 //TRÄNING I VR
 //Klas Nordquist
 //Victor Persson
+//Ivar Gavelin
 
 
 using System.Collections;
@@ -11,6 +12,13 @@ using TMPro;
 
 public class EnemyHandler : MonoBehaviour
 {
+    public GameObject round1;
+    public GameObject round2;
+    public GameObject round3;
+    public GameObject round4;
+    public GameObject round5;
+    public GameObject round6;
+
     RoundCounter roundCounterScript;
 
     public GameObject fireworks;
@@ -66,6 +74,13 @@ public class EnemyHandler : MonoBehaviour
 
     void Start()
     {
+        round1.SetActive(true);
+        round2.SetActive(false);
+        round3.SetActive(false);
+        round4.SetActive(false);
+        round5.SetActive(false);
+        round6.SetActive(false);
+
         //First wave only
         roundCounterScript = GameObject.Find("rCount").GetComponent<RoundCounter>();
 
@@ -113,6 +128,29 @@ public class EnemyHandler : MonoBehaviour
             if (currentWave > 0){
                 scoreManager.giveMoney(moneyPerWave, false);
                 scoreManager.giveScore(scorePerWave);
+                roundCounterScript = GameObject.Find("rCount").GetComponent<RoundCounter>();
+
+                if (roundCounterScript.ReturnCount() == 1)
+                {
+                    round2.SetActive(true);
+                }
+                if (roundCounterScript.ReturnCount() == 2)
+                {
+                    round3.SetActive(true);
+                }
+                if (roundCounterScript.ReturnCount() == 3)
+                {
+                    round4.SetActive(true);
+                }
+                if (roundCounterScript.ReturnCount() == 4)
+                {
+                    round5.SetActive(true);
+                }
+                if (roundCounterScript.ReturnCount() == 5)
+                {
+                    round6.SetActive(true);
+                }
+
                 roundCounterScript.AddRound();
                 fireworks.SetActive(true); //enable fireworks
                 infoText.SetActive(true);

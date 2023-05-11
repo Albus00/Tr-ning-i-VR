@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pathing : MonoBehaviour // Skit kod, använd inte
+public class pathing : MonoBehaviour // Skit kod, anvï¿½nd inte
 {
     [Header("References")]
     [SerializeField] private Animator animator = null;
@@ -34,7 +34,7 @@ public class pathing : MonoBehaviour // Skit kod, använd inte
     public void Start()
     {
         readyToDash = false;
-        target = GameObject.FindWithTag("player").transform;
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

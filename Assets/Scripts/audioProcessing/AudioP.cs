@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+// https://forum.unity.com/threads/what-is-spectrum-data-audio-getspectrumdata.204060/
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioP : MonoBehaviour
-{
+{   
     [SerializeField] bool useEqualLoudnessScale = true;
     private AudioSource audioSource;
     public static float[] samples = new float[512];

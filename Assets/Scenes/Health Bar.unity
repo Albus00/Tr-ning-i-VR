@@ -192,8 +192,8 @@ Camera:
   m_GameObject: {fileID: 286537147}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -248,9 +248,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4563194176417312879, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7aaec79531e4c0e40a1d0a77d48937e1, type: 3}
     - target: {fileID: 4563194176544917132, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_Name
       value: HealthMeter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.g
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194176544917134, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: invulnerableColor.r
+      value: 0.23851903
       objectReference: {fileID: 0}
     - target: {fileID: 4563194176544917135, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_RootOrder
@@ -295,6 +311,18 @@ PrefabInstance:
     - target: {fileID: 4563194176544917135, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194177120258242, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563194177120258242, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b74c31d447d2f5d41a61081bdf5e7126, type: 3}
+    - target: {fileID: 4563194177120258242, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c084d5a361bc841a164a6fa831f6b5, type: 3}

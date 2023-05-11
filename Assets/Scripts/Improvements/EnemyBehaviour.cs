@@ -10,7 +10,12 @@ using UnityEngine;
 //Set up mixamo model: https://www.youtube.com/watch?v=KuMe6Iz8pFI
 public class EnemyBehaviour : MonoBehaviour
 {
-    // OBS: State machine används inte än.
+    // Counter for kills and variables for playing death sound
+    KillCounter killCounterScript;
+    public AudioSource source;
+    public AudioClip clip;
+
+    // OBS: State machine anvï¿½nds inte ï¿½n.
     // --------- Enemy State --------- //
     private enum EnemyState
     {
@@ -19,6 +24,11 @@ public class EnemyBehaviour : MonoBehaviour
         Ragdoll
     }
     private EnemyState currentState = EnemyState.Running;
+
+    // --------- Physics --------- //
+    private float gravityForce = -9.82f;
+    public bool isGrounded = false;
+    public float groundedLength = 0.2f;
 
     // --------- Limb Handling --------- //
     private Rigidbody[] ragdollRigidbodies;
@@ -43,12 +53,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        target = GameObject.FindWithTag("player").transform;
+        target = GameObject.FindWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         DisableRagdoll(); // No ragdoll as long as enemy isnt dead.
     }
     private void Start()
     {
+        killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         //firstCall = true;
         dashDistance = 1f;
         dashSpeed = 10f;
@@ -57,6 +68,16 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        isGrounded = (Physics.Raycast(transform.position, Vector3.down, groundedLength));
+        // Checks if enemy is grounded (done in child gameobject)
+        if (!isGrounded)
+        {
+            Vector3 downForce = new Vector3(0, gravityForce * Time.deltaTime, 0);
+            transform.Translate(downForce);
+            // Debug.Log("Grounded");
+        }
+
         switch (currentState)
         {
             case EnemyState.Running: 
@@ -84,6 +105,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void EnableRagdoll() // when die, go ragdoll
     {
+        // Add kill to killcounter
+        killCounterScript.AddKill();
+
+        // Play death sound
+        source.PlayOneShot(clip);
+
         foreach (var rigidbody in ragdollRigidbodies)
         {
             rigidbody.isKinematic = false; // enables physics  affecting the rigidbodies in the child objects like arms, legs etc
@@ -119,8 +146,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         gameObject.transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-        Debug.Log("Running");
-
+        
+        //Debug.Log("Running");
+        // debug for running direction
+        //Debug.DrawLine(transform.position, transform.forward.normalized, new Color(1.0f, 0.0f, 0.0f));
     }
 
     private void RagdollBehaviour()

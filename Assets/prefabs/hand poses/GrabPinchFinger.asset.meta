@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Oculus/Interaction/Runtime/Meshes/Locomotion/Materials/MetaCrossMat.mat.meta
+guid: 0748af52e53a8ec4c863d18112cffc69
+========
+guid: d700fee481bbca7428281163468bfdc9
+>>>>>>>> origin/klas2:Assets/prefabs/hand poses/GrabPinchFinger.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

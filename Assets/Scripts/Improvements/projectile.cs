@@ -4,25 +4,44 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    public string projectileType = "box";
-    // Start is called before the first frame update
+    public bool destroyAfterThrow = true;
+    private Vector3 _previousPosition;
+    private Vector3 _positionChange;
+    private bool projectileActive;
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(collision.gameObject.name);
+    //    collision.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(collision);
+    //}
     void Start()
     {
-        
+        projectileActive = false;
+        _previousPosition = transform.position;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.name.Contains("mixamorig"))
+        _positionChange = transform.position - _previousPosition;
+        _previousPosition = transform.position;
+        if(!projectileActive && _positionChange.magnitude > 0.001f)
         {
-            //Debug.Log(collision.gameObject.name);
-            collision.gameObject.transform.root.GetComponent<EnemyBehaviour>().projectileCollisionDetected(collision);
+            projectileActive = true;
         }
+        if ( _positionChange.magnitude < 0.001f)
+        {
+            projectileActive = false;
+        }
+        // Log the position change to the console
+        //Debug.Log($"Position Change: {_positionChange}");
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.name.Contains("mixamorig") && projectileActive)
+        {
+            other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
+
+        }
+        //Debug.Log(other.gameObject.name);
+        
+
     }
 }

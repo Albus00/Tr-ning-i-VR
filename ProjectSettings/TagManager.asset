@@ -5,14 +5,31 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - enemy
+  - audioLight
+  - weapon
+  - localLimb
+  - player
+  - audioHandler
+  - Ground
+  - EnemyHandler
+  - HealthHandler
+  - music
+  - CinemachineTarget
+  - weaponSpawn
+  - shopWaveNumber
+  - playerStats
+  - wall
+  - punchable
+  - killCounter
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Weapon
   - Water
   - UI
-  - 
+  - glow
   - 
   - 
   - 

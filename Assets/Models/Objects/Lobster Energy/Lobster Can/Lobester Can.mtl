@@ -1,0 +1,24 @@
+# Blender MTL File: 'Lobester Can.blend'
+# Material Count: 2
+
+newmtl Top
+Ns 577.910238
+Ka 0.770408 0.770408 0.770408
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd lobster matt.png
+
+newmtl lobster_texture
+Ns 451.308336
+Ka 0.546912 0.546912 0.546912
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd lobster matt.png

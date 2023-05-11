@@ -10,6 +10,8 @@ using UnityEngine;
 //Set up mixamo model: https://www.youtube.com/watch?v=KuMe6Iz8pFI
 public class EnemyBehaviour : MonoBehaviour
 {
+    public Animation lightAnimation;
+
     // Counter for kills and variables for playing death sound
     KillCounter killCounterScript;
     public AudioSource source;
@@ -59,6 +61,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Start()
     {
+        lightAnimation = GameObject.Find("LightKillAnimation").GetComponent<Animation>();
+
         killCounterScript = GameObject.Find("KCO").GetComponent<KillCounter>();
         //firstCall = true;
         dashDistance = 1f;
@@ -68,7 +72,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         isGrounded = (Physics.Raycast(transform.position, Vector3.down, groundedLength));
         // Checks if enemy is grounded (done in child gameobject)
         if (!isGrounded)
@@ -105,6 +108,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void EnableRagdoll() // when die, go ragdoll
     {
+        lightAnimation.Play("LightKillAnimation");
+
         // Add kill to killcounter
         killCounterScript.AddKill();
 

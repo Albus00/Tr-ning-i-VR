@@ -19,7 +19,7 @@ public class EnemyHandler : MonoBehaviour
     public GameObject round5;
     public GameObject round6;
 
-    RoundCounter roundCounterScript;
+    public RoundCounter roundCounterScript;
 
     public GameObject fireworks;
     public GameObject infoText;

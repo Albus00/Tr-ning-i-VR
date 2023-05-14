@@ -51,22 +51,29 @@ public class BehaviourTest : MonoBehaviour
 
     // --------- Movement handling --------- //
     public Transform target;
-
     private float distanceToTarget;
-    public float movementSpeed;
+    private float movementSpeed;
+    private bool canRun;
+
     // ---- Dashing ---- //
+    private bool canDash;
     public float dashDistance;
     public float dashSpeed;
     Vector3 dashTarget;
     public float dashVariationFactor;
+    public float dashTargetLimit; // how close the enemy can dash to the player (if within this distance the dash is ended)
 
     // ---- Attacking ---- //
-    public float attackDistance;
+    private float attackDistance;
     private bool isFridgeThrower;
     private bool hasThrownFridge;
     public float fridgeThrowDistance;
     public Transform fridgeSpawnPoint;
 
+    // ---- Dying ---- //
+    private int _frameCounter;
+    private Vector3 _previousPosition;
+    private Vector3 _positionChange;
 
     // --------- Components --------- //
     private Animator animator;
@@ -82,6 +89,7 @@ public class BehaviourTest : MonoBehaviour
     private float secPerBeat;
     public float beatsPerAction; // decides how many beats have to occur for an action to be allowed
     private float timer;
+    private float localTimer;
     private bool doAction; // is set to true -> do something -> is set to false
 
     // --------- Difficulty --------- //
@@ -104,9 +112,12 @@ public class BehaviourTest : MonoBehaviour
     }
     private void Start()
     {
+        canRun = true;
+        dashTargetLimit = 2f;
+        canDash = true;
         fridgeThrowDistance = 13f;
         hasThrownFridge = false;
-        attackDistance = 1f;
+        attackDistance = 1.1f;
         killCounterScript = GameObject.FindWithTag("killCounter").GetComponent<KillCounter>();
         isDead = false;
         actionInProgress = false;
@@ -114,8 +125,8 @@ public class BehaviourTest : MonoBehaviour
         secPerBeat = 60f / bpm;
         beatsPerAction = 1f;
         //firstCall = true;
-        movementSpeed = 2f;
-        dashDistance = 1.8f;
+        movementSpeed = 12f;
+        dashDistance = 2f;
         dashSpeed = 12f;
 
         difficultyManager = GameObject.Find("DifficultyManager").GetComponent<DifficultyManager>();
@@ -157,6 +168,7 @@ public class BehaviourTest : MonoBehaviour
         if(!isDead) {
             GroundCheck(); 
         }
+       
         
     }
     // ------------------------------------ IDLE ------------------------------------ //
@@ -170,29 +182,59 @@ public class BehaviourTest : MonoBehaviour
     // ------------------------------------ RUNNING ------------------------------------ //
     private void StartRunning()
     {
+        actionInProgress = true;
         animator.SetBool("dash", true);
     }
     private void RunningBehaviour()
     {
         distanceToTarget = (target.position - gameObject.transform.position).magnitude;
-        if (distanceToTarget > 1)
-        {
-            //Vector3 targetDirection = target.position - gameObject.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), movementSpeed * Time.deltaTime);
-        }
-
-
         gameObject.transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), movementSpeed * Time.deltaTime);
+        if (distanceToTarget <= attackDistance)
+        {
+            EndRunning();
+        }
+      
+
+
+        
         //Debug.Log("Running");
         // debug for running direction
         //Debug.DrawLine(transform.position, transform.forward.normalized, new Color(1.0f, 0.0f, 0.0f));
+    }
+    private void EndRunning()
+    {
+        canRun= false; // stop trying to run when enemy has reached player
+        animator.SetBool("dash", false);
+        EndAction();
     }
 
 
     // ------------------------------------ RAGDOLL ------------------------------------ //
     private void RagdollBehaviour()
     {
-        // Nothing for now
+        
+        _frameCounter++;
+
+        if (_frameCounter % 5 == 0) // compare position every 5 frames
+        {
+            _positionChange = transform.position - _previousPosition;
+            _previousPosition = transform.position;
+        }
+        if(_positionChange.magnitude < 0.001f) // if the enemy is dead and stops moving, start despawn timer
+        {
+            localTimer += Time.deltaTime;
+            if (localTimer > 5f) // despawn timer = 5s
+            {
+                this.enabled = false;
+                Object.Destroy(gameObject, 3f);
+            }
+        }
+        else // if movement stops, reset despawn timer
+        {
+            localTimer = 0f;
+        }
+        
     }
     private void DisableRagdoll()
     {
@@ -209,14 +251,15 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EnableRagdoll() // when die, go ragdoll
     {
+        isDead = true;
+        EndAction();
         while (thisSound.clip == lastHitSound) { //dont play the same sound twice
             thisSound.clip = enemyHitSounds[Random.Range(0, enemyHitSounds.Length)];
         }
         lastHitSound = thisSound.clip;
-
         thisSound.PlayOneShot(thisSound.clip, 1.0f);
-
-        isDead = true;
+        localTimer = 0; // when ragdoll is enabled, initialize despawn timer
+        _frameCounter = 0; // also initialize frame counter which compares positional change
         foreach (var collider in colliders)
         {
             collider.isTrigger = false;
@@ -227,8 +270,6 @@ public class BehaviourTest : MonoBehaviour
         }
         animator.enabled = false;
         enemyHandler.RemoveEnemy(this.gameObject);
-        this.enabled= false;
-        Object.Destroy(gameObject,5f);
     }
 
 
@@ -237,31 +278,22 @@ public class BehaviourTest : MonoBehaviour
 
     private void StartDash()
     {
-        
         actionInProgress = true;
-        animator.SetBool("dash",true);
-        // Debug.Log("Started dash");
-        float distance = (target.position - transform.position).magnitude;
         Vector3 direction = (target.position - transform.position).normalized;
-
+        animator.SetBool("dash",true);
+        //float distance = (target.position - transform.position).magnitude;
         // Add random variation in the X and Z directions
         Vector3 randomVariation = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
-        dashVariationFactor = 0.3f; // Adjust this value to control the amount of variation
-        if(distance > 2) { dashVariationFactor = 0.05f; } // go straight to player if less than 2 unitys away
+        dashVariationFactor = 0.7f; // Adjust this value to control the amount of variation
         Vector3 newDirection = Vector3.Lerp(direction, randomVariation, dashVariationFactor);
         float dotProduct = Vector3.Dot(direction, newDirection);
-
         // If the dot product is negative, it means the new direction is pointing away from the player. sets it to -itself to always dash towards the player.
         if (dotProduct < 0)
         {
             newDirection = Vector3.Lerp(direction, -randomVariation, dashVariationFactor);
         }
-
         dashTarget = transform.position + newDirection * dashDistance;
         dashTarget.y = transform.position.y;
-        //gameObject.transform.LookAt(dashTarget);
-
-        //animator.SetTrigger("dash");
         //Instantiate(testBox, dashTarget, Quaternion.identity); // instantiates a box for debugging purposes
     }
 
@@ -272,13 +304,17 @@ public class BehaviourTest : MonoBehaviour
         //Debug.Log("In DashBehaviour: " + dashTarget);
         //Debug.Log("Dashing");
         // play animation
-
+        if ((target.position - transform.position).magnitude <= dashTargetLimit) // hacky bugfix, stop dashing through player and stop trying to dash instead of attacking
+        {
+            canDash = false;
+            EndDash();
+        }
         if (transform.position == dashTarget)
         {
             EndDash();
         }
         // revert to base Behaviour
-
+        
     }
     private void EndDash()
     {
@@ -315,25 +351,25 @@ public class BehaviourTest : MonoBehaviour
         actionInProgress = true;
         transform.LookAt(target);
         animator.SetBool("closeAttack", true);
-        //animator.SetLayerWeight(1, 1);
-        // Debug.Log("Started attack");
-
-       
+        animator.applyRootMotion= false; // this + GroundCheck() in CloseAttackBehaviour() fixed the sliding away issue
 
     }
     private void CloseAttackBehaviour()
     {
-        // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("CloseAttack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        GroundCheck();
+        float distance = (target.position - gameObject.transform.position).magnitude;
+        if(distance > attackDistance) // keeps enemies from sliding away when attacking
         {
-            EndCloseAttack();
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), movementSpeed * Time.deltaTime);
         }
-        
+        // Check if the attack animation has reached the cutoff point (assuming it's on layer 0)
+
     }
-    private void EndCloseAttack()
+    private void EndCloseAttack() //called from animation
     {
-        //animator.SetLayerWeight(1, 0);
-        EndAction();
+        Debug.Log("ended close attack");
+        animator.SetBool("closeAttack", false);
+        StartCloseAttack();
     }
     private void giveDamage()
     {
@@ -359,6 +395,8 @@ public class BehaviourTest : MonoBehaviour
     }
     private void EndFridgeAttack()
     {
+        Debug.Log("ended fridge attack");
+        animator.SetBool("throwFridge", false);
         EndAction();
     }
     public void SpawnFridge()
@@ -387,7 +425,7 @@ public class BehaviourTest : MonoBehaviour
     }
 
     // ------------------------------------ TAKING DAMAGE ------------------------------------ //
-    public void projectileCollisionDetected(Collider limbCollider, Vector3 projectilePosition)
+    public void projectileCollisionDetected(Collider limbCollider, Vector3 projectilePosition, float _positionChange)
     {
         hitRigidbody = limbCollider.attachedRigidbody;
 
@@ -408,57 +446,66 @@ public class BehaviourTest : MonoBehaviour
 
             EnableRagdoll();
             currentState = EnemyState.Ragdoll;
+            if (hitRigidbody != null) // put this inside the if(!isDead)
+            {
+                // Enable the rigidbody and collider components
+                hitRigidbody.isKinematic = false;
+                limbCollider.enabled = true;
+
+                // Apply a force to the rigidbody in the direction of the projectile
+                Vector3 forceDirection = limbCollider.transform.position - projectilePosition;
+                float forceMagnitude = _positionChange*100000f; // Adjust this value to control the strength of the force
+                hitRigidbody.AddForce(forceDirection.normalized * forceMagnitude);
+            }
         }
         // Find the rigidbody that corresponds to the limb collider
         
         
 
-        if (hitRigidbody != null) // put this inside the if(!isDead)
-        {
-            // Enable the rigidbody and collider components
-            hitRigidbody.isKinematic = false;
-            limbCollider.enabled = true;
-
-            // Apply a force to the rigidbody in the direction of the projectile
-            Vector3 forceDirection = limbCollider.transform.position - projectilePosition;
-            float forceMagnitude = 3000f; // Adjust this value to control the strength of the force
-            hitRigidbody.AddForce(forceDirection.normalized * forceMagnitude);
-        }
+        
 
     }
 
 
     private void HandleBehaviour()
     {
-       
         timer += Time.deltaTime; // keeps time
         if (timer >= secPerBeat * beatsPerAction) // Action on beat through BPM
         {
 
-            if (doAction && !actionInProgress) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
+            if (doAction && !actionInProgress && !isDead) // DoAction is flipped in BeatReceiver() which is called from the "soundDetection" script
             {
 
                 timer = 0f;
                 doAction = false;
                 distanceToTarget = (target.position - gameObject.transform.position).magnitude;
                 //  if (distanceToTarget <= attackDistance && !hasDoneJumpAttack) 
-                if (distanceToTarget <= attackDistance) 
+                if (distanceToTarget <= attackDistance+0.3f && !canRun) 
                 {
                     // Attack when within attackDistance
                     StartCloseAttack();
                     currentState = EnemyState.Attack;
                 }
-                else if (distanceToTarget > 5 && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
+                else if (distanceToTarget > 5f && distanceToTarget <= fridgeThrowDistance && isFridgeThrower && !hasThrownFridge)
                 {
                     Debug.Log("started fridge");
                     StartFridgeAttack();
                     currentState = EnemyState.FridgeAttack;
                 }
-                else
+                else if(canDash && distanceToTarget > 4f)
                 {
                     // Dash otherwise
                     StartDash();
                     currentState = EnemyState.Dash;
+                }
+                else if(distanceToTarget <= 4f && canRun) // if within 4 meters, run straight to 'attackDistance' meters away from player (1.1m)
+                {
+                    StartRunning();
+                    currentState = EnemyState.Running;
+                }
+                else
+                {
+                    currentState = EnemyState.Idle;
                 }
             }
         }
@@ -467,7 +514,7 @@ public class BehaviourTest : MonoBehaviour
     {
         actionInProgress = false;
         currentState = EnemyState.Idle;
-        
+        // make a call to enemyhandler with the distance from the enemy to the player so it knows if the enemy can move in to attack depending on if there are other enemies already there.
     }
 
     private void GroundCheck()
@@ -494,18 +541,18 @@ public class BehaviourTest : MonoBehaviour
     {
         bpm = bpm2;
     }
-    
 
-    //BeatReceiver() needs to stay, cant be moved to EnemyHandler.
+    // TODO: soundDetection should call doAction in enemyHandler which calls doAction in all the enemies instead of soundDetection calling doAction directly in the enemies.
+    // this means enemyHandler can act as a switch for how many enemies can perform actions at the same time. (control the pace of the game better)
     public void BeatReceiver() // turns doAction to true when the soundDetection script detects an amplitude spike at selected frequency band.
     {
         doAction = true;
     }
-    public bool GetActionInProgress() { return actionInProgress; }
+    public bool GetActionInProgress() { return actionInProgress; } //not in use (i think)
 
-    public bool GetIsFridgeThrower() { return isFridgeThrower; }
+    public bool GetIsFridgeThrower() { return isFridgeThrower; } //not in use (i think)
     public void AssignFridgeThrower() {
-        Debug.Log("received command");
+        //Debug.Log("received command");
         isFridgeThrower = true;
 
 

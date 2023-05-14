@@ -32,10 +32,14 @@ public class EnemyProjectile : MonoBehaviour
     private int gameification = 0;
 
     public float divideDamage = 9.0f;
-
+    private bool projectileActive;
+    private Vector3 _previousPosition;
+    private Vector3 _positionChange;
 
     void Start()
     {
+        projectileActive = false;
+        _previousPosition = transform.position;
         hasThrown = false;
         target = GameObject.FindWithTag("Player").transform.position;
         startMovingTowardPlayer = false;
@@ -77,8 +81,12 @@ public class EnemyProjectile : MonoBehaviour
             fridgeAudio.PlayOneShot(fridgeRattle);
             Destroy(gameObject,6.0f); //Remove the object after 6 seconds
         }
+        if (_positionChange.magnitude < 0.001f) // deactivate so enemies dont die when running into a stationary fridge
+        {
+            projectileActive = false;
+        }
 
-        if(hasThrown){
+        if (hasThrown){ // ?
         }
     }
 
@@ -103,6 +111,14 @@ public class EnemyProjectile : MonoBehaviour
                 Debug.Log("Object hit player for: " + Mathf.Round(theImpulse) + " Newton, which is: " + Mathf.Round(damage) + " damage.");
                 playerHealth.subtractHealth(damage);
             } 
+        }
+    }
+    private void OnTriggerEnter(Collider other) // testing teamkill
+    {
+        if (other.gameObject.transform.name.Contains("mixamorig") && projectileActive)
+        {
+            other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position , _positionChange.magnitude);
+
         }
     }
 

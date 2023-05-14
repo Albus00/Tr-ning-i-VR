@@ -37,7 +37,7 @@ public class projectile : MonoBehaviour
     {
         if (other.gameObject.transform.name.Contains("mixamorig") && projectileActive)
         {
-            other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position);
+            other.gameObject.transform.root.GetComponent<BehaviourTest>().projectileCollisionDetected(other, transform.position, _positionChange.magnitude);
 
         }
         //Debug.Log(other.gameObject.name);

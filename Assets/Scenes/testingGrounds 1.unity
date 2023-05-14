@@ -2690,7 +2690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 142960080207654231, guid: 474579dc37907944095102affef733f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4088581767290762260, guid: 474579dc37907944095102affef733f1, type: 3}
       propertyPath: m_UseGravity
@@ -3561,19 +3561,19 @@ MonoBehaviour:
   - SLAMTYPE
   musicFrequencyBands: 040000000600000003000000030000000600000002000000
   musicThresholds:
-  - 0.1
-  - 0.1
+  - 0.3
+  - 0.3
   - 0.2
   - 0.2
   - 0.2
   - 0.2
   musicStartSyncThresholds:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 0.3
+  - 0.3
+  - 0.2
+  - 0.2
+  - 0.2
+  - 0.2
   musicBPMs: 7e0000006e0000007c000000800000008000000080000000
   songMP3:
   - {fileID: 8300000, guid: 569f5f59c14fdbc48bc49b60892b6dfd, type: 3}
@@ -3602,7 +3602,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300001, guid: 1dd706bb85d8aef4e83a6229dbd62c36, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7ae25c436e9e6ba4c8f7d38bf562f210, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6851,11 +6851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6025690314729926009, guid: ef0d93f6205c82c49be7d32521e8207e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.838
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 6025690314729926009, guid: ef0d93f6205c82c49be7d32521e8207e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.744
+      value: 22.73
       objectReference: {fileID: 0}
     - target: {fileID: 6025690314729926009, guid: ef0d93f6205c82c49be7d32521e8207e, type: 3}
       propertyPath: m_LocalRotation.w

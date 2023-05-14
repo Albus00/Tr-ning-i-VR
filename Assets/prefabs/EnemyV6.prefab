@@ -196,9 +196,49 @@ PrefabInstance:
       propertyPath: m_TagString
       value: punchable
       objectReference: {fileID: 0}
+    - target: {fileID: 3097553456475934085, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553456521170811, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553456592460698, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3097553456777143531, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_TagString
       value: punchable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553456820083591, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553457088299389, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553457423646743, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553457434446860, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458039726572, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458123795792, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097553458283718024, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: m_EnableProjection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3097553458283718027, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_TagString
@@ -208,6 +248,10 @@ PrefabInstance:
       propertyPath: punchSound
       value: 
       objectReference: {fileID: 8300000, guid: 6967fcf12757d0f4a9dc0e27a047eae7, type: 3}
+    - target: {fileID: 3097553458425331616, guid: 2015b50752f71a5448834743dd62851e, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3097553458425331617, guid: 2015b50752f71a5448834743dd62851e, type: 3}
       propertyPath: m_Name
       value: EnemyV6
